@@ -1,10 +1,10 @@
-@import './colors.scss';
+@use './styles/color' as *;
 
 
 // GET FONT "Inter" ...
 @font-face {
     font-family: 'Inter';
-    src: url('/assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+    src: url('/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
     font-weight: 400 500 700;   
     font-style: regular medium bold;
     font-display: swap;  /* verwendet die Standard-Schrift, bis Schriftart geladen ist */
