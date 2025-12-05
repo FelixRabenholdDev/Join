@@ -1,7 +1,7 @@
-@use './styles/color' as *;
-@use './styles/variables' as *;
-@use './styles/global-styles' as *;
 
+@import './app/styles/colors.scss';
+@import './app/styles/variables.scss';
+@import './app/styles/global-styles.scss';
 
 // GET FONT "Inter" ...
 @font-face {
