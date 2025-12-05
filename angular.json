@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Join": {
+    "join": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -58,10 +58,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Join:build:production"
+              "buildTarget": "join:build:production"
             },
             "development": {
-              "buildTarget": "Join:build:development"
+              "buildTarget": "join:build:development"
             }
           },
           "defaultConfiguration": "development"
