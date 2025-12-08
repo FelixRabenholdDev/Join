@@ -1,37 +1,40 @@
-<div class="contacts-wrapper">
+<section class="contacts-wrapper">
 
-    <!-- Add contact button -->
-    <button class="add-contact-btn" (click)="onAddContact()">
-        Add new contact
-        <span class="add-contact-icon">👤+</span>
-    </button>
+  <!-- Add contact button -->
+  <button class="add-contact-btn" (click)="onAddContact()">
+    Add new contact
+    <span class="add-contact-icon">👤+</span>
+  </button>
 
-    <div class="contacts-scroll-area">
+  <!-- Contacts-SROLL-AREA -->
+  <div class="contacts-scroll-area">
 
-        <div *ngFor="let group of groupedContacts" class="contacts-group">
+    <div *ngFor="let group of groupedContacts" class="contacts-group">
 
-            <div class="group-letter">{{ group.letter }}</div>
+      <div class="group-letter">{{ group.letter }}</div>
 
-            <div *ngFor="let c of group.contacts" class="contact-box">
+      <div *ngFor="let c of group.contacts" class="contact-box">
 
-                <div class="contact-avatar" [style.backgroundColor]="c.color">
-                    {{ getInitials(c.name) }}
-                </div>
-
-                <div class="contact-info">
-                    <div class="contact-name text_3">{{ c.name }}</div>
-                    <div class="contact-email">{{ c.email }}</div>
-                </div>
-
-            </div>
-
-            <img class="contact-divider" src="/IMG/Frame-120.svg" alt="divider">
-
+        <div class="contact-avatar" [style.backgroundColor]="c.color">
+          {{ getInitials(c.name) }}
         </div>
 
+        <div class="contact-info">
+          <div class="contact-name text_3">{{ c.name }}</div>
+          <div class="contact-email">{{ c.email }}</div>
+        </div>
+
+      </div>
+
+      <img class="contact-divider" src="/IMG/Frame-120.svg" alt="divider">
+
     </div>
-    <app-single-contact></app-single-contact>
 
-</div>
+  </div>
+  <app-single-contact></app-single-contact>
+</section>
 
+<!-- SINGLE-Contact -->
+<section>
 
+</section>
