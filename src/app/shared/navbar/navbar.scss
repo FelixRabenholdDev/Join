@@ -17,9 +17,10 @@ main {
         margin-bottom: 60%;
     }
 
-    >div nav {
+    >div nav  {
         display: flex;
         flex-direction: column;
+        
      
 
 
@@ -33,8 +34,8 @@ main {
             margin-top: 20%;
 
             &:hover {
-                text-decoration: underline;
-                background-color: darkblue;
+                
+                background-color: $navActive;
             }
 
             >img {
@@ -56,6 +57,9 @@ main {
             color: #A8A8A8;
             text-decoration: none;
             margin-bottom: 25px;
+            &:hover{
+                color: $buttonBlue;
+            }
 
         }
     }
