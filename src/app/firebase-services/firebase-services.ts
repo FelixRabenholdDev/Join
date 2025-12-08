@@ -2,12 +2,6 @@ import { Component, Injectable, inject } from '@angular/core';
 import { Firestore, collection, doc, onSnapshot } from '@angular/fire/firestore';
 import { Contact } from '../interfaces/contact.interface';
 
-@Component({
-  selector: 'app-firebase-services',
-  imports: [],
-  templateUrl: './firebase-services.html',
-  styleUrl: './firebase-services.scss',
-})
 @Injectable({
   providedIn: 'root',
 })
