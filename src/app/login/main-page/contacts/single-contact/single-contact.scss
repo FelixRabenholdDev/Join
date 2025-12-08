@@ -1,8 +1,6 @@
 @import './../../../../../styles.scss';
 @import './../../../../styles/colors.scss';
 
-
-
 .sc_header {
   display: flex;
   flex-direction: row;
@@ -40,26 +38,47 @@
     > div {
       display: flex;
       gap: 8px;
-    }
-    button {
-      border: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &:hover {
-        color: lightblue;
-        cursor: pointer;
-        filter: drop-shadow(0 0 4px lightblue);
-      }
-      img {
+      > button:nth-of-type(1) {
+        width: 62px;
         height: 24px;
-        width: 24px;
+        border: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('./../../../../../../public/IMG/edit-black.svg');
+        &:hover {
+          background-image: url('./../../../../../../public/IMG/edit-blue.svg');
+        }
       }
-      span {
-        font-size: 16px;
-        font-weight: 400;
+      > button:nth-of-type(2) {
+        width: 81px;
+        height: 24px;
+        border: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('./../../../../../../public/IMG/delete-black.svg');
+        &:hover {
+          background-image: url('./../../../../../../public/IMG/delete-blue.svg');
+        }
       }
     }
+    // button {
+    //   border: none;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   &:hover {
+    //     color: lightblue;
+    //     cursor: pointer;
+    //   }
+    //   img {
+    //     height: 24px;
+    //     width: 24px;
+    //   }
+    //   span {
+    //     font-size: 16px;
+    //     font-weight: 400;
+    //   }
+    // }
   }
 }
 
