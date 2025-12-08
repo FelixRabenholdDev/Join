@@ -1,1 +1,87 @@
 @import './../../../../../styles.scss';
+@import './../../../../styles/colors.scss';
+
+.single_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.sc_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  width: fit-content;
+
+  p {
+    font-size: 27px;
+  }
+}
+
+.sc_top {
+  display: flex;
+  gap: 54px;
+
+  > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: orange;
+    border-radius: 70px;
+    height: 120px;
+    width: 120px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 47px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .sc_menu {
+    gap: 8px;
+    > div {
+      display: flex;
+      gap: 8px;
+    }
+    button {
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+       img {
+        height: 24px;
+        width: 24px;
+      }
+       span {
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.sc_bot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 59px;
+  gap: 59px;
+
+  p {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    > strong {
+      font-size: 16px;
+      font-weight: 700px;
+    }
+    > a {
+      color: #007cee;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
