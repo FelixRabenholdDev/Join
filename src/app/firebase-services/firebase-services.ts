@@ -4,7 +4,8 @@ import {
   collection,
   doc,
   collectionData,
-  docData
+  docData,
+  addDoc
 } from '@angular/fire/firestore';
 import { Contact } from '../interfaces/contact.interface';
 import { Observable } from 'rxjs';
@@ -34,5 +35,11 @@ export class FirebaseServices {
       phone: data.phone ?? '',
       color: data.color ?? ''
     };
+  }
+
+  async addContact(contact: Omit<Contact, 'id'>): Promise<Contact> {
+    const ref = collection(this.firestore, 'contacts');
+    const docRef = await addDoc(ref, contact);
+    return { id: docRef.id, ...contact };
   }
 }
