@@ -1,7 +1,6 @@
 @import './../../../../../styles.scss';
 @import './../../../../styles/colors.scss';
 
-
 .sc_header {
   display: flex;
   flex-direction: row;
@@ -136,6 +135,7 @@
     border-radius: 30px;
     overflow: hidden; // clippt die Rundung
   }
+
   .sc_dialog {
     max-width: 1212px;
     display: flex;
@@ -190,20 +190,26 @@
         border: 1px solid rgba(209, 209, 209, 1);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        border-radius:10px ;
+        justify-content: space-around;
+        border-radius: 10px;
         padding: 13px 21px;
         width: 420px;
-         input {
+        input {
           border: none;
           font-size: 20px;
           font-weight: 400;
+          align-self: self-start;
         }
         img {
           height: 24px;
           width: 24px;
         }
       }
+    }
+
+    .dialog_buttons {
+      display: flex;
+      gap: 20px;
     }
   }
 }

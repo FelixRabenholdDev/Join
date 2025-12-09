@@ -5,78 +5,85 @@
 </header>
 
 <ng-container *ngIf="contact$() | async as contact">
+  <article class="sc_information sc_information--active">
+    <div class="sc_top">
+      <span class="sc_logo" [style.background]="contact.color">
+        {{ getInitials(contact.name) }}</span
+      >
 
-<article class="sc_information sc_information--active">
-  <div class="sc_top">
-    <span class="sc_logo" [style.background]="contact.color">
-        {{ getInitials(contact.name) }}</span>
-
-    <div class="sc_menu">
-      <h2>{{ contact.name }}</h2>
-      <div>
-        <button type="button" (click)="dialog.open()">
-          <!-- <img src="./IMG/edit.png" alt="Pencil" />
+      <div class="sc_menu">
+        <h2>{{ contact.name }}</h2>
+        <div>
+          <button type="button" (click)="dialog.open()">
+            <!-- <img src="./IMG/edit.png" alt="Pencil" />
             <span>Edit</span> -->
-        </button>
+          </button>
 
-        <button>
-          <br />
-          <!-- <img src="./IMG/delete.png" alt="Trash" />
+          <button>
+            <br />
+            <!-- <img src="./IMG/delete.png" alt="Trash" />
             <span>Delete</span> -->
-        </button>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="sc_bot">
-    <span>Contact Information</span>
+    <div class="sc_bot">
+      <span>Contact Information</span>
 
-    <p>
-      <strong>Email</strong>
-      <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-    </p>
+      <p>
+        <strong>Email</strong>
+        <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+      </p>
 
-    <p>
-      <strong>Telefon</strong>
-      <a [href]="'tel:' + contact.phone">{{ contact.phone }}</a>
-    </p>
-  </div>
-</article>
-
-<!-- ----------------------------- Dialog:Edit ----------------------------- -->
-<app-dialog #dialog>
-  <article class="sc_dialog">
-    <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
-    <div class="left_side">
-      <img src="IMG/Capa 1.png" alt="" />
-      <span>Edit contact</span>
-    </div>
-
-    <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
-    <div>
-      <span class="sc_logo">AM</span>
-    </div>
-    <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
-    <div class="right_side">
-      <button class="close" type="button" (click)="dialog.close()">X</button>
-
-      <article>
-        <form class="contact_form">
-          <label class="field"
-            ><span class="icon person"></span><input type="text" placeholder="Anton Mayer"
-          /></label>
-          <label class="field"
-            ><span class="icon mail"></span><input type="email" placeholder="antonm@gmail.com"
-          /></label>
-          <label class="field"
-            ><span class="icon phone"></span><input type="tel" placeholder="+49 1111 11 111 1"
-          /></label>
-        </form>
-      </article>
-      <div>
-        <button class="button_light" type="button">Delete</button>
-        <button class="button_dark" type="button">Save</button>
-      </div>
+      <p>
+        <strong>Telefon</strong>
+        <a [href]="'tel:' + contact.phone">{{ contact.phone }}</a>
+      </p>
     </div>
   </article>
-</app-dialog>
+
+  <!-- ----------------------------- Dialog:Edit ----------------------------- -->
+  <app-dialog #dialog>
+    <article class="sc_dialog">
+      <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
+      <div class="left_side">
+        <img src="IMG/Capa 1.png" alt="" />
+        <span>Edit contact</span>
+      </div>
+
+      <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
+      <div class="mid_side">
+        <span class="sc_logo">AM</span>
+      </div>
+      <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
+      <div class="right_side">
+        <button class="close" type="button" (click)="dialog.close()">X</button>
+
+        <article>
+          <form class="contact_form">
+            <label class="field">
+              <input type="text" placeholder="Anton Mayer" />
+              <img src="IMG/person.svg" alt="" />
+            </label>
+
+            <label class="field">
+              <input type="email" placeholder="antonm@gmail.com" />
+              <img src="IMG/mail.svg" alt="" />
+            </label>
+
+            <label class="field">
+              <input type="tel" placeholder="+49 1111 11 111 1" />
+              <img src="IMG/call.svg" alt="" />
+            </label>
+          </form>
+        </article>
+
+        <div class="dialog_buttons">
+          <button class="button_light" type="button">Delete</button>
+          <button class="button_dark" type="button">Save</button>
+        </div>
+      </div>
+    </article>
+  </app-dialog>
+</ng-container>
