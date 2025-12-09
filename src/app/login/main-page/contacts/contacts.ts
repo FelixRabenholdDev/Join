@@ -1,90 +1,52 @@
 import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { SingleContact } from './single-contact/single-contact';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FirebaseServices } from '../../../firebase-services/firebase-services';
 import { Contact } from '../../../interfaces/contact.interface';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, SingleContact],  
+  imports: [CommonModule, SingleContact],
   templateUrl: './contacts.html',
-  styleUrl: './contacts.scss'
+  styleUrl: './contacts.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
+export class Contacts {
 
-export class Contacts implements OnInit {
+  private readonly firebase = inject(FirebaseServices);
+ 
+  readonly groupedContacts$ = this.firebase.subContactsList().pipe(
+    map((contacts: Contact[]) => this.sortAndGroup(contacts))
+  );
 
-  groupedContacts: { letter: string; contacts: Contact[] }[] = [];
+  private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
+    const groups: Record<string, Contact[]> = {};
 
-  constructor(
-    private firebase: FirebaseServices,
-    private cd: ChangeDetectorRef           // für die korrekte Aktualisierung der Kontaktliste
-  ) {}
-
-  ngOnInit(): void {
-    this.initRealtimeSync();
-  }
-
-  /**
-   * Aktiviert den Firestore-Realtime-Listener und sorgt dafür,
-   * dass Änderungen automatisch sichtbar werden ...
-   */
-  initRealtimeSync(): void {
-    // Startet Firestore-Listener (bereits im Service implementiert)
-    this.firebase.subContactsList();
-
-    // Polling zur kontinuierlichen Aktualisierung im UI
-    var self = this;
-    setInterval(function () {
-      self.sortAndGroup();
-      self.cd.detectChanges();   // WICHTIG: Aktualisiert die Angular-Ansicht
-    }, 200);
-  }
-
-  /**
-   * Sortiert die Kontakte alphabetisch und gruppiert sie (A, B, D ...)
-   */
-  sortAndGroup(): void {
-    var list = this.firebase.contactsList;
-    var groups: { [key: string]: Contact[] } = {};
-    var i: number;
-
-    for (i = 0; i < list.length; i++) {
-      var c = list[i];
-      var letter = c.name.trim().charAt(0).toUpperCase();
-
-      if (!groups[letter]) {
-        groups[letter] = [];
-      }
+    for (const c of contacts) {
+      const letter = c.name.trim().charAt(0).toUpperCase();
+      if (!groups[letter]) groups[letter] = [];
       groups[letter].push(c);
     }
 
-    var letters = Object.keys(groups).sort();
-    var result: { letter: string; contacts: Contact[] }[] = [];
-
-    for (i = 0; i < letters.length; i++) {
-      var l = letters[i];
-      result.push({
-        letter: l,
-        contacts: groups[l]
-      });
-    }
-
-    this.groupedContacts = result;
+    return Object.keys(groups)
+      .sort()
+      .map(letter => ({
+        letter,
+        contacts: groups[letter]
+      }));
   }
 
-  /**
-   * Erstellt Initialen aus einem Namen (z. B. "Anton Mayer" = "AM")
-   */
   getInitials(name: string): string {
-    var parts = name.trim().split(' ');
-    var first = parts[0].charAt(0).toUpperCase();
-    var second = parts.length > 1 ? parts[parts.length - 1].charAt(0).toUpperCase() : '';
-    return first + second;
+    const parts = name.trim().split(' ');
+    const first = parts[0]?.charAt(0).toUpperCase() ?? '';
+    const last = parts.length > 1 ? parts[parts.length - 1].charAt(0).toUpperCase() : '';
+    return first + last;
   }
 
   /**
-   * Dummy-Funktion für Sprint 1
+   * Dummy (Sprint 1)
    */
   onAddContact(): void {
     console.log('Sprint 1 Dummy: Add new contact');

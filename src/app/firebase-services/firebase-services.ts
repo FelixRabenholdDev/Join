@@ -1,55 +1,38 @@
-import { Component, Injectable, inject } from '@angular/core';
-import { Firestore, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { Injectable, inject } from '@angular/core';
+import {
+  Firestore,
+  collection,
+  doc,
+  collectionData,
+  docData
+} from '@angular/fire/firestore';
 import { Contact } from '../interfaces/contact.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseServices {
-  contactsList: Contact[] = [];
 
-  unsubList;
+  private readonly firestore = inject(Firestore);
 
-  firestore = inject(Firestore);
-
-  constructor() {
-    this.unsubList = this.subContactsList();
+  subContactsList(): Observable<Contact[]> {
+    const ref = collection(this.firestore, 'contacts');
+    return collectionData(ref, { idField: 'id' }) as Observable<Contact[]>;
   }
 
-  ngOnDestroy() {
-    this.unsubList();
+  subSingleContact(docID: string): Observable<Contact | undefined> {
+    const ref = doc(this.firestore, `contacts/${docID}`);
+    return docData(ref, { idField: 'id' }) as Observable<Contact | undefined>;
   }
 
-  subContactsList() {
-    return onSnapshot(this.getContactsRef(), (list) => {
-      this.contactsList = [];
-      list.forEach((element) => {
-        this.contactsList.push(this.setContactObject(element.data(), element.id));
-      });
-    });
-  }
-
-  subSingleContact(docID: string) {
-    return onSnapshot(this.getSingleContact(docID), (contact) => {
-      contact.data();
-    });
-  }
-
-  setContactObject(obj: any, id: string): Contact {
+  toContact(data: any): Contact {
     return {
-      id: id,
-      name: obj.name || '',
-      email: obj.email || '',
-      phone: obj.phone || '',
-      color: obj.color || '',
+      id: data.id,
+      name: data.name ?? '',
+      email: data.email ?? '',
+      phone: data.phone ?? '',
+      color: data.color ?? ''
     };
-  }
-
-  getContactsRef() {
-    return collection(this.firestore, 'contacts');
-  }
-
-  getSingleContact(docID: string) {
-    return doc(collection(this.firestore, 'contacts'), docID);
   }
 }
