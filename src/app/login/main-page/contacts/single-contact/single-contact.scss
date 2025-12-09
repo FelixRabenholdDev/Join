@@ -1,6 +1,7 @@
 @import './../../../../../styles.scss';
 @import './../../../../styles/colors.scss';
 
+
 .sc_header {
   display: flex;
   flex-direction: row;
@@ -126,10 +127,11 @@
   }
 }
 
+/* ------------------------------- Dialog:Edit ------------------------------ */
+
 :host ::ng-deep app-dialog {
   .dialog {
-    width: 100%;
-    max-width: 1212px;
+    width: auto;
     background: transparent;
     border-radius: 30px;
     overflow: hidden; // clippt die Rundung
@@ -159,23 +161,49 @@
       }
     }
 
+    .mid_side {
+      display: flex;
+      align-items: center;
+      margin: 0 40px;
+    }
+
     .right_side {
-      flex: 1;
-      min-width: 0; // verhindert Abschneiden
       background: #fff;
       padding: 60px 60px 50px;
+      padding-left: 0;
       display: flex;
       flex-direction: column;
       gap: 32px;
-      align-items: center;
-      justify-content: center;
 
-      .sc_logo {
-        width: 120px;
-        height: 120px;
+      > button {
+        align-self: self-end;
+        border: none;
+        cursor: pointer;
       }
     }
 
-
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      label {
+        border: 1px solid rgba(209, 209, 209, 1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius:10px ;
+        padding: 13px 21px;
+        width: 420px;
+         input {
+          border: none;
+          font-size: 20px;
+          font-weight: 400;
+        }
+        img {
+          height: 24px;
+          width: 24px;
+        }
+      }
+    }
   }
 }

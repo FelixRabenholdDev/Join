@@ -1,42 +1,61 @@
 // GLOBAL Styles
 
 .text_3 {
-    /* Figma: "subtitle" */
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 27px;
-    line-height: 1.2;
-    color: $black;
-    background-color: $white;
+  /* Figma: "subtitle" */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 27px;
+  line-height: 1.2;
+  color: $black;
+  background-color: $white;
 }
 
 .text_4 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 20px;
-    line-height: 1.2;
-    color: $black;
-    background-color: $white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $black;
+  background-color: $white;
 }
 
 .text_5 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-style: regular;
-    font-size: 27px;
-    line-height: 1.2;
-    color: $black;
-    background-color: $white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: regular;
+  font-size: 27px;
+  line-height: 1.2;
+  color: $black;
+  background-color: $white;
 }
 
 .text_6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-style: regular;
-    font-size: 20px;
-    line-height: 1.2;
-    color: $black;
-    background-color: $white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: regular;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $black;
+  background-color: $white;
+}
+
+.button_light {
+  border: 1px solid rgba(42, 54, 71, 1);
+  padding: 15px 24px;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.button_dark {
+  border: 1px solid rgba(42, 54, 71, 1);
+  padding: 15px 24px;
+  border-radius: 8px;
+  font-size: 21px;
+  font-weight: 400;
+  background-color: rgba(42, 54, 71, 1);
+  color: rgba(255, 255, 255, 1);
 }
