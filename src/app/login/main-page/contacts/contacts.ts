@@ -3,11 +3,12 @@ import { SingleContact } from './single-contact/single-contact';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FirebaseServices } from '../../../firebase-services/firebase-services';
 import { Contact } from '../../../interfaces/contact.interface';
+import { Navbar } from "../../../shared/navbar/navbar";
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, SingleContact],  
+  imports: [CommonModule, SingleContact, Navbar],  
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss'
 })
