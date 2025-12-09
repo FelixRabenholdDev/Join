@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { SingleContact } from './single-contact/single-contact';
 import { FirebaseServices } from '../../../firebase-services/firebase-services';
 import { Contact } from '../../../interfaces/contact.interface';
@@ -16,10 +16,15 @@ import { map } from 'rxjs/operators';
 export class Contacts {
 
   private readonly firebase = inject(FirebaseServices);
+
+  selectedContactId = signal<string | null>(null);
  
   readonly groupedContacts$ = this.firebase.subContactsList().pipe(
     map((contacts: Contact[]) => this.sortAndGroup(contacts))
   );
+
+  onSelectContact(id: string): void {
+    this.selectedContactId.set(id);}
 
   private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
     const groups: Record<string, Contact[]> = {};
