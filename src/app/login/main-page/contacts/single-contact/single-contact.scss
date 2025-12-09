@@ -151,6 +151,12 @@
       background-color: #2a3647;
       padding: 60px 40px 60px 40px;
 
+      >.seperator{
+        height: 0px;
+        width: 90px;
+        margin-top: 20px;
+      }
+
       img {
         height: 64px;
         width: 52px;
@@ -194,6 +200,9 @@
         border-radius: 10px;
         padding: 13px 21px;
         width: 420px;
+        &:Hover{
+          border: 1px solid rgba(41, 171, 226, 1)
+        }
         input {
           border: none;
           font-size: 20px;

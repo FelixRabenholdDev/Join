@@ -42,20 +42,35 @@
 }
 
 .button_light {
-  border: 1px solid rgba(42, 54, 71, 1);
+  border: 2px solid rgba(42, 54, 71, 1);
   padding: 15px 24px;
   border-radius: 8px;
   background: transparent;
   font-size: 21px;
   font-weight: 400;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  transform-origin: center;
+
+  &:hover {
+    border: 2px solid rgba(41, 171, 226, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.06);
+  }
 }
 
 .button_dark {
-  border: 1px solid rgba(42, 54, 71, 1);
+  border: 2px solid rgba(42, 54, 71, 1);
   padding: 15px 24px;
   border-radius: 8px;
   font-size: 21px;
   font-weight: 400;
   background-color: rgba(42, 54, 71, 1);
   color: rgba(255, 255, 255, 1);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  transform-origin: center;
+
+    &:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.06);
+  }
 }
