@@ -4,12 +4,15 @@
   <p>Better with a team</p>
 </header>
 
+<ng-container *ngIf="contact$() | async as contact">
+
 <article class="sc_information sc_information--active">
   <div class="sc_top">
-    <span class="sc_logo">AM</span>
+    <span class="sc_logo" [style.background]="contact.color">
+        {{ getInitials(contact.name) }}</span>
 
     <div class="sc_menu">
-      <h2>Anton Mayer</h2>
+      <h2>{{ contact.name }}</h2>
       <div>
         <button type="button" (click)="dialog.open()">
           <!-- <img src="./IMG/edit.png" alt="Pencil" />
@@ -30,12 +33,12 @@
 
     <p>
       <strong>Email</strong>
-      <a href="mailto:anton@gmail.com">antonAtgmail.com</a>
+      <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
     </p>
 
     <p>
       <strong>Telefon</strong>
-      <a href="tel:+491782468268">+49 178 2468268</a>
+      <a [href]="'tel:' + contact.phone">{{ contact.phone }}</a>
     </p>
   </div>
 </article>

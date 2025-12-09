@@ -11,7 +11,7 @@
     <!-- Contacts-SROLL-AREA -->
     <div class="contacts-scroll-area">
 
-      <div *ngFor="let group of groupedContacts" class="contacts-group">
+      <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
 
         <div class="group-letter">{{ group.letter }}</div>
 
