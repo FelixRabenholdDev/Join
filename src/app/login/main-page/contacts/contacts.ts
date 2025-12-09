@@ -11,20 +11,20 @@ import { map } from 'rxjs/operators';
   imports: [CommonModule, SingleContact],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
-
   private readonly firebase = inject(FirebaseServices);
 
   selectedContactId = signal<string | null>(null);
- 
-  readonly groupedContacts$ = this.firebase.subContactsList().pipe(
-    map((contacts: Contact[]) => this.sortAndGroup(contacts))
-  );
 
-  onSelectContact(id: string): void {
-    this.selectedContactId.set(id);}
+  readonly groupedContacts$ = this.firebase
+    .subContactsList()
+    .pipe(map((contacts: Contact[]) => this.sortAndGroup(contacts)));
+
+  onSelectContact(id: string) {
+    this.selectedContactId.set(id);
+  }
 
   private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
     const groups: Record<string, Contact[]> = {};
@@ -37,9 +37,9 @@ export class Contacts {
 
     return Object.keys(groups)
       .sort()
-      .map(letter => ({
+      .map((letter) => ({
         letter,
-        contacts: groups[letter]
+        contacts: groups[letter],
       }));
   }
 

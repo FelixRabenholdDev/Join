@@ -1,7 +1,5 @@
 <section class="main-area">
-
   <article class="contacts-wrapper">
-
     <!-- Add contact button -->
     <button class="add-contact-btn" (click)="onAddContact()">
       Add new contact
@@ -10,13 +8,15 @@
 
     <!-- Contacts-SROLL-AREA -->
     <div class="contacts-scroll-area">
-
       <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
-
         <div class="group-letter">{{ group.letter }}</div>
 
-        <div *ngFor="let c of group.contacts" class="contact-box">
-
+        <div
+          *ngFor="let c of group.contacts"
+          class="contact-box"
+          (click)="onSelectContact(c.id)"
+          [class.active]="selectedContactId() === c.id"
+        >
           <div class="contact-avatar" [style.backgroundColor]="c.color">
             {{ getInitials(c.name) }}
           </div>
@@ -25,20 +25,15 @@
             <div class="contact-name text_3">{{ c.name }}</div>
             <div class="contact-email">{{ c.email }}</div>
           </div>
-
         </div>
 
-        <img class="contact-divider" src="/IMG/Frame-120.svg" alt="divider">
-
+        <img class="contact-divider" src="/IMG/Frame-120.svg" alt="divider" />
       </div>
-
     </div>
-
   </article>
 
   <!-- SINGLE-Contact -->
   <article class="single-contact">
     <app-single-contact *ngIf="selectedContactId() as id" [contactId]="id"></app-single-contact>
   </article>
-
 </section>
