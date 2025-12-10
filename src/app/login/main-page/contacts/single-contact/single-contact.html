@@ -55,7 +55,7 @@
 
       <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
       <div class="mid_side">
-        <span class="sc_logo">{{ getInitials(editModel.name || '') }}</span>
+        <span class="sc_logo" [style.background]="editModel.color">{{ getInitials(editModel.name || '') }}</span>
       </div>
       <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
       <div class="right_side">
