@@ -66,25 +66,25 @@
         <article>
           <form class="contact_form">
             <label class="field">
-              <input type="text" placeholder="Jane Doe" name="name" />
+              <input type="text" placeholder="Jane Doe" name="name" [(ngModel)]="formModel().name"/>
               <img src="IMG/person.svg" alt="" />
             </label>
 
             <label class="field">
-              <input type="email" placeholder="example@provider.com" name="email" />
+              <input type="email" placeholder="example@provider.com" name="email" [(ngModel)]="formModel().email"/>
               <img src="IMG/mail.svg" alt="" />
             </label>
 
             <label class="field">
-              <input type="tel" placeholder="+0 0000 000 00 0" name="phone" />
+              <input type="tel" placeholder="+0 0000 000 00 0" name="phone" [(ngModel)]="formModel().phone"/>
               <img src="IMG/call.svg" alt="" />
             </label>
           </form>
         </article>
 
         <div class="dialog_buttons">
-          <!-- <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
-          <button class="button_dark" type="button" (click)="saveEdit()">Save</button> -->
+          <button class="button_light" type="button">Delete</button>
+          <button class="button_dark" type="button" (click)="saveNewContact()">Save</button>
         </div>
       </div>
     </article>

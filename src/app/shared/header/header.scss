@@ -44,4 +44,36 @@ main {
             pointer-events: none;
         }
     }
+   .menu-icon {
+  cursor: pointer;
+}
+
+.menu {
+position: absolute;
+    top: 102%;
+    right: 4%;
+    background: $bgGrey;
+    padding: 12px;
+    border-radius: 8px;
+    border-radius: 15px 0 15px 15px;
+
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 8px 0;
+}
+
+.menu a {
+  color: #A8A8A8;
+  text-decoration: none;
+  &:hover{
+    background-color: $navActive
+  }
+}
 }
