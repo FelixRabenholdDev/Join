@@ -14,12 +14,12 @@
       <div class="sc_menu">
         <h2>{{ contact.name }}</h2>
         <div>
-          <button type="button" (click)="dialog.open()">
+          <button type="button" (click)="openEdit(contact)">
             <!-- <img src="./IMG/edit.png" alt="Pencil" />
             <span>Edit</span> -->
           </button>
 
-          <button>
+          <button type="button" (click)="deleteContact()">
             <br />
             <!-- <img src="./IMG/delete.png" alt="Trash" />
             <span>Delete</span> -->
@@ -55,7 +55,7 @@
 
       <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
       <div class="mid_side">
-        <span class="sc_logo">AM</span>
+        <span class="sc_logo">{{ getInitials(editModel.name || '') }}</span>
       </div>
       <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
       <div class="right_side">
@@ -64,25 +64,40 @@
         <article>
           <form class="contact_form">
             <label class="field">
-              <input type="text" placeholder="Anton Mayer" />
+              <input 
+                type="text"
+                placeholder="Jane Doe"
+                [(ngModel)]="editModel.name"
+                name="name"
+              />
               <img src="IMG/person.svg" alt="" />
             </label>
 
             <label class="field">
-              <input type="email" placeholder="antonm@gmail.com" />
+              <input
+                type="email"
+                placeholder="example@provider.com"
+                [(ngModel)]="editModel.email"
+                name="email"
+              />
               <img src="IMG/mail.svg" alt="" />
             </label>
 
             <label class="field">
-              <input type="tel" placeholder="+49 1111 11 111 1" />
+              <input
+                type="tel"
+                placeholder="+0 0000 000 00 0"
+                [(ngModel)]="editModel.phone"
+                name="phone"
+              />
               <img src="IMG/call.svg" alt="" />
             </label>
           </form>
         </article>
 
         <div class="dialog_buttons">
-          <button class="button_light" type="button">Delete</button>
-          <button class="button_dark" type="button">Save</button>
+          <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
+          <button class="button_dark" type="button" (click)="saveEdit()">Save</button>
         </div>
       </div>
     </article>

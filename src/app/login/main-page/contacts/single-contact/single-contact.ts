@@ -1,14 +1,56 @@
+// import { CommonModule } from '@angular/common';
+// import { Component, ChangeDetectionStrategy, computed, inject, input } from '@angular/core';
+// import { FirebaseServices } from '../../../../firebase-services/firebase-services';
+// import { Contact } from '../../../../interfaces/contact.interface';
+// import { Dialog } from '../../../../shared/dialog/dialog';
+// import { Observable } from 'rxjs';
+
+// @Component({
+//   selector: 'app-single-contact',
+//   standalone: true,
+//   imports: [CommonModule, Dialog],
+//   templateUrl: './single-contact.html',
+//   styleUrl: './single-contact.scss',
+//   changeDetection: ChangeDetectionStrategy.OnPush
+// })
+// export class SingleContact {
+
+//   contactId = input.required<string>();
+
+//   private readonly firebase = inject(FirebaseServices);
+
+//   readonly contact$ = computed<Observable<Contact | undefined>>(() =>
+//     this.firebase.subSingleContact(this.contactId())
+//   );
+
+//   getInitials(name: string): string {
+//     const parts = name.trim().split(' ');
+//     const first = parts[0]?.charAt(0).toUpperCase() ?? '';
+//     const last = parts.length > 1 ? parts[parts.length - 1].charAt(0).toUpperCase() : '';
+//     return first + last;
+//   }
+// }
+
+
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  computed,
+  inject,
+  input,
+  ViewChild
+} from '@angular/core';
 import { FirebaseServices } from '../../../../firebase-services/firebase-services';
 import { Contact } from '../../../../interfaces/contact.interface';
 import { Dialog } from '../../../../shared/dialog/dialog';
 import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-single-contact',
   standalone: true,
-  imports: [CommonModule, Dialog],
+  imports: [CommonModule, Dialog, FormsModule],
   templateUrl: './single-contact.html',
   styleUrl: './single-contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,6 +61,10 @@ export class SingleContact {
 
   private readonly firebase = inject(FirebaseServices);
 
+  @ViewChild('dialog') dialog!: Dialog;
+
+  editModel: Partial<Contact> = {};
+
   readonly contact$ = computed<Observable<Contact | undefined>>(() =>
     this.firebase.subSingleContact(this.contactId())
   );
@@ -28,5 +74,22 @@ export class SingleContact {
     const first = parts[0]?.charAt(0).toUpperCase() ?? '';
     const last = parts.length > 1 ? parts[parts.length - 1].charAt(0).toUpperCase() : '';
     return first + last;
+  }
+
+  openEdit(contact: Contact): void {
+    this.editModel = { ...contact };
+    this.dialog.open();
+  }
+
+  async saveEdit(): Promise<void> {
+    if (!this.editModel.id) return;
+    await this.firebase.editContact(this.editModel as Contact);
+    this.dialog.close();
+  }
+
+  async deleteContact(): Promise<void> {
+    const id = this.contactId();
+    await this.firebase.deleteContact(id);
+    this.dialog.close();
   }
 }
