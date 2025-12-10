@@ -39,12 +39,12 @@
   </article>
 </section>
 
+<!-- Diolag add-contact -->
 <app-dialog #addDialog>
-  <!-- Content -->
   <div>
 
     <article class="sc_dialog">
-      <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
+      <!-- ------------------------- Dialog: Left Side -------------------------- -->
       <div class="left_side">
         <img src="IMG/Capa 1.png" alt="JOIN-Logo" />
         <span>Add contact</span>
@@ -53,11 +53,13 @@
         <div class="seperator"></div>
       </div>
 
-      <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
+      <!-- ---------------------------- Dialog: the middle ----------------------------- -->
       <div class="mid_side">
-        <span class="sc_logo">{{ getInitials(editModel.name || '') }}</span>
+        <div class="logo_container">
+          <img class="sc_logo" src="IMG/person.svg" alt="person-icon">
+        </div>
       </div>
-      <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
+      <!-- ------------------------- Dialog: Right Side ------------------------- -->
       <div class="right_side">
         <button class="close" type="button" (click)="addDialog.close()">X</button>
 
