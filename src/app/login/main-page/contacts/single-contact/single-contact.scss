@@ -130,7 +130,6 @@
 
 :host ::ng-deep app-dialog {
   .dialog {
-    width: auto;
     background: transparent;
     border-radius: 30px;
     overflow: hidden; // clippt die Rundung
@@ -151,7 +150,7 @@
       background-color: #2a3647;
       padding: 60px 40px 60px 40px;
 
-      >.seperator{
+      > .seperator {
         height: 0px;
         width: 90px;
         margin-top: 20px;
@@ -200,14 +199,21 @@
         border-radius: 10px;
         padding: 13px 21px;
         width: 420px;
-        &:Hover{
-          border: 1px solid rgba(41, 171, 226, 1)
+        &:hover {
+          border: 1px solid rgba(41, 171, 226, 1);
+        }
+        &:has(input:invalid) {
+          border-color: red;
         }
         input {
           border: none;
           font-size: 20px;
           font-weight: 400;
           align-self: self-start;
+          &:focus {
+            border: none;
+            outline: none;
+          }
         }
         img {
           height: 24px;
