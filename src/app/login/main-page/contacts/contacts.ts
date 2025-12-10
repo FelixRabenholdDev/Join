@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
+  
   private readonly firebase = inject(FirebaseServices);
 
   selectedContactId = signal<string | null>(null);

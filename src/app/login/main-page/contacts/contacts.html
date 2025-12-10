@@ -1,22 +1,18 @@
 <section class="main-area">
   <article class="contacts-wrapper">
     <!-- Add contact button -->
-    <button class="add-contact-btn" (click)="onAddContact()">
+    <button class="add-contact-btn text_4" (click)="onAddContact()">
       Add new contact
-      <span class="add-contact-icon">👤+</span>
+      <img class="add-contact-icon" src="/IMG/person_add.svg" alt="Add person icon" />
     </button>
 
     <!-- Contacts-SROLL-AREA -->
     <div class="contacts-scroll-area">
       <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
-        <div class="group-letter">{{ group.letter }}</div>
+        <div class="group-letter text_6">{{ group.letter }}</div>
 
-        <div
-          *ngFor="let c of group.contacts"
-          class="contact-box"
-          (click)="onSelectContact(c.id)"
-          [class.active]="selectedContactId() === c.id"
-        >
+        <div *ngFor="let c of group.contacts" class="contact-box" (click)="onSelectContact(c.id)"
+          [class.active]="selectedContactId() === c.id">
           <div class="contact-avatar" [style.backgroundColor]="c.color">
             {{ getInitials(c.name) }}
           </div>
