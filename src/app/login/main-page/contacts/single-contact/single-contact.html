@@ -1,8 +1,8 @@
-<header class="sc_header">
+<!-- <header class="sc_header">
   <h2>Contacts</h2>
   <div class="seperator"></div>
   <p>Better with a team</p>
-</header>
+</header> -->
 
 <ng-container *ngIf="contact$() | async as contact">
   <article class="sc_information sc_information--active">
@@ -14,7 +14,7 @@
       <div class="sc_menu">
         <h2>{{ contact.name }}</h2>
         <div>
-          <button type="button" (click)="openEdit(contact)">
+          <button type="button" (click)="openEdit(contact)" >
             <!-- <img src="./IMG/edit.png" alt="Pencil" />
             <span>Edit</span> -->
           </button>

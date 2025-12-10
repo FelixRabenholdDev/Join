@@ -11,12 +11,8 @@
       <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
         <div class="group-letter text_6">{{ group.letter }}</div>
 
-        <div
-          *ngFor="let c of group.contacts"
-          class="contact-box"
-          (click)="onSelectContact(c.id)"
-          [class.active]="selectedContactId() === c.id"
-        >
+        <div *ngFor="let c of group.contacts" class="contact-box" (click)="onSelectContact(c.id)"
+          [class.active]="selectedContactId() === c.id">
           <div class="contact-avatar" [style.backgroundColor]="c.color">
             {{ getInitials(c.name) }}
           </div>
@@ -34,6 +30,11 @@
 
   <!-- SINGLE-Contact -->
   <article class="single-contact">
+    <header class="sc_header">
+      <h2>Contacts</h2>
+      <div class="seperator"></div>
+      <p>Better with a team</p>
+    </header>
     <app-single-contact *ngIf="selectedContactId() as id" [contactId]="id"></app-single-contact>
   </article>
 </section>
@@ -41,6 +42,51 @@
 <app-dialog #addDialog>
   <!-- Content -->
   <div>
-    <button class="close" type="button" (click)="addDialog.close()">X</button>
+
+    <article class="sc_dialog">
+      <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
+      <div class="left_side">
+        <img src="IMG/Capa 1.png" alt="" />
+        <span>Add contact</span>
+        <div class="seperator"></div>
+      </div>
+
+      <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
+      <div class="mid_side">
+        <span class="sc_logo">{{ getInitials(editModel.name || '') }}</span>
+      </div>
+      <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
+      <div class="right_side">
+        <button class="close" type="button" (click)="addDialog.close()">X</button>
+
+        <article>
+          <form class="contact_form">
+            <label class="field">
+              <input type="text" placeholder="Jane Doe" name="name" />
+              <img src="IMG/person.svg" alt="" />
+            </label>
+
+            <label class="field">
+              <input type="email" placeholder="example@provider.com" name="email" />
+              <img src="IMG/mail.svg" alt="" />
+            </label>
+
+            <label class="field">
+              <input type="tel" placeholder="+0 0000 000 00 0" name="phone" />
+              <img src="IMG/call.svg" alt="" />
+            </label>
+          </form>
+        </article>
+
+        <div class="dialog_buttons">
+          <!-- <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
+          <button class="button_dark" type="button" (click)="saveEdit()">Save</button> -->
+        </div>
+      </div>
+    </article>
+
+
+    <button class="close" type="button" (click)="addDialog.close()">CLOSE</button>
+    <p>BLA BLA</p>
   </div>
 </app-dialog>

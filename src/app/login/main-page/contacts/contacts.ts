@@ -10,16 +10,18 @@ import { ViewChild } from '@angular/core';
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, SingleContact,Dialog],
+  imports: [CommonModule, SingleContact, Dialog],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
-  
+
   private readonly firebase = inject(FirebaseServices);
 
   @ViewChild('addDialog') addDialog!: Dialog;
+
+  editModel: Partial<Contact> = {};
 
   selectedContactId = signal<string | null>(null);
 
@@ -60,6 +62,6 @@ export class Contacts {
    */
   onAddContact(): void {
     console.log('Sprint 1 Dummy: Add new contact');
-     this.addDialog.open();
+    this.addDialog.open();
   }
 }
