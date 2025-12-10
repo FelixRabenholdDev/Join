@@ -61,7 +61,7 @@ export class SingleContact {
 
   private readonly firebase = inject(FirebaseServices);
 
-  @ViewChild('dialog') dialog!: Dialog;
+  @ViewChild('editDialog') editDialog!: Dialog;
 
   editModel: Partial<Contact> = {};
 
@@ -78,18 +78,18 @@ export class SingleContact {
 
   openEdit(contact: Contact): void {
     this.editModel = { ...contact };
-    this.dialog.open();
+    this.editDialog.open();
   }
 
   async saveEdit(): Promise<void> {
     if (!this.editModel.id) return;
     await this.firebase.editContact(this.editModel as Contact);
-    this.dialog.close();
+    this.editDialog.close();
   }
 
   async deleteContact(): Promise<void> {
     const id = this.contactId();
     await this.firebase.deleteContact(id);
-    this.dialog.close();
+    this.editDialog.close();
   }
 }
