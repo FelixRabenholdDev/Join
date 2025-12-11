@@ -21,7 +21,9 @@
     font-weight: 400;
   }
 }
-
+// .single-contact{
+//   background-color: aquamarine;
+// }
 .seperator {
   height: 59px;
   border: 3px solid $buttonBlue;
@@ -31,6 +33,7 @@
 .main-area {
   display: flex;
   flex-direction: row;
+  background-color: rgb(246, 247, 248);
 }
 
 
