@@ -15,7 +15,7 @@
 
 .contacts-wrapper {
   width: 100%;
-  max-width: 400px;
+  max-width: 456px;
   /* Vorgabe von dir */
   height: 100%;
   padding: 24px;
@@ -24,7 +24,7 @@
 }
 
 .add-contact-btn {
-  width: 100%;
+  width: 350px;
   height: 50px;
   background-color: $buttonGrey;
   color: $white;
@@ -90,7 +90,7 @@
   align-items: center;
 
   font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   color: $white;
 }
@@ -103,7 +103,9 @@
 
 .contact-email {
   color: $buttonBlue;
-  font-size: 14px;
+  font-weight: 400;
+  ;
+  font-size: 16px;
 }
 
 /* SVG-Divider */
