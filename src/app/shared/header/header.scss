@@ -6,49 +6,35 @@ main {
     width: 100%;
     height: 96px;
     position: absolute;
-    padding-left: 16em;
+    padding: 0 2em 0 16em;
     align-items: center;
     box-shadow: 12vw -14px 24px black;
-    padding-right: 2em;
 
-    >.user {
-
-
-        >a .help-icon {
+    .user {
+        a .help-icon {
             height: 32px;
-            transition: height 2 s;
+            transition: height 2s;
 
             &:hover {
                 cursor: pointer;
                 height: 35px;
-
-
-
             }
 
             @media(max-width:1050px) {
-                display: none
+                display: none;
             }
-
-
         }
 
-        svg rect {
-            &:hover {
-
+        svg {
+            rect:hover {
                 cursor: pointer;
                 fill: #d7d3d3;
             }
-        }
 
-
-        svg path {
-            pointer-events: none;
-        }
-
-
-        svg circle {
-            pointer-events: none;
+            path,
+            circle {
+                pointer-events: none;
+            }
         }
     }
 
@@ -56,67 +42,67 @@ main {
         cursor: pointer;
     }
 
-    .menu {
+    .menu,
+    .menu-mobil {
         position: absolute;
         top: 102%;
-        right: 1%;
         background: $bgGrey;
         padding: 12px;
-        border-radius: 8px;
         border-radius: 15px 0 15px 15px;
-
     }
 
-    .menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+    .menu {
+        right: 1%;
 
-    .menu li {
-        margin: 8px 0;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
 
-    }
+            li {
+                margin: 8px 0;
+            }
 
-    .menu a {
-        color: #A8A8A8;
-        text-decoration: none;
+            a {
+                color: #A8A8A8;
+                text-decoration: none;
 
-        &:hover {
-            background-color: $navActive
+                &:hover {
+                    background-color: $navActive;
+                }
+            }
         }
     }
-
-
-
-
-
 }
 
+/* MOBILE */
 @media(max-width: 1050px) {
     main {
         box-shadow: 0vw -14px 24px black;
+        padding: 0;
 
         >div .user .menu-icon {
             display: none;
         }
 
-        padding: 0;
-
         >.text_6 {
             display: none;
         }
 
-        >.user {
+        .user {
             display: flex;
             width: 92%;
             align-items: center;
+            padding: 0 10% 0 13%;
 
-            >.help-icon {
+            >svg {
+                flex-shrink: 0;
+            }
+
+            .help-icon {
                 display: none;
             }
         }
-
     }
 
     .mobil {
@@ -124,86 +110,52 @@ main {
         justify-content: space-between;
         width: 100vw;
         padding: 3vw;
-
-    }
-
-
-    .menu-mobil {
-
-
-        position: absolute;
-        animation: linear;
-        animation-name: run;
-        animation-duration: 0.2s;
     }
 
     @keyframes run {
-        0% {
-            right: 0;
-        }
-
-        50% {
-            right: 50;
-        }
-
-        100% {
-            right: 100;
-        }
+        0% { right: 0; }
+        50% { right: 50; }
+        100% { right: 100; }
     }
 
     .menu {
         display: none;
     }
 
-
-
     .menu-mobil {
-        position: absolute;
-        top: 102%;
         right: 3%;
-        background: $bgGrey;
-        padding: 12px;
-        border-radius: 8px;
-        border-radius: 15px 0 15px 15px;
+        animation: run 0.2s linear;
 
-    }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
 
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+            li {
+                margin: 8px 0;
+            }
 
-    .menu-mobil li {
-        margin: 8px 0;
-        text-decoration: none;
-        ;
+            a {
+                color: #A8A8A8;
+                text-decoration: none;
 
-    }
-
-    .menu-mobil a {
-        color: #A8A8A8;
-        text-decoration: none;
-
-        &:hover {
-            background-color: $navActive
+                &:hover {
+                    background-color: $navActive;
+                }
+            }
         }
     }
-
 }
 
+/* ULTRA-WIDE */
 @media(min-width:1921px) {
     section {
         position: relative;
-        margin-left: 27%;
-        margin-right: 25%;
-        
-    
+        margin: 0 25% 0 27%;
 
-    >main {
-        box-shadow: -1vw -14px 24px black;
-        position: relative;
+        >main {
+            box-shadow: -1vw -14px 24px black;
+            position: relative;
+        }
     }
-}
-
 }
