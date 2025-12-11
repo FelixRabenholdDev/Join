@@ -112,9 +112,9 @@
   &:hover {
     background-color: $bgLightGrey;
     cursor: pointer;
-
+    background: linear-gradient($bgLightGrey, $bgMiddleGrey);
     .text_6 {
-    background-color: $bgLightGrey;
+    background-color: transparent;
     }
   }
 }
