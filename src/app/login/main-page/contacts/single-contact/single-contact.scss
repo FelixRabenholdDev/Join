@@ -1,6 +1,5 @@
 @import './../../../../../styles.scss';
 
-
 .sc_information--active {
   opacity: 1;
   transform: translateX(0);
@@ -19,6 +18,7 @@
 
 .sc_top {
   display: flex;
+  align-items: center;
   gap: 54px;
 
   .sc_menu {
@@ -51,6 +51,16 @@
         font-weight: 400;
         line-height: 120%;
       }
+      @media (max-width: 1050px) {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 1050px) {
+    gap: 20px;
+    h2 {
+      font-size: 36px;
     }
   }
 }
@@ -68,6 +78,14 @@
   font-size: 47px;
   font-weight: 500;
   color: #ffffff;
+
+  @media (max-width: 1050px) {
+    height: 80px;
+    width: 80px;
+
+    font-size: 27px;
+    font-weight: 400;
+  }
 }
 
 .sc_bot {
@@ -92,7 +110,52 @@
       font-weight: 400;
     }
   }
+  @media (max-width: 1050px) {
+    gap: 21px;
+  }
 }
+
+.menu_circle {
+  display: none;
+
+  @media (max-width: 1050px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+    width: 116px;
+
+    position: fixed;
+    right: 24px;
+    bottom: -110px;
+
+    background: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 20px 0 20px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      height: 40px;
+      padding: 8px;
+      border: none;
+      background: transparent;
+      color: #2a3647;
+      font: 400 16px/1.2 'Inter', sans-serif;
+    }
+
+    button svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+
 
 /* ------------------------------- Dialog:Edit ------------------------------ */
 
@@ -155,54 +218,53 @@
       }
     }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
 
-  label {
-    border: 1px solid rgba(209, 209, 209, 1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    padding: 13px 21px;
-    width: 420px;
-    transition: border-color 150ms ease;
+      label {
+        border: 1px solid rgba(209, 209, 209, 1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+        padding: 13px 21px;
+        width: 420px;
+        transition: border-color 150ms ease;
 
-    &:hover {
-      border-color: rgba(41, 171, 226, 1);
-    }
+        &:hover {
+          border-color: rgba(41, 171, 226, 1);
+        }
 
-    &:has(input.ng-invalid) {
-      border-color: red;
-    }
+        &:has(input.ng-invalid) {
+          border-color: red;
+        }
 
-    input {
-      border: none;
-      font-size: 20px;
-      font-weight: 400;
-      flex: 1;
+        input {
+          border: none;
+          font-size: 20px;
+          font-weight: 400;
+          flex: 1;
 
-      &:focus {
-        outline: none;
+          &:focus {
+            outline: none;
+          }
+        }
+
+        img {
+          height: 24px;
+          width: 24px;
+        }
+      }
+
+      .error-msg {
+        color: red;
+        font-size: 14px;
+        margin-top: -20px;
+        margin-left: 4px;
       }
     }
-
-    img {
-      height: 24px;
-      width: 24px;
-    }
-  }
-
-  .error-msg {
-    color: red;
-    font-size: 14px;
-    margin-top: -20px;  
-    margin-left: 4px;
-  }
-}
-
 
     .dialog_buttons {
       display: flex;
