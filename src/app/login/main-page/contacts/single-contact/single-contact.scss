@@ -121,18 +121,19 @@
 /* -------------------------- Media for max 1050px -------------------------- */
 .circle_menu {
   display: none;
-
+  background-image: url('/IMG/Menu-Contact-options.svg');
+  background-position: center;
+  background-size: cover;
   @media (max-width: 1050px) {
-    display: grid;
+    display: flex;
     place-items: center;
-    position: fixed;
-    right: 24px;
-    bottom: -200px; // Button runter
+    position: relative;
+    
+    bottom: -400px; // Button runter
     width: 56px;
     height: 56px;
     border: none;
     border-radius: 50%;
-    background: #2a3647;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     padding: 0;
     cursor: pointer;
