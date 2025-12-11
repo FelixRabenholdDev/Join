@@ -47,11 +47,15 @@
   width: 100%;
   max-width: 456px;
   height: 100%;
-  padding: 24px 0 24px;
+  padding: 24px 0 24px 24px;
   background-color: $white;
   box-sizing: border-box;
-  box-shadow: 5px 5px 5px $bgMiddleGrey;
+  box-shadow: 5px -1px 5px $bgMiddleGrey;
   z-index: 2;
+
+  @media (max-width: 1050px) {
+      z-index: auto;  
+  }
 }
 
 // Button ADD-Contact fo Desktop
@@ -117,8 +121,9 @@
     background-color: $bgLightGrey;
     cursor: pointer;
     background: linear-gradient($bgLightGrey, $bgMiddleGrey);
+
     .text_6 {
-    background-color: transparent;
+      background-color: transparent;
     }
   }
 }
@@ -405,6 +410,7 @@ form.contact_form {
 /* ============================================ */
 /* RESPONSIVE up to 900px – CONTACT-List Mobile */
 /* ============================================ */
+
 @media (max-width: 900px) {
 
   :host ::ng-deep app-dialog.add-contact-dialog {
