@@ -44,6 +44,7 @@ main {
             &:hover {
 
                 background-color: $navActive;
+                
             }
 
             >img {
@@ -105,10 +106,22 @@ main {
 
             >a {
         margin: 0;
-        padding: 0;
+                padding: 18px 0 18px 0;
         display: flex;
         flex-direction: column;
         font-size: 17px;
+        @media(max-width:350px){
+            font-size: 15px;
+        }
+       
+        &.active-link{
+          border-style: solid;
+        border-color: transparent;
+        border-radius: 15px 15px 0 0;
+        border-width: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        }
 
                 >img {
                     display: block;
