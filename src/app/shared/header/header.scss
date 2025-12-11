@@ -26,7 +26,7 @@ main {
 
             }
 
-            @media(max-width:900px) {
+            @media(max-width:1050px) {
                 display: none
             }
 
@@ -93,7 +93,7 @@ main {
 
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1050px) {
     main {
         box-shadow: 0vw -14px 24px black;
 
@@ -197,10 +197,12 @@ main {
         position: relative;
         margin-left: 27%;
         margin-right: 25%;
+        
     
 
     >main {
         box-shadow: -1vw -14px 24px black;
+        position: relative;
     }
 }
 

@@ -84,7 +84,7 @@ main {
 
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1050px) {
    
     main {
         display: flex;
@@ -127,11 +127,13 @@ main {
 @media(min-width:1921px){
     section{
         width: 100vw;
-        height: 100vh;
+        
         position: absolute;
         >main{
             position: absolute;
             margin-left: 25%;
+            margin-top: -3%;
+            height: 100.6vh;
             
         }
     }

@@ -48,6 +48,6 @@ export class Header implements OnInit {
   }
 
   checkScreenWidth() {
-    this.isMobile = window.innerWidth <= 900;
+    this.isMobile = window.innerWidth <= 1050;
   }
 }
