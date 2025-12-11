@@ -7,7 +7,6 @@
     font-family: 'Inter';
     src: url('/fonts/Inter_18pt-Regular.ttf') format('truetype');
     font-weight: 400;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -15,7 +14,6 @@
     font-family: 'Inter';
     src: url('/fonts/Inter_18pt-Medium.ttf') format('truetype');
     font-weight: 500;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -23,7 +21,6 @@
     font-family: 'Inter';
     src: url('/fonts/Inter_18pt-Bold.ttf') format('truetype');
     font-weight: 700;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -39,7 +36,6 @@
 body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-style: regular;
     font-size: 16px;
     line-height: 1.2;
     color: $black;
@@ -49,7 +45,6 @@ body {
 h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-style: bold;
     font-size: 61px;
     line-height: 1.2;
     color: $black;
@@ -59,7 +54,6 @@ h1 {
 h2 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-style: medium;
     font-size: 47px;
     line-height: 1.2;
     color: $black;
