@@ -5,7 +5,9 @@
 //  #######################
 
 
+/* -------------------------------------------------------------------------- */
 /* -------------------------- Singe-Contact:Header -------------------------- */
+/* -------------------------------------------------------------------------- */
 .sc_header {
   display: flex;
   flex-direction: row;
@@ -17,6 +19,7 @@
     font-size: 27px;
   }
 }
+
 .seperator {
   height: 59px;
   border: 3px solid #29abe2;
@@ -36,7 +39,6 @@
 .contacts-wrapper {
   width: 100%;
   max-width: 456px;
-  /* Vorgabe von dir */
   height: 100%;
   padding: 24px;
   background-color: $white;
@@ -69,7 +71,7 @@
   max-height: calc(100vh - 122px);
 }
 
-/* Alphabet-Gruppen */
+/* Alphabet-Groups */
 .contacts-group {
   margin-bottom: 12px;
 }
@@ -135,7 +137,7 @@
   display: block;
 }
 
-/* ALTEN DIVIDER RESTLOS ENTFERNEN */
+/* OLD DIVIDER remove */
 .divider {
   display: none;
 }
@@ -148,14 +150,14 @@
 
 :host ::ng-deep app-dialog.add-contact-dialog {
 
-  /* Dialog-Hülle */
+  /* Dialog-BOX */
   .dialog {
     background: transparent;
     border-radius: 30px;
     overflow: hidden;
   }
 
-  /* Dialog-Inhalt */
+  /* Dialog-Content */
   .sc_dialog {
     max-width: 1212px;
     height: 590px;
@@ -209,8 +211,8 @@
   border-radius: 0;
 
   img {
-    width: 52px;
-    height: 64px;
+    width: 56px;
+    height: 67px;
   }
 
   span {
@@ -281,7 +283,7 @@
 }
 
 
-/* Formular-Felder */
+/* Formular-Fields */
 form.contact_form {
   display: flex;
   flex-direction: column;
