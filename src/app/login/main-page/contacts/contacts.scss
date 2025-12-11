@@ -69,6 +69,7 @@
 .contacts-scroll-area {
   overflow-y: auto;
   margin-top: 24px;
+  padding-bottom: 24px;
   padding-right: 8px;
   max-height: calc(100vh - 122px);
 }
@@ -88,7 +89,7 @@
 /* ############################ */
 .contact-box {
   width: 344px;
-  height: 100px;
+  height: 80px;
   background-color: $white;
   border-radius: 16px;
   padding: 16px 8px;
@@ -97,6 +98,7 @@
   gap: 16px;
   box-sizing: border-box;
   transition: background-color 120ms ease-in-out;
+  // margin: 15px 24px 15px 24px;
 
   &:hover {
     background-color: $bgLightGrey;
