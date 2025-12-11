@@ -3,6 +3,29 @@
 //  #######################
 //  MAIN-Container-Contacts
 //  #######################
+
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------- Singe-Contact:Header -------------------------- */
+/* -------------------------------------------------------------------------- */
+.sc_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  width: fit-content;
+
+  p {
+    font-size: 27px;
+  }
+}
+
+.seperator {
+  height: 59px;
+  border: 3px solid #29abe2;
+  border-radius: 3px;
+}
+
 .main-area {
   display: flex;
   flex-direction: row;
@@ -15,8 +38,7 @@
 
 .contacts-wrapper {
   width: 100%;
-  max-width: 400px;
-  /* Vorgabe von dir */
+  max-width: 456px;
   height: 100%;
   padding: 24px;
   background-color: $white;
@@ -24,18 +46,22 @@
 }
 
 .add-contact-btn {
-  width: 100%;
+  width: 350px;
   height: 50px;
   background-color: $buttonGrey;
   color: $white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  &:hover {
+    background-color: $buttonBlue;
+    transition: background-color 150ms ease-in-out;
+  }
 }
 
 .contacts-scroll-area {
@@ -45,7 +71,7 @@
   max-height: calc(100vh - 122px);
 }
 
-/* Alphabet-Gruppen */
+/* Alphabet-Groups */
 .contacts-group {
   margin-bottom: 12px;
 }
@@ -55,20 +81,25 @@
 }
 
 
-/* ################################# */
-/* SINGLE-CONTACT as Box (344 × 100) */
-/* ################################# */
+/* ############################ */
+/* CONTACT-LIST Box (344 × 100) */
+/* ############################ */
 .contact-box {
   width: 344px;
   height: 100px;
   background-color: $white;
   border-radius: 16px;
   padding: 16px 8px;
-
   display: flex;
   align-items: center;
   gap: 16px;
   box-sizing: border-box;
+  transition: background-color 120ms ease-in-out;
+
+  &:hover {
+    background-color: $bgLightGrey;
+    cursor: pointer;
+  }
 }
 
 /* Avatar */
@@ -81,7 +112,7 @@
   align-items: center;
 
   font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   color: $white;
 }
@@ -94,7 +125,9 @@
 
 .contact-email {
   color: $buttonBlue;
-  font-size: 14px;
+  font-weight: 400;
+  ;
+  font-size: 16px;
 }
 
 /* SVG-Divider */
@@ -104,7 +137,7 @@
   display: block;
 }
 
-/* ALTEN DIVIDER RESTLOS ENTFERNEN */
+/* OLD DIVIDER remove */
 .divider {
   display: none;
 }
@@ -117,14 +150,14 @@
 
 :host ::ng-deep app-dialog.add-contact-dialog {
 
-  /* Dialog-Hülle */
+  /* Dialog-BOX */
   .dialog {
     background: transparent;
     border-radius: 30px;
     overflow: hidden;
   }
 
-  /* Dialog-Inhalt */
+  /* Dialog-Content */
   .sc_dialog {
     max-width: 1212px;
     height: 590px;
@@ -178,8 +211,8 @@
   border-radius: 0;
 
   img {
-    width: 52px;
-    height: 64px;
+    width: 56px;
+    height: 67px;
   }
 
   span {
@@ -250,7 +283,7 @@
 }
 
 
-/* Formular-Felder */
+/* Formular-Fields */
 form.contact_form {
   display: flex;
   flex-direction: column;
@@ -311,5 +344,18 @@ form.contact_form {
       width: 24px;
       height: 24px;
     }
+  }
+
+  .button_light:hover {
+    background-color: $buttonBlue;
+    color: $white;
+    border-color: $buttonBlue;
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .button_dark:hover {
+    background-color: $buttonBlue;
+    color: $white;
+    transition: background-color 150ms ease-in-out;
   }
 }
