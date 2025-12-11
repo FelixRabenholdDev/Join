@@ -1,13 +1,14 @@
 @import '../styles.scss';
-div{    
-    margin-left: 16em;
-    padding-top: 6em;
+
+div {
+  margin-left: 16em;
+  padding-top: 6em;
   max-height: 100vh;
   overflow-y: hidden;
 
-  @media(min-width:1921px){
-    margin-left: 80em;
-    margin-right: 60em;
+  @media(min-width:1921px) {
+    margin-left: 33%;
+    margin-right: 25%
   }
 
   @media (max-width: 900px) {
