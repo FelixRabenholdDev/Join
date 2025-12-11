@@ -1,36 +1,18 @@
 @import './../../../../styles.scss';
 
+//  #######################
 //  MAIN-Container-Contacts
+//  #######################
 .main-area {
   display: flex;
   flex-direction: row;
 }
 
 
-//  SINGLE CONTACT ...
-.single_contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 21px;
-  background-color: $bgLightGrey;
-}
+// ###################
+// CONTACT-LIST
+// ###################
 
-.sc_header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 30px;
-  width: fit-content;
-  background-color: $bgLightGrey;
-}
-
-.seperator {
-  height: 59px;
-  border: 3px solid #29abe2;
-  border-radius: 3px;
-}
-
-//  CONTACT-LIST ...
 .contacts-wrapper {
   width: 100%;
   max-width: 400px;
@@ -70,7 +52,10 @@
   margin-bottom: 8px;
 }
 
-/* EINZELNER KONTAKT ALS BOX (344 × 100) */
+
+/* ################################# */
+/* SINGLE-CONTACT as Box (344 × 100) */
+/* ################################# */
 .contact-box {
   width: 344px;
   height: 100px;
@@ -120,4 +105,209 @@
 /* ALTEN DIVIDER RESTLOS ENTFERNEN */
 .divider {
   display: none;
+}
+
+
+
+/* ################## */
+/* ADD-CONTACT-DIALOG */
+/* ################## */
+
+:host ::ng-deep app-dialog.add-contact-dialog {
+
+  /* Dialog-Hülle */
+  .dialog {
+    background: transparent;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  /* Dialog-Inhalt */
+  .sc_dialog {
+    max-width: 1212px;
+    height: 590px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 0;
+    gap: 20px;
+
+    .close {
+      position: absolute;
+      top: 48px;
+      right: 48px;
+
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 50;
+
+      position: absolute;
+
+      img {
+        width: 14px;
+        height: 14px;
+
+        position: absolute;
+        top: 9px;
+        left: 9px;
+
+        pointer-events: none;
+      }
+    }
+
+  }
+
+}
+
+/* --------------------------- */
+/* Left Side 
+  /* --------------------------- */
+.left_side {
+  width: 480px;
+  background-color: $bgGrey;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0;
+
+  img {
+    width: 52px;
+    height: 64px;
+  }
+
+  span {
+    font-size: 60px;
+    font-weight: 700;
+    color: $white;
+    margin-top: 32px;
+  }
+
+  p {
+    margin-top: 16px;
+    font-size: 27px;
+    font-weight: 400;
+    color: $white;
+  }
+
+  .seperator {
+    height: 0;
+    width: 90px;
+    border-bottom: 3px solid $buttonBlue;
+    margin-top: 32px;
+  }
+}
+
+/* --------------------------- */
+/* Middle (Avatar-circle)
+  /* --------------------------- */
+.mid_side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40px;
+}
+
+.logo_container {
+  width: 120px;
+  height: 120px;
+  border-radius: 70px;
+  background-color: $bgYellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sc_logo {
+  fill: $white;
+      width: 43px;
+    height: 43px;
+}
+
+/* --------------------------- */
+/* Right Side (Formular) 
+  /* --------------------------- */
+.right_side {
+  background-color: $white;
+  padding: 60px 60px 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  flex-grow: 1;
+  position: relative;
+}
+
+.button_dark img {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* Formular-Felder */
+form.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  label.field {
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    padding: 13px 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 420px;
+
+    &:hover {
+      border-color: $buttonBlue;
+    }
+
+    input {
+      border: none;
+      width: 100%;
+      font-size: 20px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+/* Buttons */
+.dialog_buttons {
+  display: flex;
+  gap: 20px;
+
+  .button_light {
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: $white;
+    border: 1px solid $bgGrey;
+  }
+
+  .button_dark {
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: $bgGrey;
+    color: $white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }

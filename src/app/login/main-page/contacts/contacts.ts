@@ -1,27 +1,33 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, ViewChild } from '@angular/core';
 import { SingleContact } from './single-contact/single-contact';
 import { FirebaseServices } from '../../../firebase-services/firebase-services';
 import { Contact } from '../../../interfaces/contact.interface';
 import { map } from 'rxjs/operators';
 import { Dialog } from '../../../shared/dialog/dialog';
-import { ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, SingleContact, Dialog],
+  imports: [CommonModule, SingleContact, Dialog, FormsModule],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
-
   private readonly firebase = inject(FirebaseServices);
 
   @ViewChild('addDialog') addDialog!: Dialog;
 
   editModel: Partial<Contact> = {};
+
+  formModel = signal<Partial<Contact>>({
+    name: '',
+    email: '',
+    phone: '',
+    color: this.getColor()
+  });
 
   selectedContactId = signal<string | null>(null);
 
@@ -60,8 +66,33 @@ export class Contacts {
   /**
    * Dummy (Sprint 1)
    */
-  onAddContact(): void {
-    console.log('Sprint 1 Dummy: Add new contact');
+    onAddContact(): void {
+    this.formModel.set({
+      name: '',
+      email: '',
+      phone: '',
+      color: this.getColor()
+    });
     this.addDialog.open();
   }
+
+  async saveNewContact(): Promise<void> {
+    const data = this.formModel();
+
+    if (!data.name?.trim()) return;
+
+    await this.firebase.addContact({
+      name: data.name.trim(),
+      email: data.email?.trim() ?? '',
+      phone: data.phone?.trim() ?? '',
+      color: data.color ?? '#000'
+    });
+
+    this.addDialog.close();
+  }
+
+  private getColor(): string {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  }
 }
+

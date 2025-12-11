@@ -6,10 +6,10 @@ main {
     width: 100%;
     height: 96px;
     position: absolute;
-    padding-left: 20vw;
+    padding-left: 16em;
     align-items: center;
     box-shadow: 12vw -14px 24px black;
-    padding-right: 5%;
+    padding-right: 2em;
 
     >.user {
 
@@ -29,6 +29,7 @@ main {
 
         svg rect {
             &:hover {
+
                 cursor: pointer;
                 fill: #d7d3d3;
             }
@@ -44,4 +45,142 @@ main {
             pointer-events: none;
         }
     }
+
+    .menu-icon {
+        cursor: pointer;
+    }
+
+    .menu {
+        position: absolute;
+        top: 102%;
+        right: 1%;
+        background: $bgGrey;
+        padding: 12px;
+        border-radius: 8px;
+        border-radius: 15px 0 15px 15px;
+
+    }
+
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        margin: 8px 0;
+        
+    }
+
+    .menu a {
+        color: #A8A8A8;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $navActive
+        }
+    }
+
+
+
+
+  
+}
+
+@media(max-width: 900px) {
+    main {
+        box-shadow: 0vw -14px 24px black;
+
+        >div .user .menu-icon {
+            display: none;
+        }
+
+        padding: 0;
+
+        >.text_6 {
+            display: none;
+        }
+
+        >.user {
+            display: flex;
+            width: 92%;
+            align-items: center;
+
+            >.help-icon {
+                display: none;
+            }
+        }
+
+    }
+
+    .mobil {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        padding: 3vw;
+
+    }
+
+
+    .menu-mobil {
+
+
+        position: absolute;
+        animation: linear;
+        animation-name: run;
+        animation-duration: 0.2s;
+    }
+
+    @keyframes run {
+        0% {
+            right: 0;
+        }
+
+        50% {
+            right: 50;
+        }
+
+        100% {
+            right: 100;
+        }
+    }
+    .menu{
+        display: none;
+    }
+   
+
+
+      .menu-mobil {
+        position: absolute;
+        top: 102%;
+        right: 3%;
+        background: $bgGrey;
+        padding: 12px;
+        border-radius: 8px;
+        border-radius: 15px 0 15px 15px;
+
+    }
+
+     ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-mobil li {
+        margin: 8px 0;
+        text-decoration: none;
+        ;
+        
+    }
+
+    .menu-mobil a {
+        color: #A8A8A8;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $navActive
+        }
+    }
+
 }

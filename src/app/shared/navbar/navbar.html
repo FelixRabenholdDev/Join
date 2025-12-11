@@ -3,17 +3,20 @@
         <img src="IMG/Capa 1.png" alt="">
 
         <nav>
-            <a routerLink="/summary"><img src="IMG/summary Icon.png" alt="">Summary </a>
-            <a routerLink="/add-task"><img src="IMG/add-task-icon.png" alt="">Add Task</a>
-            <a routerLink="/board"><img src="IMG/board-icon.png" alt="">Board</a>
-            <a routerLink="/contacs"><img src="IMG/contact-icon.png" alt="">Contacts</a>
+            <a routerLink="/summary" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img src="IMG/summary Icon.png" alt="">Summary </a>
+            <a routerLink="/add-task"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img src="IMG/add-task-icon.png" alt="">Add Task</a>
+            <a routerLink="/board"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img src="IMG/board-icon.png" alt="">Board</a>
+            <a routerLink="/contacs"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img src="IMG/contact-icon.png" alt="">Contacts</a>
+
+
+            
             
         </nav>
     </div>
 
     <div class="Legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Legal notice</a>
+        <a routerLink="/Privacy Policy"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Privacy Policy</a>
+        <a routerLink="/Legal notice"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Legal notice</a>
     </div>
 
 </main>

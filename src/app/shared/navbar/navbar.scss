@@ -2,13 +2,13 @@
 
 main {
     display: flex;
-   position: absolute;
+    position: absolute;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    text-align: center;
     height: 100vh;
-    width: 12%;
-    background-color: $navBgNotActiveGrey ;
+    width: 234px;
+    background-color: $bgGrey ;
     padding-top: 5%;
     padding-bottom: 5%;
 
@@ -18,11 +18,11 @@ main {
         margin-bottom: 60%;
     }
 
-    >div nav  {
+    >div nav {
         display: flex;
         flex-direction: column;
-        
-     
+
+
 
 
 
@@ -30,13 +30,19 @@ main {
         >a {
             display: flex;
             align-items: center;
-            color: $white;
+            color: #FFFFFF;
             text-decoration: none;
             margin-top: 20%;
-            transition: background-color 0,3s;
+            transition: background-color 0.3s;
+            padding-left: 19%;
+
+            &.active-link {
+                background-color: $navBgActiveGrey;
+                pointer-events: none;
+            }
 
             &:hover {
-                
+
                 background-color: $navActive;
             }
 
@@ -46,6 +52,7 @@ main {
                 height: auto;
                 margin: 0 10px;
             }
+
 
             ;
         }
@@ -59,13 +66,59 @@ main {
             color: #A8A8A8;
             text-decoration: none;
             margin-bottom: 25px;
-            transition:color 0.3s ;
+            transition: color 0.3s;
             transition: font-size 0.1s;
-            &:hover{
+
+            &.active-link {
+                background-color: $navBgActiveGrey;
+                pointer-events: none;
+            }
+
+            &:hover {
                 color: $buttonBlue;
                 font-size: 17px;
             }
 
+        }
+    }
+
+}
+
+@media(max-width: 900px) {
+    main {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 0px;
+        position: fixed;
+        bottom: 0;
+
+        >div img {
+            display: none;
+        }
+
+        >div nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            >a {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        font-size: 2vw;
+
+                >img {
+                    display: block;
+                    height: 3vw;
+                    width: auto;
+                }
+            }
+        }
+
+        .Legal {
+            display: none;
         }
     }
 }
