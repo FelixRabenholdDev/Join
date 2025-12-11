@@ -169,7 +169,7 @@
               />
               <img src="IMG/person.svg" alt="" />
             </label>
-            <p class="error-msg" *ngIf="nameField.invalid">Mindestens drei Buchstaben</p>
+            <p class="error-msg" *ngIf="nameField.invalid">"First and last name must contain at least 3 letters."</p>
 
             <label class="field">
               <input
@@ -184,7 +184,7 @@
 
               <img src="IMG/mail.svg" alt="" />
             </label>
-            <p class="error-msg" *ngIf="emailField.invalid">E-mail valiedierung stimmt nicht.</p>
+            <p class="error-msg" *ngIf="emailField.invalid">Email format is incorrect.</p>
 
             <label class="field">
               <input
@@ -198,7 +198,7 @@
               />
               <img src="IMG/call.svg" alt="" />
             </label>
-            <p class="error-msg" *ngIf="phoneField.invalid">Gib eine gültige Nummer ein.</p>
+            <p class="error-msg" *ngIf="phoneField.invalid">The number format is incorrect.</p>
           </form>
         </article>
 

@@ -5,8 +5,16 @@
 //  #######################
 
 /* -------------------------------------------------------------------------- */
-/* -------------------------- Singe-Contact:Header -------------------------- */
+/* -------------------------- Single-Contact:Header -------------------------- */
 /* -------------------------------------------------------------------------- */
+
+.single_contact {
+  padding-left: 64px;
+  h1 {
+    background: transparent;
+  }
+}
+
 .sc_header {
   display: flex;
   flex-direction: row;
@@ -15,9 +23,7 @@
   width: fit-content;
   margin-top: 150px;
   @media (max-width: 1050px) {
- 
-      margin-top: 0px;
-    
+    margin-top: 0px;
   }
 
   p {
@@ -25,10 +31,6 @@
     font-weight: 400;
   }
 }
-
-// .single-contact{
-//   background-color: aquamarine;
-// }
 
 .seperator {
   height: 59px;
@@ -57,7 +59,7 @@
   z-index: 2;
 
   @media (max-width: 1050px) {
-      z-index: auto;  
+    z-index: auto;
   }
 }
 
