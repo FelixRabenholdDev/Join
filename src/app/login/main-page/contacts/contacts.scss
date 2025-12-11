@@ -47,6 +47,7 @@
   box-sizing: border-box;
 }
 
+// Button ADD-Contact fo Desktop
 .add-contact-btn {
   width: 350px;
   height: 50px;
@@ -64,6 +65,11 @@
     background-color: $buttonBlue;
     transition: background-color 150ms ease-in-out;
   }
+}
+
+// FAB-Button for Mobile
+.add-contact-fab {
+  display: none;
 }
 
 .contacts-scroll-area {
@@ -370,5 +376,83 @@ form.contact_form {
     color: $white;
     transition: background-color 150ms ease-in-out;
     cursor: pointer
+  }
+}
+
+// ##################
+// MEDIA für Mobile
+// ##################
+
+@media(min-width:1921px) {}
+
+// @media (max-width: 1439px) {
+//   /* MAIN-AREA now in column */
+//   .main-area {
+//     flex-direction: column;
+//   }
+// }
+
+/* ============================================ */
+/* RESPONSIVE up to 900px – CONTACT-List Mobile */
+/* ============================================ */
+@media (max-width: 900px) {
+
+  /* Desktop-Button don´t display */
+  .add-contact-btn {
+    display: none;
+  }
+
+  /* FAB-Button now display */
+  .add-contact-fab {
+    position: fixed;
+    bottom: 100px;
+   
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: $buttonGrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+
+    img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      background-color: $buttonBlue;
+      transition: background-color 150ms ease-in-out;
+    }
+  }
+
+  /* MAIN-AREA now in column */
+  .main-area {
+    flex-direction: column;
+
+    /* WRAPPER full width */
+    .contacts-wrapper {
+      max-width: 100%;
+      width: 100%;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    /* SCROLL-AREA get mobile High */
+    .contacts-scroll-area {
+      overflow-y: auto;
+      max-height: calc(100vh - 180px);
+      padding-right: 6px;
+    }
+
+    /* Single-Contact don´t display */
+    .single-contact {
+      display: none;
+    }
   }
 }

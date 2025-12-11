@@ -1,9 +1,15 @@
 <section class="main-area">
   <article class="contacts-wrapper">
+
     <!-- Add contact button -->
     <button class="add-contact-btn text_4" (click)="onAddContact()" aria-label="Add a Contact">
       Add new contact
       <img class="add-contact-icon" src="/IMG/person_add.svg" alt="Add person icon" />
+    </button>
+
+    <!-- Add contact Floating-Button (Mobile only) -->
+    <button class="add-contact-fab" (click)="onAddContact()" aria-label="Add a Contact (mobile)">
+      <img src="/IMG/person_add.svg" alt="Add person icon" />
     </button>
 
     <!-- Contacts-SROLL-AREA -->
