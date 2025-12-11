@@ -331,7 +331,7 @@ form.contact_form {
     font-weight: 400;
     width: 126px;
     padding: 16px 8px;
-    border-radius: 8px;
+    border-radius: 16px;
     background-color: $white;
     border: 1px solid $bgGrey;
   }
@@ -341,7 +341,7 @@ form.contact_form {
     font-weight: 700;
     width: 214px;
     padding: 16px 24px;
-    border-radius: 8px;
+    border-radius: 16px;
     background-color: $bgGrey;
     color: $white;
     display: flex;
@@ -355,15 +355,16 @@ form.contact_form {
   }
 
   .button_light:hover {
-    background-color: $buttonBlue;
-    color: $white;
+    color: $buttonBlue;
     border-color: $buttonBlue;
     transition: background-color 150ms ease-in-out;
+    cursor: pointer;
   }
 
   .button_dark:hover {
     background-color: $buttonBlue;
     color: $white;
     transition: background-color 150ms ease-in-out;
+    cursor: pointer
   }
 }
