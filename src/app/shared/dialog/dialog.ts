@@ -14,25 +14,6 @@ export class Dialog {
   isOpen = false;
   isClosing = false;
 
-  // open(): void {
-  //   this.isClosing = false;
-  //   this.isOpen = true;
-  // }
-
-  // close(): void {
-  //   if (this.isClosing) return;
-
-  //   this.isClosing = true;    
-
-  //   setTimeout(() => {  
-  //     this.isClosing = false;
-  //     this.isOpen = false;
-  //     this.closed.emit();
-  //   }, 240);
-  // }
-
-
-  /* ---------------------------- Fix Versuch Emil ---------------------------- */
   constructor(private cdr: ChangeDetectorRef) {}
   
 
@@ -45,8 +26,8 @@ export class Dialog {
       this.isClosing = false;
       this.isOpen = false;
       this.closed.emit();
-      this.cdr.markForCheck(); // CDR kommt von anular
-    }, 200); // zeit passt nicht ganz, der übergng zu background sieht komisch aus
+      this.cdr.markForCheck();
+    }, 200);
   }
 
   open(): void {
