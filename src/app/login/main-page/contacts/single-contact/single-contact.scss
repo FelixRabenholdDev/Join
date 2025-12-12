@@ -101,6 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 5px solid $white;
 
   background-color: orange;
   border-radius: 70px;
@@ -110,7 +111,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 47px;
   font-weight: 500;
-  color: #ffffff;
+  color: $white;
 
   @media (max-width: 1050px) {
     height: 80px;
