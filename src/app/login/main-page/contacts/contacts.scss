@@ -117,6 +117,17 @@
   }
 }
 
+.returnbtn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  img{
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
 // FAB-Button for Mobile
 .add-contact-fab {
   display: none;
@@ -306,4 +317,12 @@
 
     /* Single-Contact don´t display */
   }
+}
+
+.dflex {
+  display: flex;
+}
+
+.dnone {
+  display: none;
 }

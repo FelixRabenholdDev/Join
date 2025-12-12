@@ -20,6 +20,9 @@ export class Contacts {
 
   @ViewChild('addDialog') addDialog!: Dialog;
 
+  isDisplayed = true;
+  isMediacheck = window.matchMedia('(max-width: 1050px)');
+
   editModel: Partial<Contact> = {};
 
   formModel = signal<Partial<Contact>>({
@@ -42,9 +45,23 @@ export class Contacts {
     this.loadLastUserColor();
   }
 
+  dnoneList(): void {
+      if (this.isMediacheck.matches && this.isDisplayed) {
+        this.isDisplayed = false;
+      } else {
+        return;
+      }
+    }
+
   onSelectContact(id: string) {
+    this.dnoneList();
     this.selectedContactId.set(id);
   }
+
+  returnArrow(): void {
+    this.isDisplayed = true;
+  }
+
 
   private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
     const groups: Record<string, Contact[]> = {};
