@@ -6,6 +6,11 @@
       <img class="add-contact-icon" src="/IMG/person_add.svg" alt="Add person icon" />
     </button>
 
+    <!-- Add contact Floating-Button (Mobile only) -->
+    <button class="add-contact-fab" (click)="onAddContact()" aria-label="Add a Contact (mobile)">
+      <img src="/IMG/person_add.svg" alt="Add person icon" />
+    </button>
+
     <!-- Contacts-SROLL-AREA -->
     <div class="contacts-scroll-area">
       <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">

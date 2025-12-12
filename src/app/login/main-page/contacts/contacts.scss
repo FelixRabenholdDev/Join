@@ -206,8 +206,7 @@
 // MEDIA für Mobile
 // ##################
 
-@media (min-width: 1921px) {
-}
+@media(min-width:1921px) {}
 
 // @media (max-width: 1439px) {
 //   /* MAIN-AREA now in column */
@@ -219,117 +218,64 @@
 /* ============================================ */
 /* RESPONSIVE up to 900px – CONTACT-List Mobile */
 /* ============================================ */
+@media (max-width: 1050px) {
 
-@media (max-width: 900px) {
-  :host ::ng-deep app-dialog.add-contact-dialog {
-    .dialog {
-      border-radius: 16px;
-      background: transparent;
-      padding: 0;
-      overflow: visible;
+  /* Desktop-Button don´t display */
+  .add-contact-btn {
+    display: none;
+  }
+
+  /* FAB-Button now display */
+  .add-contact-fab {
+    position: fixed;
+    bottom: 100px;
+   
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: $buttonGrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+
+    img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
     }
 
-    .sc_dialog {
-      flex-direction: column;
+    &:hover {
+      background-color: $buttonBlue;
+      transition: background-color 150ms ease-in-out;
+    }
+  }
+
+  /* MAIN-AREA now in column */
+  .main-area {
+    flex-direction: column;
+
+    /* WRAPPER full width */
+    .contacts-wrapper {
+      max-width: 100%;
       width: 100%;
-      max-width: 380px;
-      margin: 0 auto;
-      border-radius: 16px;
-      background: $white;
-      overflow: hidden;
-      position: relative;
-      gap: 0;
-      height: auto;
+      padding: 16px;
+      box-sizing: border-box;
     }
 
-    .close {
-      top: 16px !important;
-      right: 16px !important;
-      width: 24px;
-      height: 24px;
-
-      img {
-        width: 14px;
-        height: 14px;
-        filter: brightness(0) invert(1);
-        top: 5px;
-        left: 5px;
-      }
+    /* SCROLL-AREA get mobile High */
+    .contacts-scroll-area {
+      overflow-y: auto;
+      max-height: calc(100vh - 180px);
+      padding-right: 6px;
     }
 
-    .left_side {
-      width: 100%;
-      padding: 66px 24px;
-      border-radius: 16px 16px 0 0;
-      background-color: $bgGrey;
-
-      span {
-        font-size: 47px;
-        font-weight: 700;
-      }
-
-      p {
-        margin-top: 12px;
-        font-size: 18px;
-        font-weight: 400;
-      }
-
-      .seperator {
-        margin-top: 24px;
-      }
-    }
-
-    .mid_side {
-      position: absolute;
-      top: calc(100% - 60px);
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0;
-    }
-
-    .logo_container {
-      width: 120px;
-      height: 120px;
-      border-radius: 60px;
-      background-color: $bgMiddleGrey;
-    }
-
-    .right_side {
-      width: 100%;
-      padding: 100px 24px 40px 24px;
-      border-radius: 0 0 16px 16px;
-      background: $white;
-      align-items: center;
-    }
-
-    form.contact_form label.field {
-      width: 100%;
-      max-width: 320px;
-    }
-
-    .dialog_buttons {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 24px;
-
-      .button_light {
-        display: none;
-      }
-
-      .button_dark {
-        width: 200px;
-        height: 56px;
-        font-size: 21px;
-        font-weight: 700;
-        border-radius: 16px;
-        justify-content: center;
-
-        img {
-          width: 20px;
-          height: 20px;
-        }
-      }
+     /* Single-Contact don´t display */
+    .single-contact {
+      display: none;
     }
   }
 }
