@@ -10,6 +10,7 @@
 
 .single_contact {
   padding-left: 64px;
+  width: 100%;
   h2 {
     background: transparent;
   }
@@ -42,7 +43,7 @@
 .main-area {
   display: flex;
   flex-direction: row;
-  background-color: rgb(246, 247, 248);
+  background-color: $bgLightGrey;
 }
 
 // ###################
@@ -53,7 +54,7 @@
   width: 100%;
   max-width: 456px;
   height: 100%;
-  padding: 24px 0 24px 24px;
+  padding: 24px 0 0 24px;
   background-color: $white;
   box-sizing: border-box;
   box-shadow: 5px -1px 5px $bgMiddleGrey;
@@ -92,9 +93,8 @@
 .contacts-scroll-area {
   overflow-y: auto;
   margin-top: 24px;
-  padding-bottom: 24px;
   padding-right: 8px;
-  max-height: calc(100vh - 122px);
+  max-height: calc(100vh - 194px);
 }
 
 /* Alphabet-Groups */
