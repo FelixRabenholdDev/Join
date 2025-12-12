@@ -1,12 +1,12 @@
 @import '../styles.scss';
 
-div {
+section {
   margin-left: 16em;
   padding-top: 6em;
   max-height: 100vh;
   overflow-y: hidden;
 
-  @media(min-width:2560px) {
+  @media(min-width:1920px) {
     margin-left: 33%;
     margin-right: 25%
   }
