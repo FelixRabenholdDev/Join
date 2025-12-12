@@ -24,11 +24,13 @@ main {
                 display: none;
             }
         }
-        >.icons{
+
+        >.icons {
             display: flex;
             align-items: center;
             gap: 10px
         }
+
         svg {
             rect:hover {
                 cursor: pointer;
@@ -117,38 +119,47 @@ main {
     }
 
     @keyframes run {
-        0% { right: 0; }
-        50% { right: 50; }
-        100% { right: 100; }
+        0% {
+            right: 0;
+        }
+
+        50% {
+            right: 50;
+        }
+
+        100% {
+            right: 100;
+        }
     }
 
     .menu {
         display: none;
     }
 
-    .menu-mobil {
-        right: 3%;
-        animation: run 0.2s linear;
+   .menu-mobil {
+    right: 3%;
+    animation: run 0.2s linear;
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+    &.menu-mobil {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-            li {
-                margin: 8px 0;
-            }
+        li {
+            margin: 8px 0;
+        }
 
-            a {
-                color: #A8A8A8;
-                text-decoration: none;
+        a {
+            color: #A8A8A8;
+            text-decoration: none;
 
-                &:hover {
-                    background-color: $navActive;
-                }
+            &:hover {
+                background-color: $navActive;
             }
         }
     }
+}
+
 }
 
 @media(min-width:1921px) {
