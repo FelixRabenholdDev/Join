@@ -92,7 +92,7 @@
   padding: 28px;
 
   @media (max-width: 1050px) {
-    display:none;
+    display: none;
   }
 }
 .add-contact-btn {
@@ -147,167 +147,174 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  box-sizing: border-box;
-  transition: background-color 120ms ease-in-out;
-  // margin: 15px 24px 15px 24px;
 
-  &:hover {
-    background-color: $bgLightGrey;
-    cursor: pointer;
-    background: linear-gradient($bgLightGrey, $bgMiddleGrey);
+  .text_6 {
+    background-color: transparent;
+  }
+
+  &.active {
+    background-color: $buttonGrey;
 
     .text_6 {
-      background-color: transparent;
+      color: $white;
     }
   }
-}
 
-/* Avatar */
-.contact-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  border: 2px solid $white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: $white;
-}
+  &:hover {
+    cursor: pointer;
+  }
 
-/* Name + Email */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-}
+  &:hover:not(.active) {
+    background: linear-gradient($bgLightGrey, $bgMiddleGrey);
+  }
 
-.seperator_contacts {
-  height: 1px; 
-  background-color: $bgMiddleGrey;
-}
-
-.contact-email {
-  color: $buttonBlue;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-/* SVG-Divider */
-.contact-divider {
-  width: 100%;
-  margin: 12px 0;
-  display: block;
-}
-
-/* OLD DIVIDER remove */
-.divider {
-  display: none;
-}
-
-/* ################## */
-/* ADD-CONTACT-DIALOG */
-/* ################## */
-
-/* --------------------------- */
-/* Middle (Avatar-circle)
-  /* --------------------------- */
-.mid_side {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 40px;
-}
-
-.logo_container {
-  width: 120px;
-  height: 120px;
-  border-radius: 70px;
-  background-color: $bgMiddleGrey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sc_logo {
-  fill: $white;
-  width: 64px;
-  height: 64px;
-}
-
-// ##################
-// MEDIA für Mobile
-// ##################
-
-@media (min-width: 1921px) {
-}
-
-// @media (max-width: 1439px) {
-//   /* MAIN-AREA now in column */
-//   .main-area {
-//     flex-direction: column;
-//   }
-// }
-
-/* ============================================= */
-/* RESPONSIVE up to 1050px – CONTACT-List Mobile */
-/* ============================================= */
-@media (max-width: 1050px) {
-
-  /* FAB-Button now display */
-  .add-contact-fab {
-    position: fixed;
-    bottom: 100px;
-
-    right: 24px;
-    width: 56px;
-    height: 56px;
+  /* Avatar */
+  .contact-avatar {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background-color: $buttonGrey;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    cursor: pointer;
-    z-index: 200;
-
-    img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0) invert(1);
-    }
-
-    &:hover {
-      background-color: $buttonBlue;
-      transition: background-color 150ms ease-in-out;
-    }
+    flex-shrink: 0;
+    border: 2px solid $white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $white;
   }
 
-  /* MAIN-AREA now in column */
-  .main-area {
+  /* Name + Email */
+  .contact-info {
+    display: flex;
     flex-direction: column;
+  }
 
-    /* WRAPPER full width */
-    .contacts-wrapper {
-      max-width: 100%;
-      width: 100%;
-      padding: 16px;
-      box-sizing: border-box;
+  .seperator_contacts {
+    height: 1px;
+    background-color: $bgMiddleGrey;
+  }
+
+  .contact-email {
+    padding-top: 5px;
+    color: $buttonBlue;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  /* SVG-Divider */
+  .contact-divider {
+    width: 100%;
+    margin: 12px 0;
+    display: block;
+  }
+
+  /* OLD DIVIDER remove */
+  .divider {
+    display: none;
+  }
+
+  /* ################## */
+  /* ADD-CONTACT-DIALOG */
+  /* ################## */
+
+  /* --------------------------- */
+  /* Middle (Avatar-circle)
+  /* --------------------------- */
+  .mid_side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
+  }
+
+  .logo_container {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    background-color: $bgMiddleGrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sc_logo {
+    fill: $white;
+    width: 64px;
+    height: 64px;
+  }
+
+  // ##################
+  // MEDIA für Mobile
+  // ##################
+
+  @media (min-width: 1921px) {
+  }
+
+  // @media (max-width: 1439px) {
+  //   /* MAIN-AREA now in column */
+  //   .main-area {
+  //     flex-direction: column;
+  //   }
+  // }
+
+  /* ============================================= */
+  /* RESPONSIVE up to 1050px – CONTACT-List Mobile */
+  /* ============================================= */
+  @media (max-width: 1050px) {
+    /* FAB-Button now display */
+    .add-contact-fab {
+      position: fixed;
+      bottom: 100px;
+
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: $buttonGrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      z-index: 200;
+
+      img {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) invert(1);
+      }
+
+      &:hover {
+        background-color: $buttonBlue;
+        transition: background-color 150ms ease-in-out;
+      }
     }
 
-    /* SCROLL-AREA get mobile High */
-    .contacts-scroll-area {
-      overflow-y: auto;
-      max-height: calc(100vh - 180px);
-      padding-right: 6px;
-      padding-bottom: 60px;
-    }
+    /* MAIN-AREA now in column */
+    .main-area {
+      flex-direction: column;
 
-    /* Single-Contact don´t display */
-    .single-contact {
-      display: none;
+      /* WRAPPER full width */
+      .contacts-wrapper {
+        max-width: 100%;
+        width: 100%;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      /* SCROLL-AREA get mobile High */
+      .contacts-scroll-area {
+        overflow-y: auto;
+        max-height: calc(100vh - 180px);
+        padding-right: 6px;
+        padding-bottom: 60px;
+      }
+
+      /* Single-Contact don´t display */
+      .single-contact {
+        display: none;
+      }
     }
   }
 }
