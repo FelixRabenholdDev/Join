@@ -23,7 +23,7 @@
   gap: 30px;
   width: fit-content;
   margin-top: 50px;
-  h2 {
+  h1 {
     font-size: 47px;
   }
 
@@ -33,8 +33,8 @@
   }
 
   @media (max-width: 1250px) {
-    margin-top: 0px;
-    h2 {
+    margin-top: 25px;
+    h1 {
       font-size: 22px;
     }
     p {
@@ -50,9 +50,13 @@
   border-radius: 3px;
 }
 
+.seperator_contacts {
+  height: 1px;
+  background-color: $bgMiddleGrey;
+}
+
 .main-area {
   display: flex;
-  flex-direction: row;
   background-color: $bgLightGrey;
 }
 
@@ -190,11 +194,6 @@
     flex-direction: column;
   }
 
-  .seperator_contacts {
-    height: 1px;
-    background-color: $bgMiddleGrey;
-  }
-
   .contact-email {
     padding-top: 5px;
     color: $buttonBlue;
@@ -213,108 +212,99 @@
   .divider {
     display: none;
   }
+}
 
-  /* ################## */
-  /* ADD-CONTACT-DIALOG */
-  /* ################## */
+/* ################## */
+/* ADD-CONTACT-DIALOG */
+/* ################## */
 
+/* --------------------------- */
+/* Middle (Avatar-circle)
   /* --------------------------- */
-  /* Middle (Avatar-circle)
-  /* --------------------------- */
-  .mid_side {
+.mid_side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40px;
+}
+
+.logo_container {
+  width: 120px;
+  height: 120px;
+  border-radius: 70px;
+  background-color: $bgMiddleGrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sc_logo {
+  fill: $white;
+  width: 64px;
+  height: 64px;
+}
+
+// ##################
+// MEDIA für Mobile
+// ##################
+
+/* ============================================= */
+/* RESPONSIVE up to 1050px – CONTACT-List Mobile */
+/* ============================================= */
+@media (max-width: 1050px) {
+  /* FAB-Button now display */
+  .add-contact-fab {
+    position: fixed;
+    bottom: 100px;
+
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: $buttonGrey;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 40px;
-  }
-
-  .logo_container {
-    width: 120px;
-    height: 120px;
-    border-radius: 70px;
-    background-color: $bgMiddleGrey;
-    display: flex;
     justify-content: center;
     align-items: center;
-  }
+    border: none;
+    cursor: pointer;
+    z-index: 200;
 
-  .sc_logo {
-    fill: $white;
-    width: 64px;
-    height: 64px;
-  }
-
-  // ##################
-  // MEDIA für Mobile
-  // ##################
-
-  @media (min-width: 1921px) {
-  }
-
-  // @media (max-width: 1439px) {
-  //   /* MAIN-AREA now in column */
-  //   .main-area {
-  //     flex-direction: column;
-  //   }
-  // }
-
-  /* ============================================= */
-  /* RESPONSIVE up to 1050px – CONTACT-List Mobile */
-  /* ============================================= */
-  @media (max-width: 1050px) {
-    /* FAB-Button now display */
-    .add-contact-fab {
-      position: fixed;
-      bottom: 100px;
-
-      right: 24px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background-color: $buttonGrey;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      cursor: pointer;
-      z-index: 200;
-
-      img {
-        width: 32px;
-        height: 32px;
-        filter: brightness(0) invert(1);
-      }
-
-      &:hover {
-        background-color: $buttonBlue;
-        transition: background-color 150ms ease-in-out;
-      }
+    img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
     }
 
-    /* MAIN-AREA now in column */
-    .main-area {
-      flex-direction: column;
-
-      /* WRAPPER full width */
-      .contacts-wrapper {
-        max-width: 100%;
-        width: 100%;
-        padding: 16px;
-        box-sizing: border-box;
-      }
-
-      /* SCROLL-AREA get mobile High */
-      .contacts-scroll-area {
-        overflow-y: auto;
-        max-height: calc(100vh - 180px);
-        padding-right: 6px;
-        padding-bottom: 60px;
-      }
-
-      /* Single-Contact don´t display */
-      .single-contact {
-        display: none;
-      }
+    &:hover {
+      background-color: $buttonBlue;
+      transition: background-color 150ms ease-in-out;
     }
+  }
+
+  .single_contact {
+    display: none;
+  }
+
+  /* MAIN-AREA now in column */
+  .main-area {
+    flex-direction: column;
+
+    /* WRAPPER full width */
+    .contacts-wrapper {
+      max-width: 100%;
+      width: 100%;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    /* SCROLL-AREA get mobile High */
+    .contacts-scroll-area {
+      overflow-y: auto;
+      max-height: calc(100vh - 180px);
+      padding-right: 6px;
+      padding-bottom: 60px;
+    }
+
+    /* Single-Contact don´t display */
   }
 }
