@@ -35,6 +35,8 @@ main {
             margin-top: 20%;
             transition: background-color 0.3s;
             padding-left: 19%;
+                padding-top: 10px;
+    padding-bottom: 10px;
 
             &.active-link {
                 background-color: $navBgActiveGrey;
@@ -44,7 +46,6 @@ main {
             &:hover {
 
                 background-color: $navActive;
-                
             }
 
             >img {
@@ -106,22 +107,22 @@ main {
 
             >a {
         margin: 0;
-                padding: 18px 0 18px 0;
+        padding: 2% 2%;
         display: flex;
         flex-direction: column;
         font-size: 17px;
-        @media(max-width:350px){
-            font-size: 15px;
+        @media (max-width: 400px){
+            font-size: 60%;
         }
-       
-        &.active-link{
-          border-style: solid;
-        border-color: transparent;
-        border-radius: 15px 15px 0 0;
-        border-width: 0;
-        padding-left: 20px;
-        padding-right: 20px;
-        }
+        
+    &.active-link{
+            background-color: #091931;
+    pointer-events: none;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 15px;
+    border-width: 0px;
+    }
 
                 >img {
                     display: block;
@@ -136,6 +137,8 @@ main {
         }
     }
 }
+
+
 
 @media(min-width:1921px){
     section{

@@ -13,7 +13,7 @@ main {
     .user {
         a .help-icon {
             height: 32px;
-            transition: height 2s;
+            transition: height 0.2s;
 
             &:hover {
                 cursor: pointer;
@@ -24,7 +24,11 @@ main {
                 display: none;
             }
         }
-
+        >.icons{
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
         svg {
             rect:hover {
                 cursor: pointer;
@@ -93,7 +97,7 @@ main {
             display: flex;
             width: 92%;
             align-items: center;
-            padding: 0 10% 0 13%;
+            padding: 0 10% 0 9vw;
 
             >svg {
                 flex-shrink: 0;
@@ -108,7 +112,7 @@ main {
     .mobil {
         display: flex;
         justify-content: space-between;
-        width: 100vw;
+        width: 68vw;
         padding: 3vw;
     }
 

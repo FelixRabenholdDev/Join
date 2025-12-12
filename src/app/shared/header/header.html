@@ -3,13 +3,14 @@
 <span class="text_6">Kanban Project Management Tool</span>
 <div class="user">
     
-    
+    <div class="icons">
     <a routerLink="/main-area main_body_m_g"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()" ><img  class="help-icon" src="IMG/help-icon.png" alt=""></a>
 
 
     <div class="mobil"*ngIf="isMobile">
 
         <img src="IMG/Capa 3.png" alt="">
+         <a routerLink="/main-area main_body_m_g"routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()" ><img  class="help-icon" src="IMG/help-icon.png" alt=""></a>
    
     </div>
         <svg (click)="toggleMenu()" 
@@ -19,6 +20,7 @@
 <path d="M26.9559 21.0703H30.5679L34.3829 30.3776H34.5452L38.3601 21.0703H41.9721V34.9231H39.1312V25.9066H39.0162L35.4313 34.8554H33.4968L29.9118 25.8727H29.7968V34.9231H26.9559V21.0703Z" fill="#29ABE2"/>
 <circle cx="28" cy="28" r="26.5" stroke="#2A3647" stroke-width="3"/>
 </svg>
+</div>
     
 
 
