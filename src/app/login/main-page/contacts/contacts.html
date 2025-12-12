@@ -21,6 +21,7 @@
       </div>
       <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
         <div class="group-letter text_6">{{ group.letter }}</div>
+        <div class="seperator_contacts"></div>
 
         <div
           *ngFor="let c of group.contacts"
@@ -28,17 +29,17 @@
           (click)="onSelectContact(c.id)"
           [class.active]="selectedContactId() === c.id"
         >
+        
           <div class="contact-avatar" [style.backgroundColor]="c.color">
             {{ getInitials(c.name) }}
-          </div>
+          </div>          
 
           <div class="contact-info">
-            <div class="contact-name text_3">{{ c.name }}</div>
+            <div class="contact-name text_6">{{ c.name }}</div>
             <div class="contact-email">{{ c.email }}</div>
           </div>
         </div>
-
-        <img class="contact-divider" src="/IMG/Frame-120.svg" alt="divider" />
+        
       </div>
     </div>
   </article>
@@ -46,7 +47,7 @@
   <!-- SINGLE-Contact -->
   <article class="single_contact">
     <header class="sc_header">
-      <h2>Contacts</h2>
+      <h1>Contacts</h1>
       <div class="seperator"></div>
       <p>Better with a team</p>
     </header>
