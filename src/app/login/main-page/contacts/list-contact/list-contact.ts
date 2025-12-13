@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component,ChangeDetectionStrategy,inject, signal,viewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, viewChild, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FirebaseServices } from '../../../../firebase-services/firebase-services';
 import { Contact } from '../../../../interfaces/contact.interface';
@@ -7,12 +7,13 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-contact',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './list-contact.html',
   styleUrl: './list-contact.scss',
 })
 export class ListContact {
 
+  @Output() contactSelected = new EventEmitter<string>();
 
     private readonly firebase = inject(FirebaseServices);
 
@@ -54,6 +55,7 @@ export class ListContact {
   onSelectContact(id: string) {
     this.dnoneList();
     this.selectedContactId.set(id);
+    this.contactSelected.emit(id);
   }
 
   returnArrow(): void {

@@ -1,128 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject, signal, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, ViewChild } from '@angular/core';
 import { SingleContact } from './single-contact/single-contact';
-import { FirebaseServices } from '../../../firebase-services/firebase-services';
-import { Contact } from '../../../interfaces/contact.interface';
-import { map } from 'rxjs/operators';
-import { Dialog } from '../../../shared/dialog/dialog';
-import { FormsModule } from '@angular/forms';
 import { ListContact } from './list-contact/list-contact';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, ListContact, SingleContact, Dialog, FormsModule],
+  imports: [CommonModule, ListContact, SingleContact],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
-  private readonly firebase = inject(FirebaseServices);
-
-  @ViewChild('addDialog') addDialog!: Dialog;
-
-  isDisplayed = true;
-  isMediacheck = window.matchMedia('(max-width: 1050px)');
-
-  editModel: Partial<Contact> = {};
-
-  formModel = signal<Partial<Contact>>({
-    name: '',
-    email: '',
-    phone: '',
-    color: this.getColor(),
-  });
+  // Zugriff auf die Kind-Komponente, um die Liste wieder einzublenden
+  @ViewChild(ListContact) listContact!: ListContact;
 
   selectedContactId = signal<string | null>(null);
 
-  private lastUserColor = 7;
-  private maxColors = 15;
-
-  readonly groupedContacts$ = this.firebase
-    .subContactsList()
-    .pipe(map((contacts: Contact[]) => this.sortAndGroup(contacts)));
-
-  constructor() {
-    this.loadLastUserColor();
-  }
-
-  dnoneList(): void {
-    if (this.isMediacheck.matches && this.isDisplayed) {
-      this.isDisplayed = false;
-    } else {
-      return;
-    }
-  }
-
-  onSelectContact(id: string) {
-    this.dnoneList();
+  setSelectedContact(id: string) {
     this.selectedContactId.set(id);
   }
 
   returnArrow(): void {
-    this.isDisplayed = true;
-  }
-
-  private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
-    const groups: Record<string, Contact[]> = {};
-
-    for (const c of contacts) {
-      const letter = c.name.trim().charAt(0).toUpperCase();
-      if (!groups[letter]) groups[letter] = [];
-      groups[letter].push(c);
+    this.selectedContactId.set(null);
+    // Liste wieder anzeigen (wichtig für Mobile)
+    if (this.listContact) {
+      this.listContact.returnArrow();
     }
-
-    return Object.keys(groups)
-      .sort()
-      .map((letter) => ({
-        letter,
-        contacts: groups[letter],
-      }));
-  }
-
-  getInitials(name: string): string {
-    const parts = name.trim().split(' ');
-    const first = parts[0]?.charAt(0).toUpperCase() ?? '';
-    const last = parts.length > 1 ? parts[parts.length - 1].charAt(0).toUpperCase() : '';
-    return first + last;
-  }
-
-  onAddContact(): void {
-    this.formModel.set({
-      name: '',
-      email: '',
-      phone: '',
-      color: this.getColor(),
-    });
-    this.addDialog.open();
-  }
-
-  async saveNewContact(): Promise<void> {
-    const data = this.formModel();
-    if (!data.name?.trim()) return;
-    await this.firebase.setLastUserColor(this.lastUserColor);
-
-    await this.firebase.addContact({
-      name: data.name.trim(),
-      email: data.email?.trim() ?? '',
-      phone: data.phone?.trim() ?? '',
-      color: data.color ?? '#000',
-    });
-
-    this.addDialog.close();
-  }
-
-  private getColor(): string {
-    this.lastUserColor = (this.lastUserColor % this.maxColors) + 1;
-
-    const cssVar = `--userColor${this.lastUserColor}`;
-    const style = getComputedStyle(document.documentElement);
-    const color = style.getPropertyValue(cssVar).trim();
-
-    return color;
-  }
-
-  private async loadLastUserColor() {
-    this.lastUserColor = await this.firebase.getLastUserColor();
   }
 }
