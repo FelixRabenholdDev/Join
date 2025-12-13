@@ -1,22 +1,20 @@
 @import './../../../../styles.scss';
 
-// @media (max-width: 1250px) {
-//   display: none;
-// }
-
 .contact_section {
   display: flex;
+  @media (max-width: 1050px) {
+    display: block;
+  }
 }
 
 .list_contact {
   @media (max-width: 1050px) {
-    &.d_none {
+    &.d_none_mobile {
       display: none;
     }
   }
 }
-.contact_view {
-}
+
 .single_contact {
   padding-left: 64px;
   width: 100%;
@@ -25,9 +23,13 @@
   }
   @media (max-width: 1050px) {
     display: none;
+    padding-left: 16px;
+    padding-right: 16px;
 
     &.d_block {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }
@@ -48,8 +50,29 @@
     font-weight: 400;
   }
 
+  .d_none {
+    display: none;
+  }
+
   @media (max-width: 1050px) {
+    flex-direction: column;
+    align-items: start;
     margin-top: 25px;
+    gap: 0;
+
+    .seperator {
+      display: none;
+    }
+
+    .seperator.d_none {
+      display: block;
+      width: 90px;
+      height: 3px;
+      background-color: $buttonBlue;
+      border: none;
+      margin: 16px 0;
+    }
+
     h1 {
       font-size: 22px;
     }
@@ -70,17 +93,16 @@
   background-color: $bgMiddleGrey;
 }
 
-.main-area {
-  display: flex;
-  background-color: $bgLightGrey;
-}
-
 .return_button {
+  display: none;
   background: transparent;
   border: none;
   cursor: pointer;
   img {
     width: 32px;
     height: 32px;
+  }
+  @media (max-width: 1050px) {
+    display: contents;
   }
 }

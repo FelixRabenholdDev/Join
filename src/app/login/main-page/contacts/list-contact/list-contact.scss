@@ -1,22 +1,62 @@
-.contact_section {
+@import './../../../../../styles.scss';
+
+.contact_list_section {
+  width: 100%;
+  max-width: 456px;
+  height: 100%;
+  padding-left: 24px;
+  background-color: $white;
+  box-sizing: border-box;
+  box-shadow: 5px -1px 5px $bgMiddleGrey;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  overflow-y: auto;
+  padding-right: 8px;
+  max-height: calc(100vh - 100px);
 
-  width: 420px;
+  @media (max-width: 1050px) {
+    z-index: auto;
+    width: 100%;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: none;
+  }
 
   .button_container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: $white;
+    padding: 28px;
     display: flex;
     justify-content: center;
-    margin: 10px;
-    background-color: aqua;
+
+    @media (max-width: 1050px) {
+      display: none;
+    }
 
     .button_new_contact {
+      width: 350px;
+      height: 50px;
+      background-color: $bgGrey;
+      color: $white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-self: center;
-      background-color: rgba(42, 54, 71, 1);
-      color: white;
+      gap: 8px;
+      font-size: 21px;
+      font-weight: 700;
+
+      &:hover {
+        background-color: $buttonBlue;
+        transition: background-color 150ms ease-in-out;
+      }
     }
   }
 
@@ -24,30 +64,78 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+
+    .divider {
+      border-bottom: 1px solid $bgMiddleGrey;
+      width: 100%;
+      margin: 8px 0;
+    }
 
     .contact_area {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      padding: 0 24px;
+
+      @media (max-width: 1050px) {
+        padding: 0 16px;
+      }
     }
 
     .contact_single {
       display: flex;
-      gap: 8px;
-      margin: 8px;
+      gap: 35px;
+      margin: 8px 0;
+      padding: 15px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      align-items: center;
+
+      &:hover {
+        background-color: $navBgActiveGrey;
+      }
+
+      &.active {
+        background-color: $bgGrey;
+        color: $white;
+
+        &:hover {
+          background-color: $bgGrey;
+        }
+      }
 
       span {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50px;
+        border-radius: 50%;
         height: 42px;
         width: 42px;
-        margin: 4px;
+        border: 2px solid $white;
+        color: $white;
+        font-size: 12px;
+        flex-shrink: 0;
       }
 
-      div{
+      div {
         display: flex;
         flex-direction: column;
+        gap: 5px;
+
+        span {
+          color: inherit;
+          border: none;
+          width: auto;
+          height: auto;
+          font-size: 20px;
+          font-weight: 400;
+        }
+
+        small {
+          color: $buttonBlue;
+          font-size: 16px;
+        }
       }
     }
   }

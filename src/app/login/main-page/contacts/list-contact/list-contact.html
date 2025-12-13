@@ -1,4 +1,4 @@
-<section class="contact_section">
+<section class="contact_list_section">
   <div class="button_container">
     <button class="button_new_contact" (click)="onAddContact()" aria-label="Add a Contact">
       Add new contact
@@ -10,7 +10,7 @@
     <section class="contact_area" *ngFor="let group of groupedContacts$ | async">
       <article class="divider_area">
         <span>{{ group.letter }}</span>
-        <div class="divider">_______</div>
+        <div class="divider"></div>
       </article>
 
       <article

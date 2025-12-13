@@ -1,5 +1,5 @@
 <section class="contact_section">
-  <article class="list_contact" [class.d_none]="selectedContactId()">
+  <article class="list_contact" [class.d_none_mobile]="selectedContactId()">
     <app-list-contact (contactSelected)="setSelectedContact($event)"> </app-list-contact>
   </article>
 
@@ -8,11 +8,13 @@
       <h1>Contacts</h1>
       <div class="seperator"></div>
       <p>Better with a team</p>
-      <button class="returnbtn" (click)="returnArrow()">
+      <div class="seperator d_none"></div>
+
+
+    </header>
+      <button class="return_button" (click)="returnArrow()">
         <img src="/IMG/arrow_left.svg" alt="" />
       </button>
-    </header>
-
     <div class="contact_view">
       <app-single-contact
         *ngIf="selectedContactId()"
