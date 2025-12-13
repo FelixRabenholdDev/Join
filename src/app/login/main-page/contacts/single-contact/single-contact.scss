@@ -18,18 +18,7 @@
 
 @media (max-width: 1050px) {
   .sc_information--active {
-    animation: sc-slide-in-mobile 280ms ease forwards;
-  }
-
-  @keyframes sc-slide-in-mobile {
-    from {
-      opacity: 0;
-      transform: translateY(1200px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    animation: none;
   }
 }
 
@@ -42,9 +31,11 @@
 
   .sc_menu {
     gap: 8px;
+    
     h2 {
       background: transparent;
     }
+
     > div {
       display: flex;
       gap: 16px;
@@ -57,17 +48,17 @@
       align-items: center;
       background-color: transparent;
       gap: 4px;
+      cursor: pointer;
 
       &:hover {
-        color: lightblue;
-        cursor: pointer;
+        color: $buttonBlue;
       }
 
       svg {
         height: 24px;
         width: 24px;
         display: flex;
-        align-self: self-end;
+        align-self: flex-end;
       }
 
       span {
@@ -82,19 +73,19 @@
     }
   }
 
-  @media (max-width: 1050px) {
-    gap: 20px;
-
-    h2 {
-      font-size: 36px;
-    }
-  }
-
-    @media (max-width: 1250px) {
+  // Erst die größere Breite
+  @media (max-width: 1250px) {
     gap: 20px;
 
     h2 {
       font-size: 24px;
+    }
+  }
+
+  // Dann die kleinere Breite (überschreibt ggf. Werte)
+  @media (max-width: 1050px) {
+    h2 {
+      font-size: 36px; 
     }
   }
 }
@@ -104,8 +95,6 @@
   justify-content: center;
   align-items: center;
   border: 5px solid $white;
-
-  background-color: orange;
   border-radius: 70px;
   height: 120px;
   width: 120px;
@@ -114,21 +103,17 @@
   font-size: 47px;
   font-weight: 500;
   color: $white;
+  flex-shrink: 0;
 
-  @media (max-width: 1050px) {
+  @media (max-width: 1250px) {
     height: 80px;
     width: 80px;
-
-    font-size: 27px;
-    font-weight: 400;
+    font-size: 36px;
   }
 
-    @media (max-width: 1250px) {
-  height: 80px;
-  width: 80px;
-
-  font-family: 'Inter', sans-serif;
-  font-size: 36px;
+  @media (max-width: 1050px) {
+    font-size: 27px;
+    font-weight: 400;
   }
 }
 
@@ -147,13 +132,14 @@
 
     strong {
       font-size: 16px;
-      font-weight: 700px;
+      font-weight: 700;
     }
 
     a {
-      color: #007cee;
+      color: $buttonBlue;
       font-size: 16px;
       font-weight: 400;
+      text-decoration: none;
     }
   }
 
@@ -165,20 +151,22 @@
 /* -------------------------- Media for max 1050px -------------------------- */
 .circle_menu {
   display: none;
-  background-image: url('/IMG/Menu-Contact-options.svg');
+  
   @media (max-width: 1050px) {
     display: grid;
     place-items: center;
     position: fixed;
-    right: 64px;
-    bottom: -200px; // Button runter
+    right: 32px;
+    bottom: 100px; // Sichtbar machen (war -200px)
     width: 56px;
     height: 56px;
     border: none;
     border-radius: 50%;
+    background-color: $buttonBlue;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     padding: 0;
     cursor: pointer;
+    z-index: 99;
 
     img {
       width: 24px;
@@ -198,19 +186,21 @@
     width: 140px;
 
     position: fixed;
-    right: 24px;
-    bottom: -200px; // Panel gleich weit unten
-    background: #fff;
+    right: 32px;
+    bottom: 100px; // Startposition beim Button
+    background: $white;
     box-shadow: -6px 8px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 16px 0 0 16px;
+    border-radius: 16px 16px 0 16px;
+    z-index: 98;
 
-    transform: translateX(140%);
+    transform: scale(0); // Besserer Effekt für Menü
+    transform-origin: bottom right;
     opacity: 0;
     pointer-events: none;
-    transition: transform 220ms ease, opacity 220ms ease;
+    transition: transform 220ms ease-in-out, opacity 220ms ease-in-out;
 
     &.is-open {
-      transform: translateX(0);
+      transform: scale(1);
       opacity: 1;
       pointer-events: auto;
     }
@@ -224,9 +214,14 @@
       padding: 8px;
       border: none;
       background: transparent;
-      color: #2a3647;
+      color: $black;
       font: 400 16px/1.2 'Inter', sans-serif;
       cursor: pointer;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: $bgGrey;
+      }
 
       svg {
         width: 24px;

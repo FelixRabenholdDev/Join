@@ -1,133 +1,152 @@
 @import './../../../styles.scss';
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 234px;
+  background-color: $bgGrey;
+  padding: 48px 0;
+  box-sizing: border-box;
+
+  // Wrapper für Logo und Nav
+  > div {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    height: 100vh;
-    width: 234px;
-    background-color: $bgGrey ;
-    padding-top: 75px;
-    padding-bottom: 50px;
+    align-items: center;
+  }
 
-    >div img {
-        width: 100px;
-        height: 120px;
-        margin-bottom: 60%;
+  > div img {
+    width: auto;
+    height: 70px;
+    margin-bottom: 48px;
+    object-fit: contain;
+  }
+
+  > div nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+
+    > a {
+      display: flex;
+      align-items: flex-start;
+      color: $white;
+      text-decoration: none;
+      padding: 12px 0 12px 32px;
+      width: 100%;
+      height: 46px;
+      box-sizing: border-box;
+      transition: background-color 0.2s ease-in-out;
+
+      &.active-link {
+        background-color: $navBgActiveGrey;
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: $navActive;
+      }
+
+      > img {
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .Legal {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 32px;
+    gap: 8px;
+
+    > a {
+      color: #a8a8a8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+
+      &.active-link {
+        color: $white;
+        pointer-events: none;
+      }
+
+      &:hover {
+        color: $buttonBlue;
+      }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+    z-index: 999;
+
+    > div img {
+      display: none;
     }
 
-    >div nav {
+    > div {
+      width: 100%;
+    }
+
+    > div nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
+      gap: 0;
+
+      > a {
+        margin: 0;
+        padding: 8px 0;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        border-radius: 10px;
+        height: auto;
+        width: 80px;
 
-        >a {
-            display: flex;
-            align-items: center;
-            color: $white;
-            text-decoration: none;
-            margin-top: 20%;
-            transition: background-color 0.3s;
-            padding-left: 19%;
-                padding-top: 10px;
-    padding-bottom: 10px;
-
-            &.active-link {
-                background-color: $navBgActiveGrey;
-                pointer-events: none;
-            }
-
-            &:hover {
-
-                background-color: $navActive;
-            }
-
-            >img {
-                width: 30px;
-                margin-right: 20%;
-                height: auto;
-                margin: 0 10px;
-            }
-
-
-            ;
+        @media (max-width: 400px) {
+          font-size: 12px;
+          padding: 6px 0;
+          width: 70px;
         }
+
+        &.active-link {
+          background-color: $navBgActiveGrey;
+          pointer-events: none;
+        }
+
+        > img {
+          display: block;
+          height: 24px;
+          width: 24px;
+          margin: 0 0 4px 0;
+        }
+      }
     }
 
     .Legal {
-        display: flex;
-        flex-direction: column;
-
-        >a {
-            color: #A8A8A8;
-            text-decoration: none;
-            margin-bottom: 25px;
-            transition: color 0.3s;
-            transition: font-size 0.1s;
-
-            &.active-link {
-                background-color: $navBgActiveGrey;
-                pointer-events: none;
-            }
-
-            &:hover {
-                color: $buttonBlue;
-                font-size: 17px;
-            }
-
-        }
+      display: none;
     }
-}
-
-@media(max-width: 1050px) {
-   
-    main {
-        display: flex;
-        justify-content: center;
-        width: 100vw;
-        height: 80px;
-        position: fixed;
-        bottom: 0;
-        padding-top: 38px;
-
-        >div img {
-            display: none;
-        }
-
-        >div nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-
-            >a {
-        margin: 0;
-        padding: 2% 2%;
-        display: flex;
-        flex-direction: column;
-        font-size: 17px;
-        @media (max-width: 400px){
-            font-size: 60%;
-        }
-        
-    &.active-link{
-            background-color: #091931;
-    pointer-events: none;
-    border-style: solid;
-    border-color: transparent;
-    border-radius: 15px;
-    border-width: 0px;
-    }
-
-                >img {
-                    display: block;
-                    height: 24px;
-                    width: auto;
-                }
-            }
-        }
-
-        .Legal {
-            display: none;
-        }
-    }
+  }
 }
