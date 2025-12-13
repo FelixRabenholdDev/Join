@@ -10,12 +10,16 @@
 
 .list_contact {
 }
-
+.contact_view {
+}
 .single_contact {
   padding-left: 64px;
   width: 100%;
   h1 {
     background: transparent;
+  }
+  @media (max-width: 1250px) {
+    display: none;
   }
 }
 

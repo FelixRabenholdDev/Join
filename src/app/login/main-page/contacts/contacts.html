@@ -1,11 +1,7 @@
 <section class="contact_section">
-
-
-<article class="list_contact">
-   <app-list-contact 
-  (contactSelected)="setSelectedContact($event)">
-</app-list-contact>
-</article>
+  <article class="list_contact">
+    <app-list-contact (contactSelected)="setSelectedContact($event)"> </app-list-contact>
+  </article>
 
   <article class="single_contact">
     <header class="sc_header">
@@ -16,6 +12,12 @@
         <img src="/IMG/arrow_left.svg" alt="" />
       </button>
     </header>
-    <app-single-contact *ngIf="selectedContactId()" [contactId]="selectedContactId()!"></app-single-contact>
+
+    <div class="contact_view">
+      <app-single-contact
+        *ngIf="selectedContactId()"
+        [contactId]="selectedContactId()!"
+      ></app-single-contact>
+    </div>
   </article>
 </section>
