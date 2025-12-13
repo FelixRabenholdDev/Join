@@ -1,0 +1,33 @@
+<section class="main-area">
+  <article class="contacts-wrapper" [class.dflex]="isDisplayed" [class.dnone]="!isDisplayed">
+    <!-- Contacts-SROLL-AREA -->
+    <div class="contacts-scroll-area">
+      <div class="button_container">
+        <button class="add-contact-btn text_4" (click)="onAddContact()" aria-label="Add a Contact">
+          Add new contact
+          <img class="add-contact-icon" src="/IMG/person_add.svg" alt="Add person icon" />
+        </button>
+      </div>
+      <div *ngFor="let group of groupedContacts$ | async" class="contacts-group">
+        <div class="group-letter text_6">{{ group.letter }}</div>
+        <div class="seperator_contacts"></div>
+
+        <div
+          *ngFor="let c of group.contacts"
+          class="contact-box"
+          (click)="onSelectContact(c.id)"
+          [class.active]="selectedContactId() === c.id"
+        >
+          <div class="contact-avatar" [style.backgroundColor]="c.color">
+            {{ getInitials(c.name) }}
+          </div>
+
+          <div class="contact-info">
+            <div class="contact-name text_6">{{ c.name }}</div>
+            <div class="contact-email">{{ c.email }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

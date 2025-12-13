@@ -1,25 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject, signal, ViewChild } from '@angular/core';
-import { SingleContact } from './single-contact/single-contact';
-import { FirebaseServices } from '../../../firebase-services/firebase-services';
-import { Contact } from '../../../interfaces/contact.interface';
-import { map } from 'rxjs/operators';
-import { Dialog } from '../../../shared/dialog/dialog';
+import { Component,ChangeDetectionStrategy,inject, signal,viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ListContact } from './list-contact/list-contact';
+import { FirebaseServices } from '../../../../firebase-services/firebase-services';
+import { Contact } from '../../../../interfaces/contact.interface';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-contacts',
-  standalone: true,
-  imports: [CommonModule, ListContact, SingleContact, Dialog, FormsModule],
-  templateUrl: './contacts.html',
-  styleUrl: './contacts.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-list-contact',
+  imports: [CommonModule,FormsModule],
+  templateUrl: './list-contact.html',
+  styleUrl: './list-contact.scss',
 })
-export class Contacts {
-  private readonly firebase = inject(FirebaseServices);
+export class ListContact {
 
-  @ViewChild('addDialog') addDialog!: Dialog;
+
+    private readonly firebase = inject(FirebaseServices);
+
 
   isDisplayed = true;
   isMediacheck = window.matchMedia('(max-width: 1050px)');
@@ -32,6 +28,7 @@ export class Contacts {
     phone: '',
     color: this.getColor(),
   });
+
 
   selectedContactId = signal<string | null>(null);
 
@@ -47,12 +44,12 @@ export class Contacts {
   }
 
   dnoneList(): void {
-    if (this.isMediacheck.matches && this.isDisplayed) {
-      this.isDisplayed = false;
-    } else {
-      return;
+      if (this.isMediacheck.matches && this.isDisplayed) {
+        this.isDisplayed = false;
+      } else {
+        return;
+      }
     }
-  }
 
   onSelectContact(id: string) {
     this.dnoneList();
@@ -62,6 +59,7 @@ export class Contacts {
   returnArrow(): void {
     this.isDisplayed = true;
   }
+
 
   private sortAndGroup(contacts: Contact[]): { letter: string; contacts: Contact[] }[] {
     const groups: Record<string, Contact[]> = {};
@@ -94,7 +92,6 @@ export class Contacts {
       phone: '',
       color: this.getColor(),
     });
-    this.addDialog.open();
   }
 
   async saveNewContact(): Promise<void> {
@@ -106,10 +103,9 @@ export class Contacts {
       name: data.name.trim(),
       email: data.email?.trim() ?? '',
       phone: data.phone?.trim() ?? '',
-      color: data.color ?? '#000',
+      color: data.color ?? '#000'
     });
 
-    this.addDialog.close();
   }
 
   private getColor(): string {
@@ -125,4 +121,5 @@ export class Contacts {
   private async loadLastUserColor() {
     this.lastUserColor = await this.firebase.getLastUserColor();
   }
+
 }
