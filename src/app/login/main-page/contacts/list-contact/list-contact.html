@@ -1,32 +1,33 @@
-<section class="main-area">
-  <article class="contacts-wrapper" [class.dflex]="isDisplayed" [class.dnone]="!isDisplayed">
-    <div class="button_container">
-      <button class="add-contact-btn text_4" (click)="onAddContact()" aria-label="Add a Contact">
-        Add new contact
-        <img class="add-contact-icon" src="/IMG/person_add.svg" alt="Add person icon" />
-      </button>
-    </div>
+<section class="contact_section">
+  <div class="button_container">
+    <button class="button_new_contact" (click)="onAddContact()" aria-label="Add a Contact">
+      Add new contact
+      <img class="sd" src="/IMG/person_add.svg" alt="Add person icon" />
+    </button>
+  </div>
 
-    <article class="contacts_area">
-      <div class="contact_box" *ngFor="let group of groupedContacts$ | async">
-        <div class="divider_area">
-          <span>{{ group.letter }}</span>
-          <div class="divider"> _______</div>
-        </div>
+  <article class="contacts_list">
+    <section class="contact_area" *ngFor="let group of groupedContacts$ | async">
+      <article class="divider_area">
+        <span>{{ group.letter }}</span>
+        <div class="divider">_______</div>
+      </article>
 
-        <div
-          class="contact_name"
-          *ngFor="let c of group.contacts"
-          (click)="onSelectContact(c.id)"
-          [class.active]="selectedContactId() === c.id"
-        >
-          <span class="initials" [style.backgroundColor]="c.color">{{ getInitials(c.name) }}</span>
+      <article
+        class="contact_group"
+        *ngFor="let c of group.contacts"
+        (click)="onSelectContact(c.id)"
+        [class.active]="selectedContactId() === c.id"
+      >
+        <div class="contact_single">
+          <span [style.backgroundColor]="c.color">{{ getInitials(c.name) }}</span>
+
           <div>
             <span>{{ c.name }}</span>
             <small>{{ c.email }}</small>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </section>
   </article>
 </section>
