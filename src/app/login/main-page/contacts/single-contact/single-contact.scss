@@ -18,18 +18,7 @@
 
 @media (max-width: 1050px) {
   .sc_information--active {
-    animation: sc-slide-in-mobile 280ms ease forwards;
-  }
-
-  @keyframes sc-slide-in-mobile {
-    from {
-      opacity: 0;
-      transform: translateY(1200px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    animation: none;
   }
 }
 

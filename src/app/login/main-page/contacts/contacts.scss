@@ -9,6 +9,11 @@
 }
 
 .list_contact {
+  @media (max-width: 1050px) {
+    &.d_none {
+      display: none;
+    }
+  }
 }
 .contact_view {
 }
@@ -18,8 +23,12 @@
   h1 {
     background: transparent;
   }
-  @media (max-width: 1250px) {
+  @media (max-width: 1050px) {
     display: none;
+
+    &.d_block {
+      display: block;
+    }
   }
 }
 
@@ -39,7 +48,7 @@
     font-weight: 400;
   }
 
-  @media (max-width: 1250px) {
+  @media (max-width: 1050px) {
     margin-top: 25px;
     h1 {
       font-size: 22px;

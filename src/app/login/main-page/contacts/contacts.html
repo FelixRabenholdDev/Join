@@ -1,9 +1,9 @@
 <section class="contact_section">
-  <article class="list_contact">
+  <article class="list_contact" [class.d_none]="selectedContactId()">
     <app-list-contact (contactSelected)="setSelectedContact($event)"> </app-list-contact>
   </article>
 
-  <article class="single_contact">
+  <article class="single_contact" [class.d_block]="selectedContactId()">
     <header class="sc_header">
       <h1>Contacts</h1>
       <div class="seperator"></div>
