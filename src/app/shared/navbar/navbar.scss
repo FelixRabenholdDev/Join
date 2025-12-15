@@ -64,13 +64,12 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-left: 32px;
     gap: 8px;
 
     > a {
       color: #a8a8a8;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
       transition: color 0.2s;
 
       &.active-link {
