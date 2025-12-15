@@ -1,5 +1,6 @@
-@import '../../styles/colors.scss';
-@import 'dialog_contact.scss';
+@use '../../styles/colors.scss';
+@use '../../styles/global-styles.scss';
+@use '../../shared/dialog/dialog_contact.scss';
 
 // Backdrop
 .backdrop {
@@ -21,7 +22,7 @@
   .dialog {
     max-height: none;
     height: auto;
-    background: $white;
+    background: colors.$white;
     border-radius: 40px;
     box-shadow: 0 14px 48px rgba(0, 0, 0, 0.18);
 
