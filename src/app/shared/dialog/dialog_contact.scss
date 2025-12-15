@@ -58,6 +58,11 @@
     }
     @media (max-width: 1050px) {
       width: 100%;
+      padding: 80px 40px 80px 40px;
+
+      img {
+        display: none;
+      }
     }
 
     .seperator {
@@ -96,7 +101,11 @@
   .mid_side {
     display: flex;
     align-items: center;
-    margin: 0 40px;
+    margin: 0 0px;
+    @media (max-width: 1200px) {
+      font-size: 20px;
+      margin: -60px 0px 0px 0px;
+    }
   }
 
   .right_side {
