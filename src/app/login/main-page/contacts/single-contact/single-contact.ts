@@ -7,32 +7,38 @@ import {
   input,
   ViewChild,
 } from '@angular/core';
-import { FirebaseServices } from '../../../../firebase-services/firebase-services';
-import { Contact } from '../../../../interfaces/contact.interface';
-import { Dialog } from '../../../../shared/dialog/dialog';
-import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { DialogEditContact } from './dialog-edit-contact/dialog-edit-contact';
+import { Contact } from '../../../../interfaces/contact.interface';
+import { FirebaseServices } from '../../../../firebase-services/firebase-services';
 
 @Component({
   selector: 'app-single-contact',
   standalone: true,
-  imports: [CommonModule, Dialog, FormsModule],
+  imports: [CommonModule,DialogEditContact, FormsModule],
   templateUrl: './single-contact.html',
   styleUrl: './single-contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleContact {
   contactId = input.required<string>();
-
   private readonly firebase = inject(FirebaseServices);
 
-  @ViewChild('editDialog') editDialog!: Dialog;
+  @ViewChild(DialogEditContact) dialogEditContact!: DialogEditContact;
 
-  editModel: Partial<Contact> = {};
-
-  readonly contact$ = computed<Observable<Contact | undefined>>(() =>
+  readonly contact$ = computed(() =>
     this.firebase.subSingleContact(this.contactId())
   );
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
   getInitials(name: string): string {
     const parts = name.trim().split(' ');
@@ -41,33 +47,15 @@ export class SingleContact {
     return first + last;
   }
 
-  openEdit(contact: Contact): void {
-    this.closeMenu();
-    this.editModel = { ...contact };
-    this.editDialog.open();
-  }
-
-  async saveEdit(): Promise<void> {
-    if (!this.editModel.id) return;
-    this.closeMenu();
-    await this.firebase.editContact(this.editModel as Contact);
-    this.editDialog.close();
-  }
-
   async deleteContact(): Promise<void> {
     const id = this.contactId();
     this.closeMenu();
     await this.firebase.deleteContact(id);
-    if (this.editDialog) {
-      this.editDialog.close();
-    }
   }
 
-  isMenuOpen = false;
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-  closeMenu(): void {
-    this.isMenuOpen = false;
+  openEdit(contact: Contact): void {
+    this.closeMenu();
+    this.dialogEditContact.editModel = { ...contact };
+    this.dialogEditContact.open();
   }
 }

@@ -1,1 +1,59 @@
-<p>dialog-edit-contact works!</p>
+<app-dialog #editDialog>
+     <article class="sc_dialog">
+
+      <button class="close" type="button" (click)="editDialog.close()">
+        <img src="/IMG/close.svg" alt="close dialog" />
+      </button>
+      <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
+      <div class="left_side">
+        <img src="IMG/Capa 1.png" alt="" />
+        <span>Edit contact</span>
+        <div class="seperator"></div>
+      </div>
+
+      <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
+      <div class="mid_side">
+        <span class="sc_logo" [style.background]="editModel.color">{{
+          getInitials(editModel.name || '')
+          }}</span>
+      </div>
+      <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
+      <div class="right_side">
+
+        <!-- ----------------------------- InputFields ----------------------------- -->
+        <article>
+          <form class="contact_form">
+            <label class="field">
+              <input #nameField="ngModel" [(ngModel)]="editModel.name" name="name" type="text" placeholder="Jane Doe"
+                required pattern="^[A-Za-zÄÖÜäöüß\-]{3,}\s[A-Za-zÄÖÜäöüß\-]{3,}$" />
+              <img src="IMG/person.svg" alt="" />
+            </label>
+            <p class="error-msg" *ngIf="nameField.invalid">"First and last name must contain at least 3 letters."</p>
+
+            <label class="field">
+              <input #emailField="ngModel" [(ngModel)]="editModel.email" name="email" type="email" required
+                pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@provider.com" />
+
+              <img src="IMG/mail.svg" alt="" />
+            </label>
+            <p class="error-msg" *ngIf="emailField.invalid">Email format is incorrect.</p>
+
+            <label class="field">
+              <input #phoneField="ngModel" [(ngModel)]="editModel.phone" name="tel" type="tel"
+                placeholder="+0 0000 000 00 0" required minlength="7" />
+              <img src="IMG/call.svg" alt="" />
+            </label>
+            <p class="error-msg" *ngIf="phoneField.invalid">The number format is incorrect.</p>
+          </form>
+        </article>
+
+        <div class="dialog_buttons">
+          <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
+          <button class="button_dark" type="button" (click)="saveEdit()">
+            <span>Save</span>
+            <img src="/IMG/check.svg" alt="check" />
+          </button>
+        </div>
+      </div>
+    </article>
+</app-dialog>
