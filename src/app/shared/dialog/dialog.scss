@@ -8,9 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: colors.$black;
+  background: rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  width: none;
   animation: fadeIn 300ms ease-out;
 
   &.closing {
