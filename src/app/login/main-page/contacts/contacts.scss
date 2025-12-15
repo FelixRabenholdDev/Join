@@ -1,4 +1,5 @@
-@import './../../../../styles.scss';
+
+@use '../../../styles/colors.scss';
 
 .contact_section {
   display: flex;
@@ -84,7 +85,7 @@
       display: block;
       width: 90px;
       height: 3px;
-      background-color: $buttonBlue;
+      background-color: colors.$buttonBlue;
       border: none;
       margin: 8px 0;
     }
@@ -102,12 +103,12 @@
 
 .seperator {
   height: 59px;
-  border: 2px solid $buttonBlue;
+  border: 2px solid colors.$buttonBlue;
 }
 
 .seperator_contacts {
   height: 1px;
-  background-color: $bgMiddleGrey;
+  background-color: colors.$bgMiddleGrey;
 }
 
 .return_button {

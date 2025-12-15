@@ -1,4 +1,5 @@
-@import './../../../styles.scss';
+
+@use './../../styles/colors.scss';
 
 main {
   display: flex;
@@ -6,11 +7,11 @@ main {
   align-items: center;
   height: 100vh;
   width: 234px;
-  background-color: $bgGrey;
+  background-color: colors.$bgGrey;;
   padding: 48px 0;
   box-sizing: border-box;
 
-  // Wrapper für Logo und Nav
+  
   > div {
     width: 100%;
     display: flex;
@@ -33,7 +34,7 @@ main {
     > a {
       display: flex;
       align-items: flex-start;
-      color: $white;
+      color: colors.$white;
       text-decoration: none;
       padding: 12px 0 12px 32px;
       width: 100%;
@@ -42,12 +43,12 @@ main {
       transition: background-color 0.2s ease-in-out;
 
       &.active-link {
-        background-color: $navBgActiveGrey;
+        background-color: colors.$navBgActiveGrey;
         pointer-events: none;
       }
 
       &:hover {
-        background-color: $navActive;
+        background-color: colors.$navActive;
       }
 
       > img {
@@ -73,12 +74,12 @@ main {
       transition: color 0.2s;
 
       &.active-link {
-        color: $white;
+        color: colors.$white;
         pointer-events: none;
       }
 
       &:hover {
-        color: $buttonBlue;
+        color: colors.$buttonBlue;
       }
     }
   }
@@ -130,7 +131,7 @@ main {
         }
 
         &.active-link {
-          background-color: $navBgActiveGrey;
+          background-color: colors.$navBgActiveGrey;
           pointer-events: none;
         }
 
