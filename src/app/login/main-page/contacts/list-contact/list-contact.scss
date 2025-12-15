@@ -126,6 +126,10 @@
       &.active {
         background: $bgGrey;
         color: $white;
+
+        @media (max-width: 1050px) {
+          background: transparent;
+        }
       }
 
       span {
