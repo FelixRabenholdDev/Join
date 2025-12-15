@@ -58,7 +58,9 @@ export class SingleContact {
     const id = this.contactId();
     this.closeMenu();
     await this.firebase.deleteContact(id);
-    this.editDialog.close();
+    if (this.editDialog) {
+      this.editDialog.close();
+    }
   }
 
   isMenuOpen = false;
