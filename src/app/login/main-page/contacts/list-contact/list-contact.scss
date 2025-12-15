@@ -119,13 +119,13 @@
       align-items: center;
 
       &:hover {
-        background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
-        color: black;
+        background: linear-gradient(180deg, $bgLightGrey 0%, $bgMiddleGrey 100%);
+        color: $black;
       }
 
       &.active {
-        background: rgba(42, 54, 71, 1);
-        color: white;
+        background: $bgGrey;
+        color: $white;
       }
 
       span {
