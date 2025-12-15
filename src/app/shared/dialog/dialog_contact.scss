@@ -64,6 +64,9 @@
         display: none;
       }
     }
+    @media (max-width: 500px) {
+      padding: 40px 24px;
+    }
 
     .seperator {
       height: 0px;
@@ -85,6 +88,9 @@
       @media (max-width: 1200px) {
         font-size: 40px;
       }
+      @media (max-width: 500px) {
+        font-size: 32px;
+      }
     }
 
     p {
@@ -94,6 +100,9 @@
       margin-top: 32px;
       @media (max-width: 1200px) {
         font-size: 20px;
+      }
+      @media (max-width: 500px) {
+        font-size: 16px;
       }
     }
   }
@@ -120,6 +129,9 @@
       padding: 40px 20px;
       align-items: center;
     }
+    @media (max-width: 500px) {
+      padding: 20px 16px;
+    }
   }
 
   form {
@@ -136,6 +148,9 @@
       padding: 13px 21px;
       width: 420px;
       transition: border-color 150ms ease;
+      @media (max-width: 500px) {
+        width: 100%;
+      }
 
       &:hover {
         border-color: $buttonBlue;
@@ -174,6 +189,9 @@
     display: flex;
     gap: 24px;
     white-space: nowrap;
+    @media (max-width: 500px) {
+      gap: 12px;
+    }
 
     .button_light {
       font-size: 20px;
