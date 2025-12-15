@@ -9,6 +9,7 @@
       opacity: 0;
       transform: translateX(1200px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -31,12 +32,12 @@
 
   .sc_menu {
     gap: 8px;
-    
+
     h2 {
       background: transparent;
     }
 
-    > div {
+    >div {
       display: flex;
       gap: 16px;
     }
@@ -85,7 +86,7 @@
   // Dann die kleinere Breite (überschreibt ggf. Werte)
   @media (max-width: 1050px) {
     h2 {
-      font-size: 36px; 
+      font-size: 36px;
     }
   }
 }
@@ -151,18 +152,19 @@
 /* -------------------------- Media for max 1050px -------------------------- */
 .circle_menu {
   display: none;
-  
+
   @media (max-width: 1050px) {
     display: grid;
     place-items: center;
     position: fixed;
     right: 32px;
-    bottom: 100px; // Sichtbar machen (war -200px)
+    bottom: 100px; 
     width: 56px;
     height: 56px;
     border: none;
     border-radius: 50%;
-    background-color: $buttonBlue;
+    color: $white;
+    background-color: $buttonGrey;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     padding: 0;
     cursor: pointer;
@@ -171,11 +173,12 @@
     img {
       width: 24px;
       height: 24px;
+      filter: brightness(0) invert(1);
     }
   }
 }
 
-.circle_menu + div {
+.circle_menu+div {
   display: none;
 
   @media (max-width: 1050px) {
