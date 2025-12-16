@@ -2,11 +2,11 @@
      <article class="sc_dialog">
 
       <button class="close" type="button" (click)="editDialog.close()">
-        <img src="/IMG/close.svg" alt="close dialog" />
+        <img src="/img/close.svg" alt="close dialog" />
       </button>
       <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
       <div class="left_side">
-        <img src="IMG/Capa 1.png" alt="" />
+        <img src="img/Capa 1.png" alt="" />
         <span>Edit contact</span>
         <div class="seperator"></div>
       </div>
@@ -26,7 +26,7 @@
             <label class="field">
               <input #nameField="ngModel" [(ngModel)]="editModel.name" name="name" type="text" placeholder="Jane Doe"
                 required pattern="^[A-Za-zÄÖÜäöüß\-]{3,}\s[A-Za-zÄÖÜäöüß\-]{3,}$" />
-              <img src="IMG/person.svg" alt="" />
+              <img src="img/person.svg" alt="" />
             </label>
             <p class="error-msg" *ngIf="nameField.invalid">"First and last name must contain at least 3 letters."</p>
 
@@ -34,14 +34,14 @@
               <input #emailField="ngModel" [(ngModel)]="editModel.email" name="email" type="email" required
                 pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@provider.com" />
 
-              <img src="IMG/mail.svg" alt="" />
+              <img src="img/mail.svg" alt="" />
             </label>
             <p class="error-msg" *ngIf="emailField.invalid">Email format is incorrect.</p>
 
             <label class="field">
               <input #phoneField="ngModel" [(ngModel)]="editModel.phone" name="tel" type="tel"
                 placeholder="+0 0000 000 00 0" required minlength="7" />
-              <img src="IMG/call.svg" alt="" />
+              <img src="img/call.svg" alt="" />
             </label>
             <p class="error-msg" *ngIf="phoneField.invalid">The number format is incorrect.</p>
           </form>
@@ -51,7 +51,7 @@
           <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
           <button class="button_dark" type="button" (click)="saveEdit()">
             <span>Save</span>
-            <img src="/IMG/check.svg" alt="check" />
+            <img src="/img/check.svg" alt="check" />
           </button>
         </div>
       </div>

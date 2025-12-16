@@ -17,11 +17,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 48px;
   }
 
   > div img {
     width: auto;
-    margin-bottom: 48px;
     object-fit: contain;
   }
 
@@ -33,30 +33,33 @@ main {
 
     > a {
       display: flex;
-      align-items: flex-start;
-      color: colors.$white;
+      align-items: center;
+      color: #a8a8a8;
       text-decoration: none;
-      padding: 12px 0 12px 32px;
+      padding: 12px 0 12px 25%;
       width: 100%;
       height: 46px;
       box-sizing: border-box;
       transition: background-color 0.2s ease-in-out;
+      > img {
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+        justify-content: center;
+        
+      }
 
       &.active-link {
         background-color: colors.$navBgActiveGrey;
         pointer-events: none;
+        color: colors.$white;
       }
 
       &:hover {
         background-color: colors.$navActive;
       }
 
-      > img {
-        width: 24px;
-        height: 24px;
-        margin-right: 16px;
-        object-fit: contain;
-      }
+    
     }
   }
 
