@@ -40,13 +40,13 @@ section {
     }
 
     a {
-      display: inline-block;
-      cursor: pointer;
+      
+      
 
       svg {
-        display: block;
-        width: 32px;
-        height: 32px;
+        
+        width: 20px;
+        height: 20px;
         
         
         
@@ -61,20 +61,17 @@ section {
         transform-box: fill-box;
         transform-origin: center;
         transition: transform 0.2s;
+        cursor: pointer;
       }
 
-      img.help-icon {
-        display: block;
-        width: 32px;
-        height: 32px;
-        transition: transform 0.2s;
-      }
+
     }
 
     > .icons {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
     }
 
     svg {
@@ -82,20 +79,22 @@ section {
       rect:hover {
         cursor: pointer;
         fill: #d7d3d3;
-        pointer-events: none;
+        pointer-events: all;
+        
       }
 
       path,
       circle {
         pointer-events: none;
+        &:hover{
+          fill: #d7d3d3;
+        }
       }
     }
   }
 }
 
-.menu-icon {
-  cursor: pointer;
-}
+
 
 .menu,
 .menu-mobil {
