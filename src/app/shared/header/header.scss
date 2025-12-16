@@ -47,9 +47,9 @@ section {
         display: block;
         width: 32px;
         height: 32px;
-        transition: transform 0.2s;
-        transform-box: fill-box;
-        transform-origin: center;
+        
+        
+        
 
         path {
           pointer-events: none;
@@ -57,7 +57,10 @@ section {
       }
 
       &:hover svg path.help-icon {
-        transform: scale(1.1);
+        transform: scale(1.1, 1.1);
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.2s;
       }
 
       img.help-icon {
@@ -75,9 +78,11 @@ section {
     }
 
     svg {
+      
       rect:hover {
         cursor: pointer;
         fill: #d7d3d3;
+        pointer-events: none;
       }
 
       path,
