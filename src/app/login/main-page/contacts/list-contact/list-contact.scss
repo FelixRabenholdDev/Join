@@ -72,6 +72,10 @@
   padding-right: 8px;
   max-height: calc(100vh - 100px);
 
+  @media (max-width: 1150px) {
+    max-width: 380px;
+  }
+
   @media (max-width: 1050px) {
     z-index: auto;
     width: 100%;
@@ -92,6 +96,10 @@
     display: flex;
     justify-content: center;
 
+    @media (max-width: 1150px) {
+    padding: 14px;
+    }
+
     @media (max-width: 1050px) {
       display: none;
     }
@@ -110,6 +118,10 @@
       gap: 8px;
       font-size: 21px;
       font-weight: 700;
+
+      @media (max-width: 1150px) {
+        width: 280px;
+      }
 
       &:hover {
         background-color: colors.$buttonBlue;
