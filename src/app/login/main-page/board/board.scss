@@ -8,12 +8,12 @@
   display: flex;
   justify-content: space-between;
 
-  >span {
+  > span {
     font-weight: 700;
     font-size: 61px;
     color: #000000;
   }
-  div{
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,16 +42,27 @@
   justify-content: space-between;
 
   .area_tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
+      padding: 8px;
       span {
         font-weight: 700;
         font-size: 20px;
 
         color: #42526e;
       }
+    }
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .no_task {
