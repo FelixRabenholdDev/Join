@@ -1,0 +1,44 @@
+.task_preview {
+  display: flex;
+  flex-direction: column;
+  max-width: 260px;
+  padding: 12px;
+  gap: 8px;
+  background-color: white;
+  border-radius: 24px;
+  .task_tag {
+    background-color: blue;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    width: fit-content;
+    border-radius: 8px;
+  }
+
+  .task_title {
+    font-weight: 700;
+    font-size: 16px;
+
+    color: #2a3647;
+  }
+
+  .task_content {
+    font-weight: 400;
+    font-size: 16px;
+    color: #a8a8a8;
+  }
+}
+
+.area_progress {
+  display: flex;
+  justify-content: space-between;
+  div {
+    color: blue;
+  }
+}
+
+.area_prio{
+    display: flex;
+    justify-content: space-between;
+}
