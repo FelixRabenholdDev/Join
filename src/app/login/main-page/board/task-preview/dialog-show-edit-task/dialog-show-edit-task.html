@@ -1,102 +1,43 @@
-<div class="task_overlay_background">
-    <div class="task_card">
+<app-dialog>
+  <section>
+    <header>
+      <span>User Story</span>
+      <button>X</button>
+    </header>
 
-        <!-- Header Area: Category & Close -->
-        <div class="header_area">
-            <div class="category_label" style="background-color: #0038FF;">
-                User Story
-            </div>
-            <button class="close_button">
-                <img src="assets/img/close.svg" alt="Close Task">
-            </button>
-        </div>
+    <span>Kochwelt Page & Recipe Recommender</span>
+    <small>Build start page with recipe recommendation.</small>
 
-        <!-- Title & Description -->
-        <h1 class="title_text">Kochwelt Page & Recipe Recommender</h1>
-        <p class="description_text">Build start page with recipe recommendation.</p>
-
-        <!-- Meta Details: Due Date & Priority -->
-        <div class="details_row">
-            <span class="label_text">Due date:</span>
-            <span class="value_text">10/05/2023</span>
-        </div>
-
-        <div class="details_row">
-            <span class="label_text">Priority:</span>
-            <div class="priority_badge">
-                <span>Medium</span>
-                <img src="assets/img/prio_medium_icon.svg" alt="Priority Medium">
-            </div>
-        </div>
-
-        <!-- Assigned To Section -->
-        <div class="assigned_section">
-            <span class="label_text">Assigned To:</span>
-            
-            <div class="assignee_list">
-                <!-- Example Assignee 1 -->
-                <div class="assignee_row">
-                    <div class="profile_group">
-                        <div class="profile_circle" style="background-color: #1FD7C1;">EM</div>
-                        <span class="assignee_name">Anton Mayer</span>
-                    </div>
-                </div>
-
-                <!-- Example Assignee 2 -->
-                <div class="assignee_row">
-                    <div class="profile_group">
-                        <div class="profile_circle" style="background-color: #462F8A;">MB</div>
-                        <span class="assignee_name">Anton Mayer</span>
-                    </div>
-                </div>
-
-                <!-- Example Assignee 3 -->
-                <div class="assignee_row">
-                    <div class="profile_group">
-                        <div class="profile_circle" style="background-color: #0038FF;">AM</div>
-                        <span class="assignee_name">Anton Mayer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subtasks Section -->
-        <div class="subtasks_section">
-            <span class="label_text">Subtasks</span>
-            
-            <div class="subtask_list">
-                <div class="subtask_row">
-                    <div class="checkbox_custom">
-                        <img src="assets/img/check_icon.svg" alt="Check">
-                    </div>
-                    <span class="subtask_text">Contact Form</span>
-                </div>
-
-                <div class="subtask_row">
-                    <div class="checkbox_custom"></div>
-                    <span class="subtask_text">Contact Form</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Buttons (Delete / Edit) -->
-        <div class="actions_area">
-            <button class="action_button delete_button">
-                <div class="icon_wrapper">
-                    <img src="assets/img/delete.svg" alt="Delete">
-                </div>
-                <span>Delete</span>
-            </button>
-
-            <div class="separator_line"></div>
-
-            <button class="action_button edit_button">
-                <div class="icon_wrapper">
-                    <img src="assets/img/edit.svg" alt="Edit">
-                </div>
-                <span>Edit</span>
-            </button>
-        </div>
-
+    <div>
+      <p>
+        <span>Due date:</span>
+        <span>10/05/2023</span>
+      </p>
+      <p>
+        <span>Priority</span>
+        <span>Medium</span>
+      </p>
     </div>
-</div>
+    <span>Assigned To:</span>
+    <div>
+      <p><span>EM</span><span>Emmanuel Mauert</span></p>
+      <p><span>MB</span><span>Marcel Bauer</span></p>
+      <p><span>M</span><span>Anton Myer</span></p>
+    </div>
+    <span>Subtasks</span>
+    <div>
+      <p>
+        <span>?</span>
+        <span>implement Recipe Recommendation</span>
+      </p>
+      <p>
+        <span>?</span>
+        <span>Start Page Layout</span>
+      </p>
+    </div>
+  </section>
+  <footer>
+    <button>Delete</button>
+    <button>Edit</button>
+  </footer>
+</app-dialog>
