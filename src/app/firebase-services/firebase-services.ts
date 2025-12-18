@@ -8,7 +8,7 @@ import {
   getDoc,
   addDoc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Contact } from '../interfaces/contact.interface';
@@ -18,12 +18,10 @@ import { TaskType } from '../types/task-type';
 @Injectable({
   providedIn: 'root',
 })
-
 export class FirebaseServices {
-
   private readonly firestore = inject(Firestore);
 
-  private settingsDoc = doc(this.firestore, 'appSettings/contacts');  
+  private settingsDoc = doc(this.firestore, 'appSettings/contacts');
 
   /* ================================CONTACTS================================= */
 
@@ -43,7 +41,7 @@ export class FirebaseServices {
       name: data.name ?? '',
       email: data.email ?? '',
       phone: data.phone ?? '',
-      color: data.color ?? ''
+      color: data.color ?? '',
     };
   }
 
@@ -70,18 +68,6 @@ export class FirebaseServices {
 
     const ref = doc(this.firestore, `contacts/${contactId}`);
     await deleteDoc(ref);
-  }
-
-  async getLastUserColor(): Promise<number> {
-    const snap = await getDoc(this.settingsDoc);
-
-    return snap.exists() ? snap.data()['lastUserColor'] ?? 0 : 0;
-  }
-
-  async setLastUserColor(index: number): Promise<void> {
-    await updateDoc(this.settingsDoc, {
-      lastUserColor: index,
-    });
   }
 
   /* ================================TASKS================================= */
@@ -117,5 +103,53 @@ export class FirebaseServices {
   async deleteTask(taskId: string): Promise<void> {
     const ref = doc(this.firestore, `tasks/${taskId}`);
     await deleteDoc(ref);
+  }
+
+  /* ========================== TASK SUBCOLLECTIONS ========================== */
+
+  subTaskAssigns(taskId: string): Observable<any[]> {
+    const ref = collection(this.firestore, `tasks/${taskId}/assigns`);
+    return collectionData(ref, { idField: 'id' });
+  }
+
+  async addTaskAssign(taskId: string, assign: any): Promise<void> {
+    const ref = collection(this.firestore, `tasks/${taskId}/assigns`);
+    await addDoc(ref, assign);
+  }
+
+  async deleteTaskAssign(taskId: string, assignId: string): Promise<void> {
+    const ref = doc(this.firestore, `tasks/${taskId}/assigns/${assignId}`);
+    await deleteDoc(ref);
+  }
+
+  subSubtasks(taskId: string): Observable<any[]> {
+    const ref = collection(this.firestore, `tasks/${taskId}/subtasks`);
+    return collectionData(ref, { idField: 'id' });
+  }
+
+  async addSubtask(taskId: string, subtask: any): Promise<void> {
+    const ref = collection(this.firestore, `tasks/${taskId}/subtasks`);
+    await addDoc(ref, subtask);
+  }
+
+  async editSubtask(taskId: string, subtaskId: string, data: any): Promise<void> {
+    const ref = doc(this.firestore, `tasks/${taskId}/subtasks/${subtaskId}`);
+    await updateDoc(ref, data);
+  }
+
+  async deleteSubtask(taskId: string, subtaskId: string): Promise<void> {
+    const ref = doc(this.firestore, `tasks/${taskId}/subtasks/${subtaskId}`);
+    await deleteDoc(ref);
+  }
+
+  /* ================================ SETTINGS =============================== */
+
+  async getLastUserColor(): Promise<number> {
+    const snap = await getDoc(this.settingsDoc);
+    return snap.exists() ? snap.data()['lastUserColor'] ?? 0 : 0;
+  }
+
+  async setLastUserColor(index: number): Promise<void> {
+    await updateDoc(this.settingsDoc, { lastUserColor: index });
   }
 }
