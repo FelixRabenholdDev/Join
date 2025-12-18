@@ -1,366 +1,118 @@
-.task_overlay_background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); // Optional backdrop
-    z-index: 1000;
+.dialog_showedit {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 4px;
+  width: 440px; // evt habt ihr tipps zur breite?
 }
 
-.task_card {
-    /* Auto layout properties */
+header {
+  display: flex;
+  justify-content: space-between;
+
+  span {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end; // Aligns the action buttons to the right
-    padding: 48px 40px;
-    gap: 24px;
-
-    position: relative;
-    width: 525px;
-    // height: 931px; // Removed fixed height to allow content to grow naturally
-    max-height: 90vh;
-    overflow-y: auto;
-
-    background: #FFFFFF;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
-    border-radius: 30px;
-
-    /* Scrollbar styling if needed */
-    &::-webkit-scrollbar {
-        width: 0;
-        display: none;
-    }
-}
-
-/* --- Header Area --- */
-.header_area {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px;
+    padding: 4px 24px;
     gap: 10px;
-    width: 100%;
-    align-self: stretch;
 
-    .category_label {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 4px 24px;
-        gap: 10px;
-        border-radius: 8px;
-
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 23px;
-        line-height: 120%;
-        color: #FFFFFF;
-    }
-
-    .close_button {
-        width: 32px;
-        height: 32px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        img {
-            width: 24px;
-            height: 24px;
-        }
-
-        &:hover {
-            background-color: #f0f0f0;
-            border-radius: 50%;
-        }
-    }
+    color: white;
+    background: #0038ff;
+    border-radius: 8px;
+  }
 }
 
-/* --- Typography --- */
-.title_text {
-    width: 100%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
+.area_title {
+  display: flex;
+  flex-direction: column;
+  .task_title {
     font-weight: 700;
     font-size: 61px;
-    line-height: 120%;
-    color: #000000;
-    margin: 0;
-    align-self: stretch;
-}
+  }
 
-.description_text {
-    width: 100%;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
+  .task_description {
     font-weight: 400;
     font-size: 20px;
-    line-height: 120%;
-    color: #000000;
-    margin: 0;
-    align-self: stretch;
+  }
 }
 
-/* --- Meta Details (Due Date, Priority) --- */
-.details_row {
-    display: flex;
-    flex-direction: row;
-    align-items: center; // Changed to center for better alignment with badges
-    padding: 0px;
-    gap: 25px;
-    width: 100%;
-    align-self: stretch;
-
-    .label_text {
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 120%;
-        color: #2A3647;
-        min-width: 80px; // Ensures alignment
-    }
-
-    .value_text {
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 120%;
-        color: #000000;
-    }
-
-    .priority_badge {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 4px 18px;
-        gap: 10px;
-        border-radius: 10px;
-        // background-color depends on priority, usually handled dynamically or via class
-        
-        span {
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 120%;
-            color: #000000;
-        }
-
-        img {
-            width: 17px;
-            height: auto;
-        }
-    }
+.task_info {
+  display: flex;
+  justify-content: space-between;
+  span:nth-child(1) {
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(66, 82, 110, 1);
+  }
+  span:nth-child(2) {
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+  }
 }
 
-/* --- Assigned Section --- */
-.assigned_section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
-    width: 100%;
-    align-self: stretch;
-
-    .label_text {
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 120%;
-        color: #2A3647;
-    }
-
-    .assignee_list {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-        width: 100%;
-    }
-
-    .assignee_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 7px 16px;
-        gap: 16px;
-        width: 100%;
-        border-radius: 10px;
-        box-sizing: border-box;
-
-        &:hover {
-            background-color: #f0f0f0; // Optional hover effect
-        }
-
-        .profile_group {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .profile_circle {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 45px;
-            border: 2px solid #FFFFFF;
-            
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 16px;
-            color: #FFFFFF;
-        }
-
-        .assignee_name {
-            font-family: 'Open Sans', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 19px;
-            line-height: 120%;
-            color: #000000;
-        }
-    }
+.assigned_title {
+  font-weight: 400;
+  font-size: 20px;
+  color: #2a3647;
 }
 
-/* --- Subtasks Section --- */
-.subtasks_section {
+.area_assigned {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+
+  p {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
-    width: 100%;
-    align-self: stretch;
-
-    .label_text {
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 120%;
-        color: #2A3647;
-    }
-
-    .subtask_list {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-        width: 100%;
-    }
-
-    .subtask_row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 6px 16px;
-        gap: 16px;
-        width: 100%;
-        box-sizing: border-box;
-
-        &:hover {
-            background-color: #f0f0f0; // Optional hover
-            border-radius: 8px;
-        }
-
-        .checkbox_custom {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #2A3647;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            img {
-                width: 12px;
-                height: auto;
-            }
-        }
-
-        .subtask_text {
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 120%;
-            color: #000000;
-        }
-    }
-}
-
-/* --- Actions Area (Footer) --- */
-.actions_area {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end; // Aligns to the right as per parent flex-end
     align-items: center;
-    padding: 0px;
+    gap: 16px;
+    padding: 7px 16px;
+    border-radius: 10px;
+    margin: 0;
+
+    span:nth-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 400;
+      background-color: green;
+    }
+
+    span:nth-child(2) {
+      font-size: 19px;
+      font-weight: 400;
+      color: #000000;
+    }
+  }
+}
+
+.subtasks_title {
+  font-weight: 400;
+  font-size: 20px;
+  color: #2a3647;
+}
+
+.subtasks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+
+  p {
+    display: flex;
     gap: 8px;
-    margin-top: auto; // Pushes to bottom if height is fixed
+  }
+}
 
-    .action_button {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-        gap: 8px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        
-        font-family: 'Inter', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 120%;
-        color: #2A3647;
-
-        .icon_wrapper {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            img {
-                // Adjust icon color via filter if needed, or use SVG fill
-            }
-        }
-
-        &:hover {
-            font-weight: 700; // Simple hover effect
-            color: #29abe2; // Example hover color
-            
-            .icon_wrapper img {
-                // filter: ... (to change icon color on hover)
-            }
-        }
-    }
-
-    .separator_line {
-        width: 1px;
-        height: 24px;
-        background-color: #D1D1D1;
-    }
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }

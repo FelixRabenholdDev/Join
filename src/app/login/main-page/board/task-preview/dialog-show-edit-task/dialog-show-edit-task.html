@@ -1,31 +1,33 @@
 <app-dialog>
-  <section>
+  <section class="dialog_showedit">
     <header>
       <span>User Story</span>
       <button>X</button>
     </header>
 
-    <span>Kochwelt Page & Recipe Recommender</span>
-    <small>Build start page with recipe recommendation.</small>
+    <p class="area_title">
+      <span class="task_title">Kochwelt Page & Recipe Recommender</span>
+      <small class="task_description">Build start page with recipe recommendation.</small>
+    </p>
 
-    <div>
-      <p>
+      <p class="task_info">
         <span>Due date:</span>
         <span>10/05/2023</span>
       </p>
-      <p>
+      <p class="task_info">
         <span>Priority</span>
         <span>Medium</span>
       </p>
-    </div>
-    <span>Assigned To:</span>
-    <div>
+    
+    <span class="assigned_title">Assigned To:</span>
+    <div class="area_assigned">
       <p><span>EM</span><span>Emmanuel Mauert</span></p>
       <p><span>MB</span><span>Marcel Bauer</span></p>
       <p><span>M</span><span>Anton Myer</span></p>
     </div>
-    <span>Subtasks</span>
-    <div>
+
+    <span class="subtasks_title">Subtasks</span>
+    <div class="subtasks">
       <p>
         <span>?</span>
         <span>implement Recipe Recommendation</span>
@@ -35,9 +37,9 @@
         <span>Start Page Layout</span>
       </p>
     </div>
+    <footer>
+      <button>Delete</button>
+      <button>Edit</button>
+    </footer>
   </section>
-  <footer>
-    <button>Delete</button>
-    <button>Edit</button>
-  </footer>
 </app-dialog>
