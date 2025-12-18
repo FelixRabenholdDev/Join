@@ -1,3 +1,73 @@
+// TEST Drag&Drop ...
+.drag-test-box {
+  // Box definieren
+  width: 200px;
+  height: 100px;
+  background-color: #e3e3e3;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 500;
+  // Cursor becomes a open hand ...
+  cursor: grab;
+
+  &.drag-test-box:active {
+    // Cursor becomes an accessing hand when dragging ...
+    cursor: grabbing;
+  }
+}
+
+/* ======================================= */
+/* KANBAN – BASIC STRUCTURE (STEP 2A) */
+/* ======================================= */
+
+.board_columns {
+  display: flex;
+  gap: 16px;
+}
+
+.board_column {
+  width: 260px;
+  background-color: #f4f5f7;
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.column_title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.column_drop_area {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task_card {
+  padding: 12px;
+  background-color: yellow;
+  border-radius: 12px;
+  cursor: grab;
+}
+
+.task_card:active {
+  cursor: grabbing;
+}
+
+
+// #################################################################
+// #################################################################
+// #################################################################
+
+
 .task_preview {
   display: flex;
   flex-direction: column;
@@ -6,7 +76,7 @@
   gap: 8px;
   background-color: white;
   border-radius: 24px;
-  
+
   .task_tag {
     background-color: blue;
     color: white;
@@ -34,12 +104,13 @@
 .area_progress {
   display: flex;
   justify-content: space-between;
+
   div {
     color: blue;
   }
 }
 
-.area_prio{
-    display: flex;
-    justify-content: space-between;
+.area_prio {
+  display: flex;
+  justify-content: space-between;
 }
