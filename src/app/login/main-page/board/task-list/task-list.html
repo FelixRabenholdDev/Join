@@ -1,0 +1,78 @@
+<!-- ===================================== -->
+<!-- KANBAN – BASIC DRAG & DROP (TEST) -->
+<!-- ===================================== -->
+
+<div class="board_columns" cdkDropListGroup>
+
+    <!-- TO DO -->
+    <div class="board_column">
+        <span class="column_title">To do</span>
+
+        <div class="column_drop_area" cdkDropList [cdkDropListData]="todoTasks" (cdkDropListDropped)="drop($event)">
+            <div class="task_card" *ngFor="let task of todoTasks" cdkDrag>
+                {{ task }}
+            </div>
+        </div>
+    </div>
+
+    <!-- IN PROGRESS -->
+    <div class="board_column">
+        <span class="column_title">In progress</span>
+
+        <div class="column_drop_area" cdkDropList [cdkDropListData]="inProgressTasks"
+            (cdkDropListDropped)="drop($event)">
+            <div class="task_card" *ngFor="let task of inProgressTasks" cdkDrag>
+                {{ task }}
+            </div>
+        </div>
+    </div>
+
+    <!-- AWAIT FEEDBACK -->
+    <div class="board_column">
+        <span class="column_title">Await feedback</span>
+
+        <div class="column_drop_area" cdkDropList [cdkDropListData]="awaitFeedbackTasks"
+            (cdkDropListDropped)="drop($event)">
+            <div class="task_card" *ngFor="let task of awaitFeedbackTasks" cdkDrag>
+                {{ task }}
+            </div>
+        </div>
+    </div>
+
+    <!-- DONE -->
+    <div class="board_column">
+        <span class="column_title">Done</span>
+
+        <div class="column_drop_area" cdkDropList [cdkDropListData]="doneTasks" (cdkDropListDropped)="drop($event)">
+            <div class="task_card" *ngFor="let task of doneTasks" cdkDrag>
+                {{ task }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- PLATZHALTER – bleibt vorerst bestehen -->
+<!-- ===================================== -->
+
+<br><br><br><br>
+
+<section class="task_preview">
+    <span class="task_tag">User Story</span>
+    <span class="task_title">Kochwelt Page & Recipe Recommender</span>
+    <span class="task_content">Build start page with resipe recommendation</span>
+
+    <article class="area_progress">
+        <div>completion Bar</div>
+        <span>1/2</span>
+        <span>Subtasks</span>
+    </article>
+
+    <article class="area_prio">
+        <div>kreise</div>
+        <div>Prio</div>
+    </article>
+</section>
+
+<!-- <app-dialog-show-edit-task></app-dialog-show-edit-task> -->
