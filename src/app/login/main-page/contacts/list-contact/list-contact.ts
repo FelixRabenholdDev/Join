@@ -16,7 +16,7 @@ import { DialogAddNewContact } from './dialog-add-new-contact/dialog-add-new-con
 export class ListContact {
 
   @Output() contactSelected = new EventEmitter<string>();
-  @ViewChild('DialogAddNewContact') DialogAddNewContact!: Dialog;
+  @ViewChild(DialogAddNewContact) DialogAddNewContact!: Dialog;
 
     private readonly firebase = inject(FirebaseServices);
 

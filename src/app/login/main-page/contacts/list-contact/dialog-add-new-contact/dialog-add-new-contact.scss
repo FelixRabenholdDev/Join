@@ -149,14 +149,15 @@
     }
 
     .sc_logo,
-    img {
+    svg {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       border: 3px solid colors.$white;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+      fill: colors.$white;
       object-fit: cover;
-      background-color: colors.$bgGrey;
+      background-color: colors.$bgMiddleGrey;
 
       display: flex;
       justify-content: center;

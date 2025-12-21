@@ -24,7 +24,7 @@ export class DialogAddNewContact {
   private readonly firebase = inject(FirebaseServices);
 
   @Output() contactSelected = new EventEmitter<string>();
-  @ViewChild('addDialog') addDialog!: Dialog;
+  @ViewChild('DialogAddNewContact') addDialog!: Dialog;
 
   editModel: Partial<Contact> = {};
   formModel = signal<Partial<Contact>>({
@@ -46,9 +46,9 @@ export class DialogAddNewContact {
     return first + last;
   }
 
-  // open() {
-  //   this.addDialog.open();
-  // }
+  open() {
+    this.addDialog.open();
+  }
 
   // close() {
   //   this.addDialog.close();
