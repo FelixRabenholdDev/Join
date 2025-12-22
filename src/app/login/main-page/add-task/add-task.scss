@@ -212,6 +212,9 @@
           align-items: center;
           padding: 5px 0;
           font-size: 20px;
+          &:hover{
+            background-color: colors.$bgLightGrey;
+          }
 
           input[type="checkbox"] {
             width: 18px;
@@ -256,7 +259,7 @@
 
 .subtask_list {
   &:hover{
-background-color: colors.$bgMiddleGrey;
+background-color: colors.$bgLightGrey;
     cursor: pointer;
   }
   input{
