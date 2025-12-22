@@ -1,17 +1,10 @@
 <app-dialog #editDialog>
   <article class="sc_dialog">
     <button class="close" type="button" (click)="editDialog.close()" aria-label="Close dialog">
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
-          fill="currentColor"
-        />
+          fill="currentColor" />
       </svg>
     </button>
     <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
@@ -25,91 +18,56 @@
     <div class="mid_side">
       <span class="sc_logo" [style.background]="editModel.color">{{
         getInitials(editModel.name || '')
-      }}</span>
+        }}</span>
     </div>
     <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
     <div class="right_side">
       <!-- ----------------------------- InputFields ----------------------------- -->
-      
-        <form class="contact_form" (ngSubmit)="saveEdit(contactForm)" #contactForm="ngForm">
-          <label class="field">
-            <input
-              #nameField="ngModel"
-              [(ngModel)]="editModel.name"
-              name="name"
-              type="text"
-              placeholder="Jane Doe"
-              required
-              pattern="^[A-Za-zÄÖÜäöüß\-]{3,}\s[A-Za-zÄÖÜäöüß\-]{3,}$"
-            />
-            <img src="img/person.svg" alt="" />
-          </label>
-          <p class="error-msg" *ngIf="nameField.invalid">
-            "First and last name must contain at least 3 letters."
-          </p>
 
-          <label class="field">
-            <input
-              #emailField="ngModel"
-              [(ngModel)]="editModel.email"
-              name="email"
-              type="email"
-              required
-              pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$"
-              placeholder="example@provider.com"
-            />
+      <form class="contact_form" (ngSubmit)="saveEdit(contactForm)" #contactForm="ngForm">
+        <label class="field">
+          <input #nameField="ngModel" [(ngModel)]="editModel.name" name="name" type="text" placeholder="Jane Doe"
+            required pattern="^[A-Za-zÄÖÜäöüß\-]{3,}\s[A-Za-zÄÖÜäöüß\-]{3,}$" />
+          <img src="img/person.svg" alt="" />
+        </label>
+        <p class="error-msg" *ngIf="nameField.invalid">
+          "First and last name must contain at least 3 letters."
+        </p>
 
-            <img src="img/mail.svg" alt="" />
-          </label>
-          <p class="error-msg" *ngIf="emailField.invalid">Email format is incorrect.</p>
+        <label class="field">
+          <input #emailField="ngModel" [(ngModel)]="editModel.email" name="email" type="email" required
+            pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@provider.com" />
 
-          <label class="field">
-            <input
-              #phoneField="ngModel"
-              [(ngModel)]="editModel.phone"
-              name="tel"
-              type="tel"
-              placeholder="+0 0000 000 00 0"
-              required
-              minlength="7"
-            />
-            <img src="img/call.svg" alt="" />
-          </label>
-          <p class="error-msg" *ngIf="phoneField.invalid">The number format is incorrect.</p>
-        
-      
-      <div class="dialog_buttons"> <!-- Buttons sind jetzt Teil des Forms -->
-        <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
-        <button class="button_dark" type="submit" [disabled]="!contactForm.valid">
-          <span>Save</span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <mask
-              id="mask0_408622_6825"
-              style="mask-type: alpha"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="24"
-              height="24"
-            >
-              <rect width="24" height="24" fill="#D9D9D9" />
-            </mask>
-            <g mask="url(#mask0_408622_6825)">
-              <path
-                d="M9.55057 15.15L18.0256 6.675C18.2256 6.475 18.4631 6.375 18.7381 6.375C19.0131 6.375 19.2506 6.475 19.4506 6.675C19.6506 6.875 19.7506 7.1125 19.7506 7.3875C19.7506 7.6625 19.6506 7.9 19.4506 8.1L10.2506 17.3C10.0506 17.5 9.81724 17.6 9.55057 17.6C9.28391 17.6 9.05057 17.5 8.85057 17.3L4.55057 13C4.35057 12.8 4.25474 12.5625 4.26307 12.2875C4.27141 12.0125 4.37557 11.775 4.57557 11.575C4.77557 11.375 5.01307 11.275 5.28807 11.275C5.56307 11.275 5.80057 11.375 6.00057 11.575L9.55057 15.15Z"
-                fill="white"
-              />
-            </g>
-          </svg>
-        </button>
-      </div>
-    </form>
+          <img src="img/mail.svg" alt="" />
+        </label>
+        <p class="error-msg" *ngIf="emailField.invalid">Email format is incorrect.</p>
+
+        <label class="field">
+          <input #phoneField="ngModel" [(ngModel)]="editModel.phone" name="tel" type="tel"
+            placeholder="+0 0000 000 00 0" required minlength="7" />
+          <img src="img/call.svg" alt="" />
+        </label>
+        <p class="error-msg" *ngIf="phoneField.invalid">The number format is incorrect.</p>
+
+
+        <div class="dialog_buttons"> <!-- Buttons sind jetzt Teil des Forms -->
+          <button class="button_light" type="button" (click)="deleteContact()">Delete</button>
+          <button class="button_dark" type="submit" [disabled]="!contactForm.valid">
+            <span>Save</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="mask0_408622_6825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_408622_6825)">
+                <path
+                  d="M9.55057 15.15L18.0256 6.675C18.2256 6.475 18.4631 6.375 18.7381 6.375C19.0131 6.375 19.2506 6.475 19.4506 6.675C19.6506 6.875 19.7506 7.1125 19.7506 7.3875C19.7506 7.6625 19.6506 7.9 19.4506 8.1L10.2506 17.3C10.0506 17.5 9.81724 17.6 9.55057 17.6C9.28391 17.6 9.05057 17.5 8.85057 17.3L4.55057 13C4.35057 12.8 4.25474 12.5625 4.26307 12.2875C4.27141 12.0125 4.37557 11.775 4.57557 11.575C4.77557 11.375 5.01307 11.275 5.28807 11.275C5.56307 11.275 5.80057 11.375 6.00057 11.575L9.55057 15.15Z"
+                  fill="white" />
+              </g>
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
   </article>
 </app-dialog>

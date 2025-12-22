@@ -9,7 +9,7 @@ import { DialogAddNewContact } from './dialog-add-new-contact/dialog-add-new-con
 
 @Component({
   selector: 'app-list-contact',
-  imports: [CommonModule, FormsModule, Dialog, DialogAddNewContact],
+  imports: [CommonModule, FormsModule, DialogAddNewContact],
   templateUrl: './list-contact.html',
   styleUrl: './list-contact.scss',
 })
@@ -42,10 +42,6 @@ export class ListContact {
   readonly groupedContacts$ = this.firebase
     .subContactsList()
     .pipe(map((contacts: Contact[]) => this.sortAndGroup(contacts)));
-
-  // constructor() {
-  //   this.loadLastUserColor();
-  // }
 
   dnoneList(): void {
       if (this.isMediacheck.matches && this.isDisplayed) {
@@ -125,10 +121,6 @@ export class ListContact {
     this.DialogAddNewContact.close();
     this.writeConfirmation();
   }
-
-  // private async loadLastUserColor() {
-  //   this.lastUserColor = await this.firebase.getLastUserColor();
-  // }
 
   writeConfirmation(): void {
     const container = document.querySelector('.confirmation_container') as HTMLElement;

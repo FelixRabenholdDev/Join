@@ -50,11 +50,6 @@ export class DialogAddNewContact {
     this.addDialog.open();
   }
 
-  // close() {
-  //   this.addDialog.close();
-  // }
-
-
   async saveNewContact(form: NgForm): Promise<void> {
     if (!form.valid) return;
     const data = this.formModel();

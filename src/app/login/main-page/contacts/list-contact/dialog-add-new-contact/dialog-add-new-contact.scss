@@ -49,6 +49,10 @@
       &:hover {
         background-color: colors.$bgMiddleGrey;
         transition: background-color 150ms ease-in-out;
+
+        @media (max-width: 1050px) {
+          display: none;
+        }
       }
 
       @media (max-width: 1050px) {
@@ -56,6 +60,11 @@
         right: 24px;
         color: colors.$white;
         z-index: 11;
+
+         .active{
+          background-color: colors.$buttonBlue;
+          transition: background-color 150ms ease-in-out;
+        }
       }
 
       img {
@@ -266,49 +275,59 @@
     }
 
     .button_light {
-      font-size: 20px;
-      font-weight: 400;
-      width: 126px;
-      padding: 16px 8px;
-      border-radius: 16px;
+      width: auto;
       background-color: colors.$white;
       border: 1px solid colors.$bgGrey;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      gap: 8px;
 
       @media (max-width: 500px) {
         font-size: 10px;
         font-weight: 400;
         width: 90px;
         padding: 0px 4px;
+        gap: 1px;
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+
+        @media (max-width: 500px) {
+          width: 10px;
+          height: 10px;
+        }
       }
     }
 
     .button_dark {
-      font-size: 21px;
-      font-weight: 700;
       width: auto;
-      padding: 16px 24px;
       border-radius: 16px;
       background-color: colors.$bgGrey;
       color: colors.$white;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      gap: 8px;
 
       @media (max-width: 500px) {
         font-size: 10px;
         font-weight: 400;
         width: 90px;
         padding: 0px 4px;
-        gap: 0;
+        gap: 1px;
         justify-content: center;
       }
 
-      img {
-        width: 24px;
-        height: 24px;
+      svg {
+        width: 16px;
+        height: 16px;
+
+        @media (max-width: 500px) {
+          width: 10px;
+          height: 10px;
+        }
       }
     }
 
@@ -321,6 +340,7 @@
 
     .button_dark:hover {
       background-color: colors.$buttonBlue;
+      border-color: colors.$buttonBlue;
       color: colors.$white;
       transition: background-color 150ms ease-in-out;
       cursor: pointer;
