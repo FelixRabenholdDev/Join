@@ -10,11 +10,15 @@ import { Subtask } from '../../../interfaces/subtask.interface';
 import { TaskAssign } from '../../../interfaces/task-assign.interface';
 import { TaskType } from '../../../types/task-type';
 import { TaskStatus } from '../../../types/task-status';
+import {  MatDatepickerModule, } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, FormsModule],
+  imports: [CommonModule, MatFormFieldModule,MatNativeDateModule, MatDatepickerModule,MatInputModule, FormsModule],
   templateUrl: './add-task.html',
   styleUrls: ['./add-task.scss'],
 })

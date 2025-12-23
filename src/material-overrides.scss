@@ -1,0 +1,50 @@
+@use "../src/app/styles/colors.scss";
+.mat-calendar-body{
+    background-color: colors.$white;
+   
+
+}
+.mat-calendar-controls{
+    background-color: colors.$buttonBlue;
+    color: colors.$white;
+}
+body .mat-calendar-arrow{
+    fill: colors.$white ;
+}
+.mat-calendar-table-header{
+    background-color: colors.$white ;
+}
+.mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{
+    padding-left: 20px ;
+}
+.mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before,
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper,
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-infix {
+  display: none ; 
+  padding-bottom: 0 ; 
+  content: none ; 
+}
+body .mat-calendar-controls{
+  margin: 0% ; 
+  padding: 10px;
+}
+
+.cdk-overlay-container .mdc-tooltip  {
+  background-color: colors.$white ; 
+
+}
+
+body .mdc-text-field{
+    position: static;
+    box-shadow: 0 0 5px colors.$bgMiddleGrey;
+    border-radius: 10px;
+}
+body .mat-mdc-form-field.mat-form-field-animations-enabled .mdc-text-field__input{
+    color: colors.$bgMiddleGrey;
+    transition: none;
+}
+
+body .cdk-text-field-autofill-monitored:not(:-webkit-autofill){
+    animation: none;
+}
