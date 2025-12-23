@@ -1,4 +1,4 @@
-import { Component, signal, effect,ViewChildren,QueryList,ElementRef } from '@angular/core';
+import { Component, signal, effect, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -6,12 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { FirebaseServices } from '../../../firebase-services/firebase-services';
 import { Contact } from '../../../interfaces/contact.interface';
 import { Task } from '../../../interfaces/task.interface';
+import { Subtask } from '../../../interfaces/subtask.interface';
+import { TaskAssign } from '../../../interfaces/task-assign.interface';
 import { TaskType } from '../../../types/task-type';
 import { TaskStatus } from '../../../types/task-status';
-
-
-
-
 
 @Component({
   selector: 'app-add-task',
@@ -20,16 +18,11 @@ import { TaskStatus } from '../../../types/task-status';
   templateUrl: './add-task.html',
   styleUrls: ['./add-task.scss'],
 })
-
 export class AddTask {
   subtaskInput = '';
 
-
-
-  
-  subtasks: string[] = [];
+  subtasks: Subtask[] = [];
   showIcons = false;
-
 
   editIndex: number | null = null;
   @ViewChildren('editInput') editInputs!: QueryList<ElementRef<HTMLInputElement>>;
@@ -37,43 +30,32 @@ export class AddTask {
   editSubtask(index: number) {
     this.editIndex = index;
 
-    setTimeout(() => {
+    queueMicrotask(() => {
       const elRef = this.editInputs.toArray()[index];
-      if (elRef?.nativeElement) {
-        elRef.nativeElement.focus();
-        elRef.nativeElement.select();
-      }
+      elRef?.nativeElement?.focus();
+      elRef?.nativeElement?.select();
     });
   }
 
- saveEdit() {
+  saveEdit() {
     this.editIndex = null;
   }
 
- deleteSubtask(index: number) {
+  deleteSubtask(index: number) {
     this.subtasks.splice(index, 1);
   }
 
   trackByIndex(index: number, item: any) {
     return index;
   }
-  
-
-
-
-
-
-
-    
-
-
-  
 
   addSubtask() {
-    if (this.subtaskInput.trim()) {
-      this.subtasks.push(this.subtaskInput);
-      this.subtaskInput = '';
-    }
+    const title = this.subtaskInput.trim();
+    if (!title) return;
+
+    this.subtasks.push({ title, done: false });
+
+    this.subtaskInput = '';
   }
 
   onBlur() {
@@ -82,10 +64,6 @@ export class AddTask {
     }
   }
 
-  
-
-  
-
   menuOpen = false;
 
   toggleMenu() {
@@ -93,31 +71,39 @@ export class AddTask {
   }
 
   closeMenu() {
-  this.menuOpen = false;
-}
-// Prüfen, ob Kontakt ausgewählt ist
-isAssigned(contact: Contact): boolean {
-  return this.assignedTo().some(function(c) { return c.id === contact.id; });
-}
-
-// Kontakt hinzufügen oder entfernen
-toggleContact(contact: Contact, checked: boolean) {
-  const current = this.assignedTo();
-  if (checked) {
-    if (!current.some(function(c) { return c.id === contact.id; })) {
-      this.assignedTo.set([...current, contact]);
-    }
-  } else {
-    this.assignedTo.set(current.filter(function(c) { return c.id !== contact.id; }));
+    this.menuOpen = false;
   }
-}
+  // Prüfen, ob Kontakt ausgewählt ist
+  isAssigned(contact: Contact): boolean {
+    return this.assignedTo().some(function (c) {
+      return c.id === contact.id;
+    });
+  }
 
+  // Kontakt hinzufügen oder entfernen
+  toggleContact(contact: Contact, checked: boolean) {
+    const current = this.assignedTo();
+    if (checked) {
+      if (
+        !current.some(function (c) {
+          return c.id === contact.id;
+        })
+      ) {
+        this.assignedTo.set([...current, contact]);
+      }
+    } else {
+      this.assignedTo.set(
+        current.filter(function (c) {
+          return c.id !== contact.id;
+        })
+      );
+    }
+  }
 
   // Signals
   assignedTo = signal<Contact[]>([]);
   selectedTaskType = signal<TaskType | null>(null);
   priority = signal<'urgent' | 'medium' | 'low' | null>(null);
-  
 
   title = signal('');
   description = signal('');
@@ -138,10 +124,6 @@ toggleContact(contact: Contact, checked: boolean) {
     });
   }
 
-
-
-
-  
   setPriority(p: 'urgent' | 'medium' | 'low') {
     this.priority.set(this.priority() === p ? null : p);
   }
@@ -164,10 +146,17 @@ toggleContact(contact: Contact, checked: boolean) {
 
     try {
       const createdTask = await this.firebase.addTask(newTask);
+      const taskId = createdTask.id!;
 
-      for (const contact of this.assignedTo()) {
-        await this.firebase.addTaskAssign(createdTask.id!, contact);
-      }
+      await Promise.all(
+        this.assignedTo().map((contact) => this.firebase.addTaskAssign(taskId, contact))
+      );
+
+      await Promise.all(
+        this.subtasks.map((subtask) =>
+          this.firebase.addSubtask(taskId, { title: subtask.title, done: false })
+        )
+      );
 
       alert('Task created successfully!');
       this.resetForm();
@@ -195,5 +184,7 @@ toggleContact(contact: Contact, checked: boolean) {
     this.priority.set(null);
     this.assignedTo.set([]);
     this.selectedTaskType.set(null);
+    this.subtasks = [];
+    this.subtaskInput = '';
   }
 }

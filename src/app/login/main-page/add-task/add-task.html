@@ -129,12 +129,12 @@
 
 
   
-<div class="subtask_list">
+<div class="subtask_list" *ngIf="subtasks.length > 0">
   <ul>
-    <li *ngFor="let task of subtasks; let i = index; trackBy: trackByIndex" class="subtask_item">
+    <li *ngFor="let subtask of subtasks; let i = index; trackBy: trackByIndex" class="subtask_item">
       <span class="task-wrapper">
-        <span class="task-text" [hidden]="editIndex === i">{{ task }}</span>
-        <input #editInput class="task-input" [(ngModel)]="subtasks[i]" [hidden]="editIndex !== i" />
+        <span class="task-text" [hidden]="editIndex === i">{{ subtask.title }}</span>
+        <input #editInput class="task-input" [(ngModel)]="subtasks[i].title" [hidden]="editIndex !== i" />
       </span>
 
       <span class="icons" [class.editing]="editIndex === i">
