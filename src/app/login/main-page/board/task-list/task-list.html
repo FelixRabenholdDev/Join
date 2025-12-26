@@ -12,7 +12,6 @@
     <div class="board_column">
       <span class="column_title">{{ column.title }}</span>
 
-      <!-- <div class="column_drop_area" cdkDropList (cdkDropListDropped)="drop($event, TaskStatus.ToDo)"> -->
        <div class="column_drop_area" cdkDropList (cdkDropListDropped)="drop($event, column.status)"> 
         <div
           class="task_card"
