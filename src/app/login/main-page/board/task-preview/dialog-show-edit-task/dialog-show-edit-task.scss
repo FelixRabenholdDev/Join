@@ -9,9 +9,9 @@
 .dialog_show {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 40px;
   gap: 4px;
-  width: 550px;
+  width: 525px;
 
   header {
     display: flex;
@@ -20,7 +20,7 @@
     span {
       font-size: 24px;
       display: flex;
-      padding: 4px 24px;
+
       gap: 10px;
 
       color: colors.$white;
@@ -36,17 +36,20 @@
     .task_title {
       font-weight: 700;
       font-size: 61px;
+      padding-top: 24px;
     }
 
     .task_description {
       font-weight: 400;
       font-size: 20px;
+      padding-top: 20px;
     }
   }
 
   .task_info {
     display: flex;
     justify-content: space-between;
+    padding-top: 20px;
 
     span:nth-child(1) {
       font-weight: 400;
@@ -64,6 +67,7 @@
   .assigned_title {
     font-weight: 400;
     font-size: 20px;
+    padding-top: 20px;
     color: colors.$bgGrey;
   }
 
@@ -106,6 +110,7 @@
   .subtasks_title {
     font-weight: 400;
     font-size: 20px;
+    padding-top: 20px;
     color: colors.$bgGrey;
   }
 
@@ -113,11 +118,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
+    padding: 16px;
     gap: 4px;
 
     p {
       display: flex;
+      padding-top: 16px;
       gap: 8px;
     }
   }
