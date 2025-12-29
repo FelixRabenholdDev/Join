@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CdkDrag, CdkDropList, CdkDropListGroup, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TaskPreview } from '../task-preview/task-preview';
 import { FirebaseServices } from '../../../../firebase-services/firebase-services';
-import { UserUiService } from '../../../../services/user-ui.service';
 import { Task } from '../../../../interfaces/task.interface';
 import { BoardTask } from '../../../../interfaces/task-board.interface';
 import { TaskAssign } from '../../../../interfaces/task-assign.interface';
 import { TaskAssignDb } from '../../../../interfaces/task-assign-db.interface';
 import { TaskStatus } from '../../../../types/task-status';
-import { Observable, combineLatest, map, switchMap, from } from 'rxjs';
-import { Contacts } from '../../contacts/contacts';
+import { Observable, combineLatest, map, switchMap, from, of } from 'rxjs';
+import { UserUiService } from '../../../../services/user-ui.service';
 
 @Component({
   selector: 'app-task-list',
@@ -50,26 +49,47 @@ private enrichTask(task: Task): Observable<BoardTask> {
     this.firebase.subSubtasks(task.id!),
     this.firebase.subTaskAssigns(task.id!),
   ]).pipe(
-    map(([subtasks, assigns]) => {
+    switchMap(([subtasks, assigns]) => {
       const done = subtasks.filter(st => st.done).length;
       const total = subtasks.length;
 
-      const mappedAssigns: TaskAssign[] = assigns.map((a: TaskAssignDb) => ({
-        ...a,
-        name: (a as any).name ?? '',
-        initials: (a as any).initials ?? '',
-        color: (a as any).color ?? '',
-      }));
+      if (!assigns || assigns.length === 0) {
+          return of({
+            ...task,
+            assigns: [] as TaskAssign[],
+            subtasks,
+            subtasksDone: done,
+            subtasksTotal: total,
+            progress: total === 0 ? 0 : Math.round((done / total) * 100),
+          } as BoardTask);
+        }
 
-      return {
-        ...task,
-        assigns: mappedAssigns,
-        subtasks,
-        subtasksDone: done,
-        subtasksTotal: total,
-        progress: total === 0 ? 0 : Math.round((done / total) * 100),
-      };
-    })
-  );
-}
+      const assignObservables = assigns.map((a: TaskAssignDb) =>
+          this.firebase.subSingleContact(a.contactId).pipe(
+            map((contact) => {
+              const c = contact ? this.firebase.toContact(contact) : { id: a.contactId, name: '', email: '', phone: '', color: '' };
+              const name = c.name ?? '';
+              return {
+                contactId: a.contactId,
+                name,
+                initials: this.userUi.getInitials(name),
+                color: c.color ?? '',
+              } as TaskAssign;
+            })
+          )
+        );
+
+      return combineLatest(assignObservables).pipe(
+          map((mappedAssigns: TaskAssign[]) => ({
+            ...task,
+            assigns: mappedAssigns,
+            subtasks,
+            subtasksDone: done,
+            subtasksTotal: total,
+            progress: total === 0 ? 0 : Math.round((done / total) * 100),
+          }))
+        );
+      })
+    );
+  }
 }
