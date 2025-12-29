@@ -1,4 +1,8 @@
 @use "../src/app/styles/colors.scss";
+
+
+
+
 .mat-calendar-body{
     background-color: colors.$white;
    
@@ -42,6 +46,9 @@ body .mdc-text-field{
     border-color: colors.$bgMiddleGrey;
     border-width: thin;
 }
+body .mdc-text-field.mdc-text-field--focused {
+  border-color: colors.$buttonBlue;
+}
 
 
 
@@ -56,6 +63,10 @@ body .mat-mdc-form-field
   .mdc-text-field__input::placeholder {
   color: colors.$bgMiddleGrey;
   opacity: 1;
+}
+
+body .mat-mdc-form-field.datepicker-focused .mdc-text-field{
+  border-color: colors.$buttonBlue;
 }
 
 
@@ -92,10 +103,7 @@ body .mdc-text-field--filled .mdc-floating-label--float-above{
     transform: none;
   
 }
-.mat-mdc-select-trigger {
-  padding-left: 30px;
 
-}
 body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper{
     height: 48px;
     display: flex;

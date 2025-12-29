@@ -38,6 +38,8 @@ export class AddTask {
 
   @ViewChildren('editInput') editInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
+  isDatepickerOpen = false;
+
   editSubtask(index: number) {
     this.editIndex = index;
 

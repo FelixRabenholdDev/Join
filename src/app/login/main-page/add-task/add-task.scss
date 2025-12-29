@@ -54,6 +54,7 @@ form {
 input {
         height: 54px;
         border-style: none;
+    
 select {
           border-style: none;
         }
@@ -67,6 +68,8 @@ select {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    
+ 
 label {
       font-weight: 400;
       font-size: 20px;
@@ -85,6 +88,11 @@ input {
       font-size: 20px;
       height: 48px;
       width: 100%;
+      outline: none;
+      &:focus{
+        border-color: colors.$buttonBlue;
+      }
+      
 &::placeholder {
         color: #d1d1d1;
       }
@@ -238,10 +246,15 @@ div span.required {
   width: 100%;
   gap: 5px;
   margin-right: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  &:focus-within{
+    border-color: colors.$buttonBlue;
+  }
 }
 .subtask_list {
   &:hover{
-background-color: colors.$bgLightGrey;
+background-color: #e6e6e6;
     cursor: pointer;
   }
   input{
@@ -249,11 +262,14 @@ width: 100%;
   border-style: none;
   background-color: transparent;
   font-size: 20px;
+
+
 }
   li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-style: none;
 &:hover .icons {
     opacity: 1;
     pointer-events: auto;
@@ -283,6 +299,7 @@ width: 100%;
       flex-direction: row-reverse;
       opacity: 1;
       pointer-events: auto;
+      background-color: white;
     }
   }
 &:hover .icons {
