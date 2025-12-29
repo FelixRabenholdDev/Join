@@ -1,49 +1,4 @@
-// .task_preview {
-//   display: flex;
-//   flex-direction: column;
-//   max-width: 260px;
-//   padding: 12px;
-//   gap: 8px;
-//   background-color: white;
-//   border-radius: 24px;
-
-//   .task_tag {
-//     background-color: blue;
-//     color: white;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 4px 8px;
-//     width: fit-content;
-//     border-radius: 8px;
-//   }
-
-//   .task_title {
-//     font-weight: 700;
-//     font-size: 16px;
-
-//     color: #2a3647;
-//   }
-
-//   .task_content {
-//     font-weight: 400;
-//     font-size: 16px;
-//     color: #a8a8a8;
-//   }
-// }
-
-// .area_progress {
-//   display: flex;
-//   justify-content: space-between;
-
-//   div {
-//     color: blue;
-//   }
-// }
-
-// .area_prio {
-//   display: flex;
-//   justify-content: space-between;
-// }
+@use "../../../../styles/colors.scss";
 
 :host {
   display: block;
@@ -51,7 +6,7 @@
 }
 
 .task_preview {
-  background: #ffffff;
+  background: colors.$white;
   border-radius: 16px;
   padding: 16px;
   width: 100%;
@@ -67,7 +22,7 @@
   margin-bottom: 4px;
 
   img {
-    height: 24px; // 👈 Badge-Höhe
+    height: 24px;
     display: block;
   }
 }
@@ -80,7 +35,7 @@
 
 .task_content {
   font-size: 14px;
-  color: #6b7280;
+  color: colors.$bgMiddleGrey;
   margin: 0;
 }
 
@@ -93,21 +48,21 @@
 .progress_bar {
   flex: 1;
   height: 6px;
-  background: #e5e7eb;
+  background: colors.$bgMiddleGrey;
   border-radius: 999px;
   overflow: hidden;
 }
 
 .progress_fill {
   height: 100%;
-  background: #3b82f6;
+  background: colors.$pbBlue;
   border-radius: 999px;
   transition: width 0.3s ease;
 }
 
 .progress_text {
   font-size: 12px;
-  color: #374151;
+  color: colors.$navActive;
   white-space: nowrap;
 }
 
@@ -127,13 +82,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  color: #fff;
+  color: colors.$white;
   font-size: 12px;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #fff;
+  border: 2px solid colors.$white;
   margin-left: -8px;
 }
 
@@ -152,13 +107,13 @@
 }
 
 .prio_icon.urgent {
-  color: #ff3d00;
+  color: colors.$errorRed;
 }
 
 .prio_icon.medium {
-  color: #ffa800;
+  color: colors.$bgYellow;
 }
 
 .prio_icon.low {
-  color: #7ae229;
+  color: colors.$bgGreen;
 }
