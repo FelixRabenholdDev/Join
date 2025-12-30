@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject,ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkDrag, CdkDropList, CdkDropListGroup, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TaskPreview } from '../task-preview/task-preview';
@@ -10,16 +10,24 @@ import { TaskAssignDb } from '../../../../interfaces/task-assign-db.interface';
 import { TaskStatus } from '../../../../types/task-status';
 import { Observable, combineLatest, map, switchMap, from, of } from 'rxjs';
 import { UserUiService } from '../../../../services/user-ui.service';
+import { DialogAddTask } from '../dialog-add-task/dialog-add-task';
+
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, CdkDrag, CdkDropList, CdkDropListGroup, TaskPreview],
+  imports: [CommonModule, CdkDrag, CdkDropList, CdkDropListGroup, TaskPreview,DialogAddTask],
   templateUrl: './task-list.html',
   styleUrls: ['./task-list.scss'],
 })
 export class TaskList {
   TaskStatus = TaskStatus;
+
+ @ViewChild('addTaskDialog') addTaskDialog!: DialogAddTask;
+
+openAddTaskDialog() {
+  this.addTaskDialog.open();
+}
 
   private readonly firebase = inject(FirebaseServices);
   private readonly userUi = inject(UserUiService);
