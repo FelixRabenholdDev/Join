@@ -161,9 +161,9 @@ export class AddTask {
 
   getPriorityNumber(p: 'urgent' | 'medium' | 'low') {
     switch (p) {
-      case 'urgent': return 3;
+      case 'urgent': return 1;
       case 'medium': return 2;
-      case 'low': return 1;
+      case 'low': return 3;
     }
   }
 
