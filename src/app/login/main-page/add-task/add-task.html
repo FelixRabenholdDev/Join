@@ -207,7 +207,7 @@
           <div class="inner_subtask">
             <div class="inner_icons">
 
-              <input type="text" placeholder="Add new subtask" [(ngModel)]="subtaskInput" name="subtask"
+              <input class="subtask_area" type="text" placeholder="Add new subtask" [(ngModel)]="subtaskInput" name="subtask"
                 (focus)="showIcons = true" (blur)="onBlur()" />
 
               <ng-container *ngIf="showIcons">

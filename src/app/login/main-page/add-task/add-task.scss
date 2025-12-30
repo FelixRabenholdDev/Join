@@ -198,6 +198,12 @@
     background-color: colors.$white;
 
     &:focus-within { border-color: colors.$buttonBlue; }
+  .subtask_area{
+    
+    &:focus{
+      border-style: none;
+    }
+  }
   }
 
   .subtask_list {
@@ -380,6 +386,7 @@
 
     &::placeholder { color: #d1d1d1; }
   }
+ 
 }
 .area_left form > div:nth-of-type(2) input {
   height: 120px;
