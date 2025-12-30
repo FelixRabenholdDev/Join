@@ -184,7 +184,7 @@
     (selectionChange)="onTaskTypeChange($event.value)"
     (blur)="onTaskTypeBlur()"
   >
-    <mat-option *ngFor="let type of taskTypes" [value]="type">
+    <mat-option *ngFor="let type of taskTypes" [value]="type.value">
       {{ type.name }}
     </mat-option>
   </mat-select>
