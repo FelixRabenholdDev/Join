@@ -259,15 +259,15 @@
     <img src="img/check.svg" alt="">Create Task
   </button>
 
-  <!-- Overlay Container nur sichtbar, wenn eine der Nachrichten gesetzt ist -->
+  
   <div *ngIf="taskErrorMessage() || taskAddedMessage()" class="create_task_message">
 
-    <!-- Fehlermeldung -->
+   
     <div *ngIf="taskErrorMessage()" class="task-error-message">
       {{ taskErrorMessage() }}
     </div>
 
-    <!-- Erfolgsnachricht -->
+    
     <div *ngIf="taskAddedMessage()" class="task-added-message"> 
       {{ taskAddedMessage() }}
       <img src="img/board-icon.png" alt="">
