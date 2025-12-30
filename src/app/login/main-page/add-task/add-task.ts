@@ -13,6 +13,7 @@ import { MatDatepickerModule,MatDatepicker } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { UserUiService } from '../../../services/user-ui.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -179,8 +180,12 @@ onDateChange(event: any) {
   selectOpened = false;
   menuOpen = false;
 
-  constructor(private firebase: FirebaseServices, public userUi: UserUiService) {
+  constructor(private firebase: FirebaseServices, public userUi: UserUiService, private router: Router) {
     this.firebase.subContactsList().subscribe((data) => this.contacts.set(data));
+
+    
+
+    
 
     effect(() => {
       console.log('AssignedTo:', this.assignedTo());
@@ -206,12 +211,16 @@ onDateChange(event: any) {
   setPriority(p: 'urgent' | 'medium' | 'low') {
     this.priority.set(this.priority() === p ? null : p);
   }
-
+taskAddedMessage = signal('');
+taskErrorMessage = signal('');
   async  createTask() {
+
+    
     const prio = this.priority();
     if (!this.title() || !this.selectedTaskType() || !prio || !this.dueDate()) {
-      alert('Please fill all required fields!');
-      return;
+     this.taskErrorMessage.set('Please fill all required fields!');
+    setTimeout(() => this.taskErrorMessage.set(''), 2000);
+    return
     }
 
     const newTask: Omit<Task, 'id'> = {
@@ -242,13 +251,18 @@ onDateChange(event: any) {
       for (const subtask of this.subtasks) {
         await this.firebase.addSubtask(taskId, { title: subtask.title, done: false });
       }
+ this.taskAddedMessage.set('Task added to board');
 
-      alert('Task created successfully!');
-      this.resetForm();
-    } catch (err) {
-      console.error(err);
-      alert('Error creating task.');
-    }
+setTimeout(() => {
+  this.taskAddedMessage.set('');
+  this.router.navigate(['/board']);
+}, 1000);
+
+  } catch (err) {
+    console.error(err);
+    this.taskErrorMessage.set('Add failed');
+    setTimeout(() => this.taskErrorMessage.set(''), 1000);
+  }
   }
 
   getPriorityNumber(p: 'urgent' | 'medium' | 'low') {

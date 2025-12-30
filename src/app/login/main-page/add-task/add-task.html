@@ -120,40 +120,42 @@
         </div>
       </div>
 
-      <div>
-        <p>Assigned to</p>
-<mat-form-field appearance="fill" floatLabel="always">
-  <mat-label>
-    {{ (currentAssignedSelection.length > 0 || selectOpened) ? 'An:' : 'Select contacts to assign' }}
-  </mat-label>
+<div>
+  <p>Assigned to</p>
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>
+      {{ (currentAssignedSelection.length > 0 || selectOpened) ? 'An:' : 'Select contacts to assign' }}
+    </mat-label>
 
-  <mat-select
-    multiple
-    [value]="currentAssignedSelection"
-    (selectionChange)="currentAssignedSelection = $event.value; updateAssignedToText()"
-  >
-    <mat-select-trigger>
-      {{ assignedToText }}
-    </mat-select-trigger>
+    <mat-select
+      multiple
+      [value]="currentAssignedSelection"
+      (selectionChange)="currentAssignedSelection = $event.value; updateAssignedToText()"
+    >
+      <mat-select-trigger>
+        {{ assignedToText }}
+      </mat-select-trigger>
 
-    <mat-option *ngFor="let contact of contacts()" [value]="contact">
-      <span class="sc_logo" [style.background]="contact.color">
-        {{ userUi.getInitials(contact.name) }}
-      </span>
-      {{ contact.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+      <mat-option *ngFor="let contact of contacts()" [value]="contact">
+        <span class="sc_logo" [style.background]="contact.color">
+          {{ userUi.getInitials(contact.name) }}
+        </span>
+        {{ contact.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div class="assigned-logos" *ngIf="currentAssignedSelection.length > 0">
-  <span
-    class="sc_logo"
-    *ngFor="let contact of currentAssignedSelection"
-    [style.background]="contact.color"
-  >
-    {{ userUi.getInitials(contact.name) }}
-  </span>
-</div>
+  <div class="assigned-logos" *ngIf="currentAssignedSelection.length > 0">
+    <span
+      class="sc_logo"
+      *ngFor="let contact of currentAssignedSelection"
+      [style.background]="contact.color"
+    >
+      {{ userUi.getInitials(contact.name) }}
+    </span>
+  </div>
+
+
 <!-- <div class="dropdown">
           
           <input type="text" readonly (click)="toggleMenu()" placeholder="Select contacts to assign">
@@ -253,8 +255,26 @@
   Cancel X
 </button>
 <div class="create_task_button">
-        <button class="button_dark" (click)="createTask()"><img src="img/check.svg" alt="">Create Task</button>
-      </div>
+  <button  [disabled]="taskAddedMessage()" class="button_dark" (click)="createTask()">
+    <img src="img/check.svg" alt="">Create Task
+  </button>
+
+  <!-- Overlay Container nur sichtbar, wenn eine der Nachrichten gesetzt ist -->
+  <div *ngIf="taskErrorMessage() || taskAddedMessage()" class="create_task_message">
+
+    <!-- Fehlermeldung -->
+    <div *ngIf="taskErrorMessage()" class="task-error-message">
+      {{ taskErrorMessage() }}
     </div>
+
+    <!-- Erfolgsnachricht -->
+    <div *ngIf="taskAddedMessage()" class="task-added-message"> 
+      {{ taskAddedMessage() }}
+      <img src="img/board-icon.png" alt="">
+    </div>
+
+  </div>
+</div>
+</div>
   </footer>
 </section>

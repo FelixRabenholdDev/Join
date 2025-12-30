@@ -386,3 +386,29 @@
   align-items: flex-start;
   padding-top: 18px;
 }
+.create_task_message{
+    position: fixed; /* liegt über dem gesamten Viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 9999; /* über allen anderen Elementen */
+
+  
+
+}
+  .task-error-message, .task-added-message{
+    
+    display: flex;
+justify-content: center;
+align-items: center;
+color: colors.$white;
+background-color: colors.$bgGrey;
+padding: 20px;
+border-radius: 10px;
+  }
+  
