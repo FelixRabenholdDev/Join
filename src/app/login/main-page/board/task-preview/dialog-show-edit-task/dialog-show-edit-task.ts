@@ -85,31 +85,6 @@ export class DialogShowEditTask {
     this.editData.priority = prio;
   }
 
-  onAssignChange(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedId = selectElement.value;
-    if (!selectedId) return;
-
-    const contact = this.contacts().find((c) => c.id === selectedId);
-    if (!contact) return;
-
-    const isAlreadyAssigned = this.editData.assigns.some((a: any) => a.contactId === selectedId);
-
-    if (!isAlreadyAssigned) {
-      this.editData.assigns.push({
-        contactId: contact.id,
-        name: contact.name,
-        color: contact.color,
-        initials: this.getInitials(contact.name),
-      });
-    }
-    selectElement.value = '';
-  }
-
-  removeAssign(index: number) {
-    this.editData.assigns.splice(index, 1);
-  }
-
   addSubtask() {
     if (this.newSubtaskTitle.trim()) {
       this.editData.subtasks.push({
@@ -195,4 +170,33 @@ export class DialogShowEditTask {
       console.error('Fehler beim Speichern:', error);
     }
   }
+
+  // Variable für den Status des Dropdowns
+showDropdown: boolean = false;
+
+// Funktion zum Öffnen/Schließen
+toggleDropdown() {
+  this.showDropdown = !this.showDropdown;
+}
+
+// Funktion zum Hinzufügen/Entfernen von Kontakten
+toggleAssign(contact: any) {
+  const index = this.editData.assigns.findIndex((c: any) => c.contactId === contact.id);
+  if (index > -1) {
+    this.editData.assigns.splice(index, 1); // Entfernen wenn schon da
+  } else {
+    this.editData.assigns.push({
+      contactId: contact.id,
+      name: contact.name,
+      color: contact.color,
+      initials: this.getInitials(contact.name)
+    }); 
+  }
+}
+
+// Hilfsfunktion für das Styling (Checkbox & Active State)
+isAssigned(contact: any): boolean {
+  return this.editData.assigns.some((c: any) => c.contactId === contact.id);
+}
+
 }

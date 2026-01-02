@@ -191,17 +191,34 @@
 
     <span class="assigned_title">Assigned To:</span>
     <div class="area_assigned">
-       <select (change)="onAssignChange($event)">
-         <option value="" disabled selected>Select contact</option>
-         <option *ngFor="let contact of contacts()" [value]="contact.id">{{ contact.name }}</option>
-       </select>
-       
-       <div class="area_assigned_list">
-          <p *ngFor="let assign of editData.assigns; let i = index" (click)="removeAssign(i)" style="cursor: pointer; margin: 5px 0;">
-             <span [style.background-color]="assign.color">{{ assign.initials }}</span>
-             <span>{{ assign.name }} (x)</span>
-          </p>
-       </div>
+      <!-- Dropdown Trigger -->
+      <div class="dropdown_trigger" (click)="toggleDropdown()">
+        <span>Select contacts to assign</span>
+        <svg [class.rotated]="showDropdown" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 10L12 15L17 10" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown_menu" *ngIf="showDropdown">
+        <div class="contact_item" *ngFor="let contact of contacts()" (click)="toggleAssign(contact)" [class.active]="isAssigned(contact)">
+          <div class="contact_info">
+            <div class="badge" [style.background-color]="contact.color">{{ getInitials(contact.name) }}</div>
+            <span>{{ contact.name }}</span>
+          </div>
+          <div class="checkbox">
+            <img *ngIf="isAssigned(contact)" src="img/check_button_checked.svg" alt="Selected">
+            <div *ngIf="!isAssigned(contact)" class="checkbox_empty"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected Badges (Circles below) -->
+      <div class="selected_badges">
+        <div class="badge" *ngFor="let assign of editData.assigns" [style.background-color]="assign.color">
+          {{ assign.initials }}
+        </div>
+      </div>
     </div>
 
     <div class="subtasks">
