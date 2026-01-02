@@ -64,25 +64,15 @@ export class DialogAddTask {
   assignedToText: string = '';
   selectOpened = false;
 
-  // Messages
   taskAddedMessage = signal('');
   taskErrorMessage = signal('');
 
-  // Task types
   taskTypes = Object.entries(TaskType)
     .filter(([, value]) => typeof value === 'number')
     .map(([key, value]) => ({ name: key, value: value as TaskType }));
 
   constructor(private firebase: FirebaseServices, public userUi: UserUiService, private router: Router) {
-    // Kontakte abonnieren
     this.firebase.subContactsList().subscribe((data) => this.contacts.set(data));
-
-    // Debugging: AssignedTo beobachten
-    effect(() => {
-      console.log('AssignedTo:', this.assignedTo());
-      console.log('TaskType:', this.selectedTaskType());
-      console.log('Priority:', this.priority());
-    });
   }
 
   // ------------------- Subtasks -------------------
@@ -223,7 +213,6 @@ export class DialogAddTask {
       const createdTask = await this.firebase.addTask(newTask);
       const taskId = createdTask.id!;
 
-      // Assigned contacts speichern
       for (const contact of this.assignedTo()) {
         const colorIndex = await this.userUi.getNextColorIndex();
         const colorHex = this.userUi.getColorByIndex(colorIndex);
@@ -236,7 +225,6 @@ export class DialogAddTask {
         });
       }
 
-      // Subtasks speichern
       for (const subtask of this.subtasks) {
         await this.firebase.addSubtask(taskId, { title: subtask.title, done: false });
       }

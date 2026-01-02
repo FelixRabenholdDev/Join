@@ -71,15 +71,8 @@ export class AddTask {
     .map(([key, value]) => ({ name: key, value: value as TaskType }));
 
   constructor(private firebase: FirebaseServices, public userUi: UserUiService, private router: Router) {
-    // Kontakte abonnieren
-    this.firebase.subContactsList().subscribe((data) => this.contacts.set(data));
 
-    // Debugging: AssignedTo beobachten
-    effect(() => {
-      console.log('AssignedTo:', this.assignedTo());
-      console.log('TaskType:', this.selectedTaskType());
-      console.log('Priority:', this.priority());
-    });
+    this.firebase.subContactsList().subscribe((data) => this.contacts.set(data));
   }
 
   // ------------------- Subtasks -------------------
@@ -220,7 +213,6 @@ export class AddTask {
       const createdTask = await this.firebase.addTask(newTask);
       const taskId = createdTask.id!;
 
-      // Assigned contacts speichern
       for (const contact of this.assignedTo()) {
         const colorIndex = await this.userUi.getNextColorIndex();
         const colorHex = this.userUi.getColorByIndex(colorIndex);
@@ -233,7 +225,6 @@ export class AddTask {
         });
       }
 
-      // Subtasks speichern
       for (const subtask of this.subtasks) {
         await this.firebase.addSubtask(taskId, { title: subtask.title, done: false });
       }
