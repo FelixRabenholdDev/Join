@@ -6,6 +6,11 @@
   padding: 48px 35px;
   gap: 24px;
   max-width: 1440px;
+  @media(max-width:1400px)
+  {
+    gap: 0px;
+  
+  }
   header {
     display: flex;
     justify-content: space-between;
@@ -13,23 +18,27 @@
     span { 
       font-weight: 700; 
      font-size: 61px; 
-      color: #000; 
+      @media(max-width:1400px){
+        font-size: 50px;
+      }
     }
-    button {
-      width: 32px; 
-      height: 32px; 
-      border: none;
-      background: transparent; 
-      cursor: pointer;
-      font-size: 24px; 
-      color: #2a3647;
-      display: grid; 
-      place-items: center;
-    }
+
   }
   .area_mid {
     display: flex; 
     gap: 50px;
+ 
+  @media (max-width: 1400px) {
+    flex-direction: column;
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  @media (max-width: 1400px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
     .area_left, .area_right {
       display: flex; 
       flex-direction: column; 
@@ -41,26 +50,23 @@
       .carlenda .required { 
         color: colors.$errorRed; 
       }
-      form { 
-        height: 54px;
+ 
         
-        &:focus{
-          border-style: none;
-        }
+        
         input { 
           height: 54px;
           &:focus { 
             border-color: colors.$buttonBlue; 
           }
         }
-      }
+      
       textarea {
         display: flex; 
         align-items: center;
         border: 1px solid #e6e6e6; 
         border-radius: 10px;
         height: 120px; 
-        max-width: 638px; 
+        width: 100%; 
         padding: 5px 10px;
         font-family: "Inter", sans-serif;
         font-size: 24px;
@@ -87,7 +93,6 @@
           align-items: center;
           gap: 6px; 
           width: 136px; 
-          max-width: 136px; 
           border-radius: 13px;
           background: white; 
           &:hover { 
@@ -118,6 +123,12 @@
             font-size: 20px; 
             border-radius: 10px; 
             cursor: pointer; 
+            @media(max-width: 1400px){
+              font-size: 15px;
+              &svg{
+                height: 15px;
+              }
+            }
           }
         }
       }
@@ -139,44 +150,21 @@
     font-size: 14px; 
     color: #fff; 
   }
-  .dropdown { 
-    background: #fff; 
-    max-height: 200px; 
-    overflow-y: scroll;
-    input[type="text"] { 
-      width: 100%; 
-      padding: 5px; 
-      height: 48px; 
-      cursor: pointer; 
-    }
-    .menu { 
-      list-style: none; 
-      margin: 0; 
-      padding: 0;
-      .menu-item { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 5px 0; 
-        font-size: 20px;
-        &:hover { 
-          background: colors.$bgLightGrey; 
-        }
-        input[type="checkbox"] { 
-          width: 18px; 
-          height: 18px; 
-          cursor: pointer; 
-        }
-      }
-    }
+  .required{
+    color: colors.$errorRed;
   }
   .area_input { 
     display: flex; 
     flex-direction: column; 
     gap: 8px;
-    label { 
+    .area_input_label { 
       font-size: 20px; 
       color: #2a3647;
+      &:focus-within{
+        border-style: solid;
+        border-width: thin;
+        border-color: colors.$buttonBlue;
+      }
       .required { 
         color: colors.$errorRed; 
       }
@@ -214,14 +202,37 @@
       border-color: colors.$buttonBlue; 
     }
     .subtask_area { 
+      
       &:focus { border-style: none; } 
     }
   }
+  .subtask_item{
+    &:hover{
+      background-color: colors.$bgMiddleGrey;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+    &.editing{
+      background-color: colors.$white;
+      border-bottom: colors.$buttonBlue;
+      border-bottom-style: solid;
+      border-width: thin;
+      margin-top: 5px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  
+
   .subtask_list li { 
     display: flex; 
     align-items: center; 
     gap: 0.5rem; 
-    &:hover { background: #e6e6e6; }
+    padding: 0 10px;
+  
+    
+    
+ 
     .icons { 
       display: flex; 
       gap: 5px; 
@@ -233,7 +244,6 @@
         flex-direction: row-reverse; 
         opacity: 1; 
         pointer-events: auto; 
-        background: #fff; 
       }
     }
     &:hover .icons { 
@@ -247,9 +257,12 @@
     }
     input { 
       width: 100%; 
-      border: none; 
+      border:transparent; 
       background: transparent; 
       font-size: 20px; 
+         &:focus { 
+      outline: none;
+    }
     }
   }
   footer { 
@@ -257,10 +270,24 @@
     justify-content: space-between; 
     align-items: center;
     padding-top: 20px;
+    @media(max-width:1400px){
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      :first-child{
+        align-self: flex-start;
+      }
+      :last-child{
+        align-self: flex-end;
+      }
+    }
     span { 
       font-family: 'Inter'; 
       font-weight: 400; 
       font-size: 20px; 
+      @media(max-width:1400px){
+        font-size: 10px;
+      }
       color: black;
       &.required { 
         color: colors.$errorRed; 
@@ -279,27 +306,37 @@
         cursor: pointer; 
         font-size: 20px; 
         font-weight: 400; 
+        @media(max-width:1400px){
+          font-size: 10px;
+        }
       }
       .button_light { 
         width: 126px; 
         height: 56px; 
         border: 1px solid #2a3647; 
         background: #fff; 
-        flex-direction: row-reverse; 
+        
         &:hover { 
           border-color: colors.$buttonBlue; 
           color: colors.$buttonBlue; 
         } 
+        @media(max-width:1400px){
+          width: 90px;
+        }
       }
       .button_dark { 
         width: 183px; 
         height: 56px; 
-        background: #2a3647; 
-        color: #fff; 
+       
+       
         font-size: 21px; 
         font-weight: 700; 
         flex-direction: row-reverse; 
         border: none; 
+        @media(max-width:1400px){
+          font-size: 10px;
+          width: 116px;
+        }
         &:hover { 
           background: colors.$buttonBlue; 
         } 

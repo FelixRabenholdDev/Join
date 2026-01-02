@@ -6,9 +6,9 @@
   <section class="area_mid">
     <article class="area_left">
       <div class="area_input">
-        <label>Title <span class="required">*</span></label>
+        <label >Title <span class="required">*</span></label>
        <form>
-  <input
+  <input class="area_input_label"
     type="text"
     name="title"
     [(ngModel)]="title"
@@ -224,10 +224,10 @@
       </form>
 <div class="subtask_list" *ngIf="subtasks.length > 0">
   <ul>
-    <li *ngFor="let subtask of subtasks; let i = index; trackBy: trackByIndex" class="subtask_item">
+    <li *ngFor="let subtask of subtasks; let i = index; trackBy: trackByIndex" class="subtask_item"[class.editing]="editIndex === i">
       <span class="task-wrapper">
         <span class="task-text" [hidden]="editIndex === i">{{ subtask.title }}</span>
-        <input #editInput class="task-input" [(ngModel)]="subtasks[i].title" [hidden]="editIndex !== i" />
+        <input #editInput class="task-input" [(ngModel)]="subtasks[i].title" [hidden]="editIndex !== i" [class.editing]="editIndex === i" />
       </span>
 
       <span class="icons" [class.editing]="editIndex === i">
