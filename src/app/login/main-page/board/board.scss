@@ -1,3 +1,9 @@
+@use "../../../styles/colors.scss";
+
+/* ===================================================== */
+/* ROOT WRAPPER                                          */
+/* ===================================================== */
+
 .display_hauptsacheichsehewas {
   display: flex;
   flex-direction: column;
@@ -5,57 +11,124 @@
   overflow-y: auto;
 }
 
+/* ===================================================== */
+/* BOARD                                                 */
+/* ===================================================== */
+
 .board {
   display: flex;
   flex-direction: column;
   padding: 40px 24px;
 }
 
+/* ===================================================== */
+/* TOP AREA (BOARD + SEARCH + ADD BUTTON)                */
+/* ===================================================== */
+
 .area_top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 1200px;
+  margin-bottom: 24px;
 
+  /* ---------- MOBILE LAYOUT ---------- */
   @media (max-width: 740px) {
-    max-width: 700px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 12px;
+    align-items: center;
+    max-width: 100%;
   }
 
+  /* ---------- BOARD TITLE ---------- */
   >span {
     font-weight: 700;
     font-size: 61px;
-    color: #000000;
+    color: colors.$black;
 
     @media (max-width: 740px) {
-      font-size: 47px;;
+      font-size: 47px;
+      grid-column: 1 / 2;
+      grid-row: 1;
     }
   }
 
-  div {
+  /* ---------- RIGHT AREA (INPUT + BUTTON) ---------- */
+  >div {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
 
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    @media (max-width: 740px) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      width: 100%;
     }
   }
 
+  /* ---------- SEARCH INPUT ---------- */
   input {
     box-sizing: border-box;
     width: 312px;
     height: 48px;
     padding: 8px 16px;
-    background-color: #ffffff;
-    border: 1px solid #a8a8a8;
+    background-color: colors.$white;
+    border: 1px solid colors.$bgMiddleGrey;
     border-radius: 10px;
     font-size: 20px;
     font-family: 'Inter', sans-serif;
 
     &::placeholder {
-      color: #d1d1d1;
+      color: colors.$bgMiddleGrey;
+    }
+
+    @media (max-width: 740px) {
+      width: 100%;
+    }
+  }
+
+  /* ---------- ADD TASK BUTTON (DESKTOP) ---------- */
+  .button_dark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* ---------- PLUS BUTTON (MOBILE) ---------- */
+  button {
+    @media (max-width: 740px) {
+      grid-column: 2;
+      grid-row: 1;
+
+      width: 40px;
+      height: 40px;
+      padding: 0;
+
+      background-color: colors.$navBgActiveGrey;
+      border-radius: 16px;
+      border: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+    }
+
+    /* SVG INSIDE BUTTON */
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* TEXT AUSBLENDEN AUF MOBILE */
+    span {
+      @media (max-width: 740px) {
+        display: none;
+      }
     }
   }
 }

@@ -1,22 +1,20 @@
-
 <div class="display_hauptsacheichsehewas">
-<app-dialog-show-edit-task></app-dialog-show-edit-task>
+  <app-dialog-show-edit-task></app-dialog-show-edit-task>
 
 
-<section class="board">
-  <article class="area_top">
-    <span>Board</span>
+  <section class="board">
+    <article class="area_top">
+      <span>Board</span>
 
-    <div>
       <input type="text" placeholder="Find Task" />
+
       <button class="button_dark" (click)="openDialogAddTask()">
         <span>Add task +</span>
       </button>
-    </div>
-  </article>
+    </article>
 
-  <app-dialog-add-task></app-dialog-add-task>
+    <app-dialog-add-task></app-dialog-add-task>
 
-  <app-task-list></app-task-list>
-</section>
+    <app-task-list></app-task-list>
+  </section>
 </div>
