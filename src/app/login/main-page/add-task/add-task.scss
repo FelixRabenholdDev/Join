@@ -281,6 +281,7 @@
         align-self: flex-end;
       }
     }
+    
     span { 
       font-family: 'Inter'; 
       font-weight: 400; 
@@ -289,8 +290,9 @@
         font-size: 10px;
       }
       color: black;
-      &.required { 
+      &.required, .footer { 
         color: colors.$errorRed; 
+        font-size: 25px;
       }
     }
     div { 
