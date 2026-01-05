@@ -1,0 +1,33 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.area_summary {
+  display: flex;
+  flex-direction: row;
+
+  .area_top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .box_top {
+      display: flex;
+      flex-direction: row;
+
+      .symbol {
+        border-radius: 50%;
+        background-color: grey;
+      }
+
+      div {
+        p {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
