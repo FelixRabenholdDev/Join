@@ -122,17 +122,23 @@
     flex-direction: column;
     padding: 16px;
     gap: 4px;
+    p {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: background-color 100ms ease-in-out;
+
+      &:hover {
+        background-color: #eee;
+        border-radius: 8px;
+      }
+    }
     .checkbox_icon {
-      position: relative;
-      width: 18px;
-      height: 18px;
-      color: colors.$bgGrey;
-      .check {
-        opacity: 0;
-      }
-      &.done .check {
-        opacity: 1;
-      }
+      width: 24px;
+      height: 24px;
+      min-width: 24px; /* Verhindert das Schrumpfen bei langem Text */
     }
   }
 

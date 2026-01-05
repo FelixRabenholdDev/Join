@@ -108,6 +108,15 @@ export class DialogShowEditTask {
       .substring(0, 2);
   }
 
+  async toggleSubtask(index: number, task: BoardTask) {
+    if (!task.subtasks || !task.subtasks[index]) return;
+    const subtask = task.subtasks[index];
+    subtask.done = !subtask.done;
+    if (task.id && subtask.id) {
+      await this.firebase.editSubtask(task.id, subtask.id, { done: subtask.done });
+    }
+  }
+
   async deleteTask(): Promise<void> {
     const taskId = this.task()?.id;
     if (!taskId) return;
