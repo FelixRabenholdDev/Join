@@ -73,9 +73,10 @@
 }
 
 .area_assigns {
-  display: flex;
-  align-items: center;
+ display: grid;
+ grid-template-columns: repeat(9, auto);
   min-height: 28px;
+  
 }
 
 .assign_avatar {
