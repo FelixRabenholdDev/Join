@@ -75,11 +75,13 @@
   .area_title {
     display: flex;
     flex-direction: column;
+
     .task_title {
       font-weight: 700;
       font-size: 61px;
       padding-top: 24px;
     }
+
     .task_description {
       font-weight: 400;
       font-size: 20px;
@@ -90,9 +92,11 @@
   .task_info {
     display: flex;
     padding-top: 20px;
+
     .task_info_space_1 {
       margin-left: 20px;
     }
+
     .task_info_space_2 {
       margin-left: 38px;
     }
@@ -102,6 +106,7 @@
       font-size: 20px;
       color: colors.$bgGrey;
     }
+
     span:nth-child(2) {
       font-weight: 400;
       font-size: 20px;
@@ -121,11 +126,13 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
     p {
       display: flex;
       align-items: center;
       gap: 16px;
       padding: 7px 16px;
+
       span:nth-child(1) {
         display: flex;
         justify-content: center;
@@ -144,6 +151,7 @@
     flex-direction: column;
     padding: 16px;
     gap: 4px;
+
     p {
       display: flex;
       align-items: center;
@@ -157,10 +165,11 @@
         border-radius: 8px;
       }
     }
+
     .checkbox_icon {
       width: 24px;
       height: 24px;
-      min-width: 24px; 
+      min-width: 24px;
     }
   }
 
@@ -169,6 +178,7 @@
     justify-content: flex-end;
     gap: 8px;
     margin-top: 20px;
+
     .btn-delete,
     .btn-edit {
       display: flex;
@@ -178,6 +188,7 @@
       border: none;
       cursor: pointer;
       color: colors.$bgGrey;
+
       &:hover {
         color: colors.$buttonBlue;
       }
@@ -189,10 +200,13 @@
   display: none !important;
 }
 
+// #######################################################################
 /* ------------------------------- EditBereich ------------------------------ */
+// #######################################################################
 .dialog_edit {
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 40px;
   gap: 24px;
   width: 525px;
@@ -244,6 +258,7 @@
       font-size: 16px;
       width: 100%;
       outline: none;
+
       &:focus {
         border-color: colors.$buttonBlue;
       }
@@ -291,22 +306,27 @@
           background: #ff3d00;
           color: white;
           font-weight: 700;
+
           svg path {
             fill: white;
           }
         }
+
         &.active_medium {
           background: #ffa800;
           color: white;
           font-weight: 700;
+
           svg path {
             fill: white;
           }
         }
+
         &.active_low {
           background: #7ae229;
           color: white;
           font-weight: 700;
+
           svg path {
             fill: white;
           }
@@ -318,22 +338,23 @@
   .area_assigned {
     width: 100%;
 
-    .assigned-logos { 
+    .assigned-logos {
       display: flex;
-      gap: 8px; 
-      margin-top: 8px; 
+      gap: 8px;
+      margin-top: 8px;
       flex-wrap: wrap;
     }
-    .sc_logo { 
-      width: 32px; 
-      height: 32px; 
+
+    .sc_logo {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 500; 
-      font-size: 14px; 
-      color: #fff; 
+      font-weight: 500;
+      font-size: 14px;
+      color: #fff;
     }
   }
 
@@ -341,6 +362,7 @@
     .area_input div {
       display: flex;
       gap: 8px;
+
       button {
         width: 48px;
         background: colors.$buttonGrey;
@@ -358,6 +380,7 @@
       border-bottom: 1px solid #eee;
       width: 100%;
     }
+
     .subtask_list_edit {
       display: flex;
       flex-direction: column;
@@ -369,11 +392,13 @@
       display: flex;
       align-items: center;
       padding: 4px 8px;
-      border-bottom: 1px solid transparent; /* Platzhalter für Layout-Stabilität */
+      border-bottom: 1px solid transparent;
+      /* Platzhalter für Layout-Stabilität */
 
       /* Hover-Effekt für die ganze Zeile */
       &:hover {
-        background-color: #f0f0f0; /* Leichtes Grau beim Hovern */
+        background-color: #f0f0f0;
+        /* Leichtes Grau beim Hovern */
         border-radius: 8px;
       }
 
@@ -398,7 +423,8 @@
       outline: none;
 
       &:focus {
-        border-bottom: 1px solid #29abe2; /* Blaue Linie beim Fokus */
+        border-bottom: 1px solid #29abe2;
+        /* Blaue Linie beim Fokus */
       }
     }
 
@@ -406,7 +432,8 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      opacity: 0; /* Standardmäßig unsichtbar */
+      opacity: 0;
+      /* Standardmäßig unsichtbar */
       visibility: hidden;
       transition: opacity 0.2s ease-in-out;
     }
@@ -422,7 +449,8 @@
       color: #2a3647;
 
       &:hover {
-        color: #29abe2; /* Blaue Farbe beim Hovern über das Icon */
+        color: #29abe2;
+        /* Blaue Farbe beim Hovern über das Icon */
         transform: scale(1.1);
       }
     }
@@ -439,6 +467,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 32px;
+
     button {
       background: colors.$buttonGrey;
       color: white;
@@ -447,6 +476,7 @@
       border: none;
       font-weight: 700;
       cursor: pointer;
+
       &:hover {
         background: colors.$pbBlue;
       }
