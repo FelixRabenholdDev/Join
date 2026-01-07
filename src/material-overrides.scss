@@ -1,121 +1,128 @@
 @use "../src/app/styles/colors.scss";
-.mat-calendar-body{
-    background-color: colors.$white;
-   
+
+.mat-calendar-body {
+  background-color: colors.$white;
+
 
 }
-.mat-calendar-controls{
-    background-color: colors.$buttonBlue;
-    color: colors.$white;
+
+.mat-calendar-controls {
+  background-color: colors.$buttonBlue;
+  color: colors.$white;
 }
-body .mat-calendar-arrow{
-    fill: colors.$white ;
+
+body .mat-calendar-arrow {
+  fill: colors.$white ;
 }
-.mat-calendar-table-header{
-    background-color: colors.$white ;
+
+.mat-calendar-table-header {
+  background-color: colors.$white ;
 }
-.mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{
-    padding-left: 20px ;
+
+.mdc-text-field--outlined .mat-mdc-form-field-infix,
+.mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-left: 20px;
 }
+
 .mat-mdc-form-field-subscript-wrapper,
 .mat-mdc-form-field-bottom-align::before,
 .mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper,
 .mat-mdc-form-field-appearance-outline .mat-mdc-form-field-infix {
-  display: none ; 
-  padding-bottom: 0 ; 
-  content: none ; 
+  display: none;
+  padding-bottom: 0;
+  content: none;
 }
-body .mat-calendar-controls{
-  margin: 0% ; 
+
+body .mat-calendar-controls {
+  margin: 0%;
   padding: 10px;
 }
 
-.cdk-overlay-container .mdc-tooltip  {
-  background-color: colors.$white ; 
+.cdk-overlay-container .mdc-tooltip {
+  background-color: colors.$white ;
 
 }
 
-body .mdc-text-field{
-    position: static;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: colors.$bgMiddleGrey;
-    border-width: thin;
+body .mdc-text-field {
+  position: static;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: colors.$bgMiddleGrey;
+  border-width: thin;
 }
 
 
 
-body .mat-mdc-form-field
-  .mdc-text-field
-  .mdc-text-field__input.has-value {
+body .mat-mdc-form-field .mdc-text-field .mdc-text-field__input.has-value {
   color: colors.$black;
 }
 
-body .mat-mdc-form-field
-  .mdc-text-field
-  .mdc-text-field__input::placeholder {
+body .mat-mdc-form-field .mdc-text-field .mdc-text-field__input::placeholder {
   color: colors.$bgMiddleGrey;
   opacity: 1;
 }
 
 
-body .mat-mdc-option:focus.mdc-list-item, .mat-mdc-option{
-    display: flex;
-    flex-direction: row-reverse;
-    
+body .mat-mdc-option:focus.mdc-list-item,
+.mat-mdc-option {
+  display: flex;
+  flex-direction: row-reverse;
+
   .sc_logo {
-    width: 32px; 
+    width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 3px solid #fff; 
+    border: 3px solid #fff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     object-fit: cover;
-    background-color: #f0f0f0; 
-    
+    background-color: #f0f0f0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px; 
+    font-size: 14px;
     font-weight: 500;
     color: #fff;
-    margin-right: 8px; 
+    margin-right: 8px;
   }
 }
 
-.mat-mdc-option .mdc-list-item__primary-text{
-    display: flex;
-    align-items: center;
+.mat-mdc-option .mdc-list-item__primary-text {
+  display: flex;
+  align-items: center;
 }
 
-body .mdc-text-field--filled .mdc-floating-label--float-above{
-    
-    transform: none;
-  
+body .mdc-text-field--filled .mdc-floating-label--float-above {
+
+  transform: none;
+
 }
+
 .mat-mdc-select-trigger {
   padding-left: 30px;
 
 }
-body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper{
-    height: 48px;
-    display: flex;
-    align-items: center;
+
+body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
-body .mat-mdc-form-field-infix{
-    display: flex;
-    align-items: center;
-    
+body .mat-mdc-form-field-infix {
+  display: flex;
+  align-items: center;
+
 }
 
-body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{
-    top: 30%
+body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 30%
 }
 
 /* Blauer Standardrahmen */
 .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
   border-color: colors.$bgMiddleGrey;
-  
+
 
   &:hover {
     border-color: colors.$buttonBlue;
@@ -126,15 +133,16 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
 .error-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$errorRed;
   border-style: none;
-  
-  
+
+
 }
 
 /* Blauer Rahmen, wenn Datum ausgewählt */
 .selected-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$buttonBlue;
-  
+
 }
+
 body .mat-mdc-form-field.invalid .mdc-text-field {
   border-color: colors.$errorRed !important;
 }
@@ -143,11 +151,13 @@ body .mat-mdc-form-field.invalid .mdc-text-field:hover,
 body .mat-mdc-form-field.invalid .mdc-text-field.mdc-text-field--focused {
   border-color: colors.$errorRed !important;
 }
-body .mat-mdc-option.mdc-list-item{
-  &:hover{
+
+body .mat-mdc-option.mdc-list-item {
+  &:hover {
     background-color: colors.$bgLightGrey;
   }
 }
+
 body .mat-mdc-option.mdc-list-item.mdc-list-item--selected {
   background-color: colors.$bgGrey;
   color: colors.$white;
@@ -157,29 +167,31 @@ body .mat-mdc-checkbox .mdc-checkbox__checkmark {
   display: none;
 }
 
-.mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate  {
-  background-image: url("../public/img/checkbox_checked.svg");
+.mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate {
+  background-image: url("../public/img/checkbox_checked_white.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  
- ;
-  
-  &::after{
+  width: 28px;
+  height: 28px;
+  margin-left: 10px;
+  ;
+
+  &::after {
     display: none;
   }
 }
 
-body .mdc-line-ripple::before{
+body .mdc-line-ripple::before {
   position: relative;
 }
-body .mdc-line-ripple::after{
+
+body .mdc-line-ripple::after {
   position: relative;
 }
+
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
-
