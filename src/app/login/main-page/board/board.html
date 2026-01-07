@@ -6,7 +6,7 @@
     <article class="area_top">
       <span>Board</span>
 
-      <input type="text" placeholder="Find Task" />
+      <input type="text" [(ngModel)]="searchInput" placeholder="Find Task" autocomplete="off" />
 
       <!-- DESKTOP / TABLET BUTTON -->
       <button class="button_dark add_task_desktop" (click)="openDialogAddTask()">
@@ -22,9 +22,59 @@
       </button>
     </article>
 
+    <div class="board_columns" cdkDropListGroup>
+      <ng-container *ngFor="
+      let column of [
+        { title: 'To do', status: TaskStatus.ToDo, data: todo$ },
+        { title: 'In progress', status: TaskStatus.InProgress, data: inProgress$ },
+        { title: 'Await feedback', status: TaskStatus.AwaitFeedback, data: awaitFeedback$ },
+        { title: 'Done', status: TaskStatus.Done, data: done$ }
+      ]
+    ">
+
+        <div class="board_column">
+
+          <!-- FLEX-Header (Titel + Button) -->
+          <div class="column_header">
+            <span class="column_title">{{ column.title }}</span>
+
+            <button class="add_task_btn" type="button" aria-label="Add Task" *ngIf="column.status !== TaskStatus.Done">
+
+              <svg (click)="openAddTaskDialog()" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              </svg>
+
+            </button>
+          </div>
+
+          <!-- DROP AREA -->
+          <div class="column_drop_area" cdkDropList (cdkDropListDropped)="drop($event, column.status)">
+
+            <!-- FALLBACK-ANZEIGE -->
+            <div class="no_tasks_box" *ngIf="(column.data | async)?.length === 0">
+              No tasks {{ column.title }}
+            </div>
+
+            <!-- TASKS -->
+            <div class="task_card"
+              *ngFor="let task of (column.data | async ) | FilterTask : searchInput" cdkDrag
+              [cdkDragData]="task" (click)="onTaskClick(task)">
+
+              <app-task-preview [task]="task"></app-task-preview>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </ng-container>
+    </div>
+
 
     <app-dialog-add-task></app-dialog-add-task>
-
-    <app-task-list></app-task-list>
   </section>
 </div>
