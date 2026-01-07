@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +18,15 @@ export class Header implements OnInit {
 
   closeMenu() {
   this.menuOpen = false;
+}
+
+
+ constructor(private router: Router) {}
+
+  guestLogin() {
+  // Nach Klick auf Guest Login → Summary anzeigen
+  this.router.navigate(['/Login']);
+
 }
 
   @HostListener('document:click', ['$event'])

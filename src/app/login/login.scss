@@ -1,0 +1,165 @@
+@use"../styles/colors.scss";
+.widescreen{
+background-color: colors.$bgLightGrey ;
+}
+main {
+    height: 100vh;
+    width: 100%;;
+   padding-right: calc((100% - 1920px));
+    
+    
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 25px;
+
+        img {
+            width: 100px;
+            height: 121px;
+            margin-top: 32px;
+        }
+
+        .header_right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .sign_up {
+            background-color: colors.$bgGrey;
+            color: colors.$white;
+            width: 110px;
+            height: 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            padding: 15px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background-color: colors.$buttonBlue;
+                border-color: colors.$buttonBlue;
+                cursor: pointer;
+
+            }
+        }
+    }
+
+    .main_contend {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 406px);
+
+        .middle_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 449px;
+            width: 652px;
+            background-color: colors.$white;
+            border-radius: 20px;
+
+            .headline {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 16px;
+
+
+                h1 {
+                    font-size: 61px;
+                }
+
+                span {
+                    width: 150px;
+                    height: 1px;
+                    border-style: solid;
+                    border-color: colors.$buttonBlue;
+                    margin-bottom: 16px;
+                }
+            }
+
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 10px;
+                width: 422px;
+
+
+                .input_wrapper {
+                    border-style: solid;
+                    border-radius: 10px;
+                    border-color: colors.$bgMiddleGrey;
+                    border-width: thin;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 0 10px;
+                    height: 48px;
+
+                }
+
+                .middle_bottom_area {
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+
+                    .dark_button {
+                        background-color: colors.$bgGrey;
+                        color: colors.$white;
+                        width: 110px;
+                        height: 25px;
+                        border-radius: 10px;
+                        font-size: 21px;
+                        padding: 15px 0px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:hover {
+                            background-color: colors.$buttonBlue;
+                            border-color: colors.$buttonBlue;
+                            cursor: pointer;
+
+                        }
+                    }
+
+                    .light_button {
+                        background-color: colors.$white;
+                        border-style: solid;
+                        border-width: thin;
+                        border-radius: 10px;
+                        padding: 15px 0px;
+                        width: 177px;
+                        height: 25px;
+                        font-size: 21px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:hover {
+                            color: colors.$buttonBlue;
+                            border-color: colors.$buttonBlue;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                input {
+                    outline: none;
+                    border-style: none;
+                    flex: 1;
+
+                }
+
+
+            }
+        }
+    }
+}

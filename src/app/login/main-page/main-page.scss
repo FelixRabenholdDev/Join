@@ -1,0 +1,20 @@
+@use '../../styles/colors.scss';
+
+.content {
+  display: flex;
+  width: 100%;
+  background-color: colors.$bgLightGrey;
+  height: 100vh;
+}
+
+.right_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 1440px) {
+  .widescreen {
+    padding-right: calc((100% - 1440px));
+  }
+}

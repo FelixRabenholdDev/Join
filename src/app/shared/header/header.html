@@ -47,8 +47,8 @@
               (click)="closeMenu()">Privacy Policy</a>
           </li>
           <li>
-            <a routerLink="/Legal notice" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
-              (click)="closeMenu()">Log Out</a>
+            <a routerLink="/Login" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+              (click)="guestLogin()" >Log Out</a>
           </li>
         </ul>
       </nav>
@@ -69,7 +69,7 @@
           </li>
           <li>
             <a routerLink="/Legal notice" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
-              (click)="closeMenu()">log out</a>
+              (click)="guestLogin()">log out</a>
           </li>
         </ul>
       </nav>

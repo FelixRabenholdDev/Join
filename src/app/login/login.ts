@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
-import { MainPage } from './main-page/main-page';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-login',
-  imports: [MainPage,],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
 
+  constructor(private router: Router) {}
+
+  guestLogin() {
+  // Nach Klick auf Guest Login → Summary anzeigen
+  this.router.navigate(['/summary']);
+
+}
 }
