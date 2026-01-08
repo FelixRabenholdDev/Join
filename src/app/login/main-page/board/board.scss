@@ -1,4 +1,4 @@
-@use "../../../styles/colors.scss";
+@use '../../../styles/colors.scss';
 
 /* ===================================================== */
 /* ROOT WRAPPER                                          */
@@ -19,6 +19,11 @@
   display: flex;
   flex-direction: column;
   padding: 40px 24px;
+
+  // @media (max-width: 740px) {
+  //   display: grid;
+  //   grid-template-columns: 1fr;
+  // }
 }
 
 /* ===================================================== */
@@ -41,8 +46,32 @@
     max-width: 100%;
   }
 
+  @media (max-width: 580px) {
+    display: grid;
+    grid-template-areas:
+      'title button'
+      'search search';
+    grid-template-columns: 1fr auto;
+    row-gap: 12px;
+    column-gap: 12px;
+
+    .area_top > span {
+      grid-area: title;
+    }
+
+    .search_task_box {
+      grid-area: search;
+      width: 100%;
+    }
+
+    .circle_add_task_mobile {
+      grid-area: button;
+      justify-self: end;
+    }
+  }
+
   /* ---------- BOARD TITLE ---------- */
-  >span {
+  > span {
     font-weight: 700;
     font-size: 61px;
     color: colors.$black;
@@ -82,6 +111,7 @@
       &::placeholder {
         color: colors.$bgMiddleGrey;
       }
+
       &:focus {
         outline: none;
       }
@@ -112,12 +142,14 @@
     }
   }
 
-
   .right_top {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
+    @media (max-width: 580px) {
+        display: contents;
+    }
   }
 
   /* ===================================================== */
@@ -136,7 +168,7 @@
     }
 
     &:hover {
-      background: #29ABE2;
+      background: #29abe2;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-color: colors.$buttonBlue;
       transition: none;
@@ -203,8 +235,6 @@
   @media (max-width: 980px) {
     flex-direction: column;
   }
-
-
 }
 
 .board_column {
@@ -268,7 +298,6 @@
   }
 }
 
-
 .column_drop_area {
   min-height: 120px;
   display: flex;
@@ -279,14 +308,14 @@
 .no_tasks_box {
   width: 100%;
   height: 48px;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   border-radius: 12px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #A8A8A8;
+  color: #a8a8a8;
   font-size: 14px;
   font-weight: 400;
 }
