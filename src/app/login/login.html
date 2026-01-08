@@ -1,70 +1,72 @@
 <div class="widescreen">
-    <main>
-        <header>
-            <img src="img/Capa 2.svg" alt="">
+  <main>
+    <header>
+      <img src="img/Capa 2.svg" alt="" />
 
-            <div class="header_right" *ngIf="!isSignUp">
-                <p>Not a Join User?</p>
-                <button class="sign_up" (click)="openSignUp()">Sign Up</button>
+      <div class="header_right" *ngIf="!isSignUp">
+        <p>Not a Join User?</p>
+        <button class="sign_up" (click)="openSignUp()">Sign Up</button>
+      </div>
+    </header>
+    <div class="main_contend">
+      <div class="middle_area">
+        <div class="headline" *ngIf="!isSignUp">
+          <h1>Log in</h1>
+          <span class="underline"></span>
+          <div class="inputs">
+            <div class="input_wrapper">
+              <input placeholder="Email" type="email" />
+              <img src="img/mail.svg" alt="" />
             </div>
-        </header>
-        <div class="main_contend">
-            <div class="middle_area">
-                <div class="headline" *ngIf="!isSignUp">
-                    <h1>Log in </h1>
-                    <span class="underline"></span>
-                    <div class="inputs">
-                        <div class="input_wrapper">
-                            <input placeholder="Email" type="email">
-                            <img src="img/mail.svg" alt="">
-                        </div>
-                        <div class="input_wrapper">
-                            <input placeholder="Password" type="password">
-                            <img src="img/lock.svg" alt="">
-                        </div>
-                        <div class="middle_bottom_area">
-                            <button class="dark_button">Log In</button>
-                            <button class="light_button" type="button" (click)="guestLogin()">Guest Log In </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="headline" *ngIf="isSignUp">
-                    <div class="sign_up_arrow_container">
-                    <img src="img/arrow_left.svg" alt="" (click)="openSignUp()">
-                    <h1>Sign up </h1>
-                    </div>
-                    <span class="underline"></span>
-                    <div class="inputs">
-                        <div class="input_wrapper">
-                            <input placeholder="Name" type="email">
-                            <img src="img/person.svg" alt="">
-                        </div>
-
-                        <div class="input_wrapper">
-                            <input placeholder="Email" type="email">
-                            <img src="img/mail.svg" alt="">
-                        </div>
-                        <div class="input_wrapper">
-                            <input placeholder="Password" type="password">
-                            <img src="img/lock.svg" alt="">
-                        </div>
-
-                         <div class="input_wrapper">
-                            <input placeholder="Confirm Password" type="password">
-                            <img src="img/lock.svg" alt="">
-                        </div>
-                        <div class="sign_up_bottom">
-                            <div class="policy_text">
-                            <input type="checkbox"><span>  I accept the <span class="policy">Privacy policy</span></span>
-                            </div>
-                            <button class="sign_up_button" (click)="openSignUp()">Sign up</button>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="input_wrapper">
+              <input placeholder="Password" type="password" />
+              <img src="img/lock.svg" alt="" />
             </div>
+            <div class="middle_bottom_area">
+              <button class="dark_button">Log In</button>
+              <button class="light_button" type="button" (click)="guestLogin()">
+                Guest Log In
+              </button>
+            </div>
+          </div>
         </div>
 
-    </main>
+        <div class="headline" *ngIf="isSignUp">
+          <div class="sign_up_arrow_container">
+            <img src="img/arrow_left.svg" alt="" (click)="openSignUp()" />
+            <h1>Sign up</h1>
+          </div>
+          <span class="underline"></span>
+          <div class="inputs">
+            <div class="input_wrapper">
+              <input placeholder="Name" type="email" />
+              <img src="img/person.svg" alt="" />
+            </div>
+
+            <div class="input_wrapper">
+              <input placeholder="Email" type="email" />
+              <img src="img/mail.svg" alt="" />
+            </div>
+            <div class="input_wrapper">
+              <input placeholder="Password" type="password" />
+              <img src="img/lock.svg" alt="" />
+            </div>
+
+            <div class="input_wrapper">
+              <input placeholder="Confirm Password" type="password" />
+              <img src="img/lock.svg" alt="" />
+            </div>
+            <div class="sign_up_bottom">
+              <div class="policy_text">
+                <input type="checkbox" /><span>
+                  I accept the <span class="policy">Privacy policy</span></span
+                >
+              </div>
+              <button class="sign_up_button" (click)="openSignUp()">Sign up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
