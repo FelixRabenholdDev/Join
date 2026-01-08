@@ -85,10 +85,10 @@ export class FirebaseServices {
         batch.delete(docSnap.ref);
       });
       await batch.commit();
+    }
 
       const ref = doc(this.firestore, `contacts/${contactId}`);
-      await deleteDoc(ref);
-    }
+      await deleteDoc(ref);    
   }
 
   /* ================================TASKS================================= */
