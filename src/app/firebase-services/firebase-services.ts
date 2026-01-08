@@ -23,12 +23,16 @@ import { TaskAssign } from '../interfaces/task-assign.interface';
 import { Subtask } from '../interfaces/subtask.interface';
 import { TaskStatus } from '../types/task-status';
 import { TaskAssignDb } from '../interfaces/task-assign-db.interface';
+import { Auth, deleteUser } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseServices {
   private readonly firestore = inject(Firestore);
+  private readonly auth = inject(Auth);
+  private readonly router = inject(Router);
 
   private settingsDoc = doc(this.firestore, 'appSettings/contacts');
 
@@ -75,6 +79,20 @@ export class FirebaseServices {
       throw new Error('deleteContact: contactId is missing');
     }
 
+    const currentUser = this.auth.currentUser;
+    const contactRef = doc(this.firestore, `contacts/${contactId}`);
+    const contactSnap = await getDoc(contactRef);
+    
+    if (contactSnap.exists()) {
+      const contactData = contactSnap.data();
+      const isRegisteredUser = contactData['isUser'] === true;
+      const isOwnAccount = currentUser?.uid === contactId;
+
+      if (isRegisteredUser && !isOwnAccount) {
+        throw new Error('auth/permission-denied');
+      }
+    }
+
     const assignsGroup = collectionGroup(this.firestore, 'assigns');
     const q = query(assignsGroup, where('contactId', '==', contactId));
     const assignsSnap = await getDocs(q);
@@ -87,9 +105,15 @@ export class FirebaseServices {
       await batch.commit();
     }
 
-      const ref = doc(this.firestore, `contacts/${contactId}`);
-      await deleteDoc(ref);    
+      await deleteDoc(contactRef);
+
+
+    if (currentUser?.uid === contactId) {
+      await deleteUser(currentUser);
+      this.router.navigate(['/Login']);
+    }
   }
+
 
   /* ================================TASKS================================= */
 
