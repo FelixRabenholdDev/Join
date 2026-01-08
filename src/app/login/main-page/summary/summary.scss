@@ -1,66 +1,56 @@
 @use '../../../styles/colors.scss';
 
+// Mixin für Flex-Zentrierung (spart Code)
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .summary {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  background-color: #f6f7f8;
-  padding-top: 110px;
-  padding-left: 96px;
-  padding-right: 40px;
-  padding-bottom: 40px;
+  background-color: colors.$bgLightGrey;
+  padding: 110px 40px 40px 96px;
 
-  @media (max-width: 1350px) {
-    padding-left: 50px;
-  }
+  @media (max-width: 1350px) { padding-left: 50px; }
+  @media (max-width: 600px) { padding: 80px 24px 24px; }
 
-  @media (max-width: 600px) {
-    padding: 24px;
-    padding-top: 80px;
-  }
-}
-
-.summary-header {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 56px;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .headline {
-    font-weight: 700;
-    font-size: 61px;
-    color: colors.$black;
-    line-height: 120%;
+  // Header Bereich
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 56px;
 
     @media (max-width: 600px) {
-      font-size: 40px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
     }
-  }
 
-  .divider {
-    height: 59px;
-    border-left: 3px solid #29abe2;
-    border-radius: 2px;
-
-    @media (max-width: 600px) {
-      display: none;
+    .headline {
+      font-weight: 700;
+      font-size: 61px;
+      color: colors.$black;
+      line-height: 120%;
+      @media (max-width: 600px) { font-size: 40px; }
     }
-  }
 
-  .slogan {
-    font-weight: 400;
-    font-size: 27px;
-    color: #2a3647;
+    .divider {
+      height: 59px;
+      border-left: 3px solid colors.$buttonBlue;
+      border-radius: 2px;
+      @media (max-width: 600px) { display: none; }
+    }
 
-    @media (max-width: 600px) {
-      font-size: 20px;
+    .slogan {
+      font-weight: 400;
+      font-size: 27px;
+      color: colors.$bgGrey;
+      @media (max-width: 600px) { font-size: 20px; }
     }
   }
 }
@@ -70,69 +60,60 @@
   align-items: center;
   gap: 60px;
 
-  @media (max-width: 1250px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  @media (max-width: 1250px) { flex-direction: column; align-items: flex-start; }
+  @media (max-width: 600px) { align-items: center; }
 
-  @media (max-width: 600px) {
-    align-items: center;
-  }
-
-  // Metrics Section Container
   > section {
     display: flex;
     flex-direction: column;
     gap: 28px;
     width: 560px;
-
-    @media (max-width: 650px) {
-      width: 100%;
-    }
+    @media (max-width: 650px) { width: 100%; }
   }
 }
 
-// Gemeinsame Styles für alle Boxen
-.box_top,
-.box_urgent,
-.box_task_bord,
-.box_task_progress,
-.box_task_feedback {
+// --- Gemeinsame Styles für alle Boxen ---
+.box_top, .box_urgent, .box_task_bord, .box_task_progress, .box_task_feedback {
   background: colors.$white;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   cursor: pointer;
   transition: transform 100ms ease-in-out;
 
+  // Standard Hover-Effekt
   &:hover {
     transform: scale(1.05);
+    background-color: colors.$buttonGrey;
+  box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.1);
+   
+
+    .symbol {
+      background-color: colors.$white !important;
+      svg, path { fill: colors.$black; }
+    }
+
+    .task_number, .task_area, .span1, .span2, .date, .deadline {
+      color: colors.$white !important;
+    }
   }
 }
 
 .area_top {
   display: flex;
   gap: 32px;
-
-  @media (max-width: 650px) {
-    flex-direction: column;
-  }
+  @media (max-width: 650px) { flex-direction: column; }
 
   .box_top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     gap: 18px;
     width: 100%;
     height: 168px;
 
     .symbol {
+      @include flex-center;
       width: 69px;
       height: 69px;
       border-radius: 50%;
-      background-color: #2a3647;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: colors.$bgGrey;
     }
 
     p {
@@ -147,11 +128,10 @@
         line-height: 120%;
         color: colors.$black;
       }
-
       .task_area {
         font-weight: 400;
         font-size: 20px;
-        color: #2a3647;
+        color: colors.$bgGrey;
       }
     }
   }
@@ -174,19 +154,25 @@
       gap: 24px;
     }
 
+    // Spezifischer Hover-Override für Urgent
+    &:hover {
+      .symbol {
+        background-color: colors.$bgOrange !important;
+        svg, path { fill: colors.$white; }
+      }
+    }
+
     .urgent_left {
       display: flex;
       align-items: center;
       gap: 18px;
 
       .symbol {
+        @include flex-center;
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background-color: #ff3d00;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background-color: colors.$bgOrange;
       }
 
       p {
@@ -201,24 +187,23 @@
           line-height: 120%;
           color: colors.$black;
         }
-
         .task_area {
           font-weight: 700;
           font-size: 16px;
-          color: #2a3647;
+          color: colors.$bgGrey;
         }
       }
     }
 
     .divider {
       height: 102px;
-      border-left: 2px solid #d1d1d1;
+      border-left: 2px solid colors.$bgMiddleGrey;
 
       @media (max-width: 650px) {
         width: 100%;
         height: 0;
         border-left: none;
-        border-top: 2px solid #d1d1d1;
+        border-top: 2px solid colors.$bgMiddleGrey;
       }
     }
 
@@ -233,13 +218,12 @@
           font-weight: 700;
           font-size: 21px;
           line-height: 120%;
-          color: #2a3647;
+          color: colors.$bgGrey;
         }
-
         .deadline {
           font-weight: 400;
           font-size: 16px;
-          color: #2a3647;
+          color: colors.$bgGrey;
         }
       }
     }
@@ -249,10 +233,7 @@
 .area_bot {
   display: flex;
   gap: 28px;
-
-  @media (max-width: 650px) {
-    flex-direction: column;
-  }
+  @media (max-width: 650px) { flex-direction: column; }
 
   .box_task_bord,
   .box_task_progress,
@@ -277,12 +258,10 @@
         line-height: 120%;
         color: colors.$black;
       }
-
-      .span1,
-      .span2 {
+      .span1, .span2 {
         font-weight: 400;
         font-size: 20px;
-        color: #2a3647;
+        color: colors.$bgGrey;
       }
     }
   }
@@ -293,29 +272,22 @@
   flex-direction: column;
   justify-content: center;
 
-  p {
-    margin: 0;
-  }
+  p { margin: 0; }
 
   .greeting {
     font-weight: 500;
     font-size: 47px;
-    color: #2a3647;
+    color: colors.$bgGrey;
   }
-
   .name {
     font-weight: 700;
     font-size: 64px;
-    color: #29abe2;
+    color: colors.$buttonBlue;
   }
 
   @media (max-width: 600px) {
     align-items: center;
-    .greeting {
-      font-size: 32px;
-    }
-    .name {
-      font-size: 42px;
-    }
+    .greeting { font-size: 32px; }
+    .name { font-size: 42px; }
   }
 }

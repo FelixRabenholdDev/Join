@@ -365,19 +365,5 @@
         svg { height: 15px; }
       }
     }
-
-    footer {
-      flex-direction: column;
-      gap: 10px;
-      :first-child { align-self: flex-start; }
-      :last-child { align-self: flex-end; }
-
-      span { font-size: 10px; }
-      div {
-        .button_light, .button_dark { font-size: 10px; }
-        .button_light { width: 90px; }
-        .button_dark { width: 116px; font-size: 10px; }
-      }
-    }
   }
 }

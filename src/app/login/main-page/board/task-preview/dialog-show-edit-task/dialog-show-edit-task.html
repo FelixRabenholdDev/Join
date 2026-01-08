@@ -1,8 +1,5 @@
 <app-dialog #DialogShowEditTask class="edit_task_dialog">
-
-  <!-- ####################################################################### -->
   <!-- -------------------------- Section ShowTask --------------------------- -->
-  <!-- ####################################################################### -->
 
   <section class="dialog_show" *ngIf="task() as t" [class.d_none]="isEditMode">
     <header>
@@ -10,13 +7,19 @@
 
       <button class="close" type="button" aria-label="Close Button" (click)="close()">
         <!-- close.svg -->
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
       </button>
-
     </header>
 
     <p class="area_title">
@@ -47,16 +50,39 @@
     <span class="subtasks_title">Subtasks</span>
     <div class="subtasks">
       <p *ngFor="let sub of t.subtasks; let i = index" (click)="toggleSubtask(i, t)">
-        <svg *ngIf="sub.done" class="checkbox_icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
-            stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-          <path d="M8 12L12 16L20 4.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
+        <svg
+          *ngIf="sub.done"
+          class="checkbox_icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M8 12L12 16L20 4.5"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
 
-        <svg *ngIf="!sub.done" class="checkbox_icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+        <svg
+          *ngIf="!sub.done"
+          class="checkbox_icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
         </svg>
         <span>{{ sub.title }}</span>
@@ -65,56 +91,91 @@
 
     <footer>
       <button class="btn-delete" (click)="deleteTask()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <mask id="mask0_75601_14777" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
-            height="24">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask
+            id="mask0_75601_14777"
+            style="mask-type: alpha"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+          >
             <rect width="24" height="24" fill="#D9D9D9" />
           </mask>
           <g mask="url(#mask0_75601_14777)">
             <path
               d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-              fill="currentColor" />
+              fill="currentColor"
+            />
           </g>
         </svg>
         Delete
       </button>
 
       <button class="btn-edit" (click)="switchPage()">
-        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 19 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M2 16.25H3.4L12.025 7.625L10.625 6.225L2 14.85V16.25ZM16.3 6.175L12.05 1.975L13.45 0.575C13.8333 0.191667 14.3042 0 14.8625 0C15.4208 0 15.8917 0.191667 16.275 0.575L17.675 1.975C18.0583 2.35833 18.2583 2.82083 18.275 3.3625C18.2917 3.90417 18.1083 4.36667 17.725 4.75L16.3 6.175ZM14.85 7.65L4.25 18.25H0V14L10.6 3.4L14.85 7.65Z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
         Edit
       </button>
     </footer>
   </section>
 
-
-  <!-- ####################################################################### -->
   <!-- -------------------------- Section EditTask --------------------------- -->
-  <!-- ####################################################################### -->
 
   <section class="dialog_edit" [class.d_none]="!isEditMode">
     <header>
-
       <button class="close" type="button" aria-label="Close Button" (click)="close()">
         <!-- close.svg -->
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
       </button>
 
-      <button class="close" type="button" (click)="DialogShowEditTask.close()" aria-label="Close Button">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button
+        class="close"
+        type="button"
+        (click)="DialogShowEditTask.close()"
+        aria-label="Close Button"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
-            fill="currentColor" />
+            fill="currentColor"
+          />
         </svg>
       </button>
-
     </header>
 
     <div class="area_input">
@@ -139,14 +200,22 @@
         <!-- ---------------------------- Button urgent ---------------------------- -->
         <button type="button" [class.active_urgent]="editData.priority === 1" (click)="setPrio(1)">
           Urgent
-          <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="20"
+            height="15"
+            viewBox="0 0 20 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g clip-path="url(#clip0_156_1009)">
               <path
                 d="M18.9043 14.5096C18.6696 14.51 18.4411 14.4351 18.2522 14.2961L10.0001 8.21288L1.74809 14.2961C1.63224 14.3816 1.50066 14.4435 1.36086 14.4783C1.22106 14.513 1.07577 14.5199 0.933305 14.4986C0.790837 14.4772 0.653973 14.428 0.530528 14.3538C0.407083 14.2796 0.299474 14.1818 0.213845 14.0661C0.128216 13.9503 0.0662437 13.8188 0.0314671 13.6791C-0.00330956 13.5394 -0.0102098 13.3943 0.0111604 13.2519C0.0543195 12.9644 0.21001 12.7058 0.443982 12.533L9.34809 5.96249C9.53679 5.8229 9.76536 5.74756 10.0001 5.74756C10.2349 5.74756 10.4635 5.8229 10.6522 5.96249L19.5563 12.533C19.7422 12.6699 19.8801 12.862 19.9503 13.0819C20.0204 13.3018 20.0193 13.5382 19.9469 13.7573C19.8746 13.9765 19.7349 14.1673 19.5476 14.3024C19.3604 14.4375 19.1352 14.51 18.9043 14.5096Z"
-                fill="#FF3D00" />
+                fill="#FF3D00"
+              />
               <path
                 d="M18.9043 8.76057C18.6696 8.76097 18.4411 8.68612 18.2522 8.54702L10.0002 2.46386L1.7481 8.54702C1.51412 8.71983 1.22104 8.79269 0.93331 8.74956C0.645583 8.70643 0.386785 8.55086 0.213849 8.31706C0.0409137 8.08326 -0.0319941 7.79039 0.011165 7.50288C0.054324 7.21536 0.210015 6.95676 0.443986 6.78395L9.3481 0.213471C9.5368 0.0738799 9.76537 -0.00146484 10.0002 -0.00146484C10.2349 -0.00146484 10.4635 0.0738799 10.6522 0.213471L19.5563 6.78395C19.7422 6.92087 19.8801 7.11298 19.9503 7.33286C20.0204 7.55274 20.0193 7.78914 19.947 8.00832C19.8746 8.22751 19.7349 8.41826 19.5476 8.55335C19.3604 8.68844 19.1352 8.76096 18.9043 8.76057Z"
-                fill="#FF3D00" />
+                fill="#FF3D00"
+              />
             </g>
             <defs>
               <clipPath id="clip0_156_1009">
@@ -158,14 +227,22 @@
         <!-- ---------------------------- Button medium ---------------------------- -->
         <button type="button" [class.active_medium]="editData.priority === 2" (click)="setPrio(2)">
           Medium
-          <svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="20"
+            height="8"
+            viewBox="0 0 20 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g clip-path="url(#clip0_156_1038)">
               <path
                 d="M18.9041 7.45098H1.09589C0.805242 7.45098 0.526498 7.33469 0.320979 7.12767C0.11546 6.92066 0 6.63989 0 6.34714C0 6.05438 0.11546 5.77361 0.320979 5.5666C0.526498 5.35958 0.805242 5.24329 1.09589 5.24329H18.9041C19.1948 5.24329 19.4735 5.35958 19.679 5.5666C19.8845 5.77361 20 6.05438 20 6.34714C20 6.63989 19.8845 6.92066 19.679 7.12767C19.4735 7.33469 19.1948 7.45098 18.9041 7.45098Z"
-                fill="#FFA800" />
+                fill="#FFA800"
+              />
               <path
                 d="M18.9041 2.2077H1.09589C0.805242 2.2077 0.526498 2.0914 0.320979 1.88439C0.11546 1.67738 0 1.39661 0 1.10385C0 0.81109 0.11546 0.530322 0.320979 0.32331C0.526498 0.116298 0.805242 0 1.09589 0L18.9041 0C19.1948 0 19.4735 0.116298 19.679 0.32331C19.8845 0.530322 20 0.81109 20 1.10385C20 1.39661 19.8845 1.67738 19.679 1.88439C19.4735 2.0914 19.1948 2.2077 18.9041 2.2077Z"
-                fill="#FFA800" />
+                fill="#FFA800"
+              />
             </g>
             <defs>
               <clipPath id="clip0_156_1038">
@@ -180,10 +257,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" fill="none">
             <path
               d="M10 8.76077C9.7654 8.76118 9.53687 8.68634 9.34802 8.54726L0.444913 1.97752C0.329075 1.89197 0.231235 1.78445 0.15698 1.66111C0.0827245 1.53777 0.033508 1.40102 0.0121402 1.25868C-0.031014 0.971193 0.0418855 0.678356 0.214802 0.444584C0.387718 0.210811 0.646486 0.0552534 0.934181 0.0121312C1.22188 -0.0309911 1.51493 0.0418545 1.74888 0.214643L10 6.29712L18.2511 0.214643C18.367 0.129087 18.4985 0.0671675 18.6383 0.0324205C18.7781 -0.00232646 18.9234 -0.00922079 19.0658 0.0121312C19.2083 0.0334832 19.3451 0.0826633 19.4685 0.156864C19.592 0.231064 19.6996 0.328831 19.7852 0.444584C19.8708 0.560336 19.9328 0.691806 19.9676 0.831488C20.0023 0.97117 20.0092 1.11633 19.9879 1.25868C19.9665 1.40102 19.9173 1.53777 19.843 1.66111C19.7688 1.78445 19.6709 1.89197 19.5551 1.97752L10.652 8.54726C10.4631 8.68634 10.2346 8.76118 10 8.76077Z"
-              fill="#7AE229" />
+              fill="#7AE229"
+            />
             <path
               d="M10 14.5093C9.7654 14.5097 9.53687 14.4349 9.34802 14.2958L0.444913 7.72606C0.210967 7.55327 0.0552944 7.29469 0.0121402 7.00721C-0.031014 6.71973 0.0418855 6.42689 0.214802 6.19312C0.387718 5.95935 0.646486 5.80379 0.934181 5.76067C1.22188 5.71754 1.51493 5.79039 1.74888 5.96318L10 12.0457L18.2511 5.96318C18.4851 5.79039 18.7781 5.71754 19.0658 5.76067C19.3535 5.80379 19.6123 5.95935 19.7852 6.19312C19.9581 6.42689 20.031 6.71973 19.9879 7.00721C19.9447 7.29469 19.789 7.55327 19.5551 7.72606L10.652 14.2958C10.4631 14.4349 10.2346 14.5097 10 14.5093Z"
-              fill="#7AE229" />
+              fill="#7AE229"
+            />
           </svg>
         </button>
       </div>
@@ -194,11 +273,19 @@
     <div class="area_assigned">
       <mat-form-field appearance="fill" floatLabel="always">
         <mat-label>
-          {{ editData.assigns.length > 0 || selectOpened ? 'Select contacts to assign' : 'Select contacts to assign' }}
+          {{
+            editData.assigns.length > 0 || selectOpened
+              ? 'Select contacts to assign'
+              : 'Select contacts to assign'
+          }}
         </mat-label>
 
-        <mat-select multiple [value]="getSelectedContacts()" (selectionChange)="onSelectionChange($event)"
-          (openedChange)="selectOpened = $event">
+        <mat-select
+          multiple
+          [value]="getSelectedContacts()"
+          (selectionChange)="onSelectionChange($event)"
+          (openedChange)="selectOpened = $event"
+        >
           <mat-select-trigger></mat-select-trigger>
 
           <mat-option *ngFor="let contact of contacts()" [value]="contact">
@@ -211,7 +298,11 @@
       </mat-form-field>
 
       <div class="assigned-logos" *ngIf="editData.assigns.length > 0">
-        <span class="sc_logo" *ngFor="let assign of editData.assigns" [style.background-color]="assign.color">
+        <span
+          class="sc_logo"
+          *ngFor="let assign of editData.assigns"
+          [style.background-color]="assign.color"
+        >
           {{ assign.initials }}
         </span>
       </div>
@@ -223,51 +314,106 @@
         <label>Subtasks</label>
 
         <div class="subtask_input_wrapper">
-
-          <input type="text" [(ngModel)]="newSubtaskTitle" (keydown.enter)="addSubtask()"
-            placeholder="Add new subtask" />
+          <input
+            type="text"
+            [(ngModel)]="newSubtaskTitle"
+            (keydown.enter)="addSubtask()"
+            placeholder="Add new subtask"
+          />
 
           <div class="subtask_input_icons">
             <!-- CONFIRM -->
-            <button class="input_icon_btn" type="button" aria-label="Confirm" (click)="addSubtask()">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 7.5L5.5 12L13 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
+            <button
+              class="input_icon_btn"
+              type="button"
+              aria-label="Confirm"
+              (click)="addSubtask()"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 7.5L5.5 12L13 2"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </button>
             <div class="separator"></div>
             <!-- CLOSE -->
             <button class="input_icon_btn" type="button" aria-label="Cancel">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
-                  fill="currentColor" />
+                  fill="currentColor"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
 
-
       <div class="subtask_list_edit">
         <div class="subtask_item_edit" *ngFor="let sub of editData.subtasks; let i = index">
           <div class="bullet_point">&bull;</div>
-          <input #subtaskInput [(ngModel)]="sub.title" type="text" class="subtask_input" aria-label="subtask-edit" />
+          <input
+            #subtaskInput
+            [(ngModel)]="sub.title"
+            type="text"
+            class="subtask_input"
+            aria-label="subtask-edit"
+          />
 
           <div class="subtask_icons">
-            <button type="button" class="icon_btn edit_icon" (click)="subtaskInput.focus()" aria-label="button edit subtask">
-              <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button
+              type="button"
+              class="icon_btn edit_icon"
+              (click)="subtaskInput.focus()"
+              aria-label="button edit subtask"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 19 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M2 16.25H3.4L12.025 7.625L10.625 6.225L2 14.85V16.25ZM16.3 6.175L12.05 1.975L13.45 0.575C13.8333 0.191667 14.3042 0 14.8625 0C15.4208 0 15.8917 0.191667 16.275 0.575L17.675 1.975C18.0583 2.35833 18.2583 2.82083 18.275 3.3625C18.2917 3.90417 18.1083 4.36667 17.725 4.75L16.3 6.175ZM14.85 7.65L4.25 18.25H0V14L10.6 3.4L14.85 7.65Z"
-                  fill="currentColor" />
+                  fill="currentColor"
+                />
               </svg>
             </button>
             <div class="separator"></div>
-            <button type="button" class="icon_btn delete_icon" (click)="removeSubtask(i)" aria-label="button delete subtask">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button
+              type="button"
+              class="icon_btn delete_icon"
+              (click)="removeSubtask(i)"
+              aria-label="button delete subtask"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-                  fill="currentColor" />
+                  fill="currentColor"
+                />
               </svg>
             </button>
           </div>
@@ -275,8 +421,35 @@
       </div>
     </div>
 
-    <footer>
-      <button (click)="saveTask()">Save</button>
+    <footer class="edit_footer">
+      <button (click)="saveTask()">
+        <span>Ok</span>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask
+            id="mask0_408622_6825"
+            style="mask-type: alpha"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+          >
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_408622_6825)">
+            <path
+              d="M9.55057 15.15L18.0256 6.675C18.2256 6.475 18.4631 6.375 18.7381 6.375C19.0131 6.375 19.2506 6.475 19.4506 6.675C19.6506 6.875 19.7506 7.1125 19.7506 7.3875C19.7506 7.6625 19.6506 7.9 19.4506 8.1L10.2506 17.3C10.0506 17.5 9.81724 17.6 9.55057 17.6C9.28391 17.6 9.05057 17.5 8.85057 17.3L4.55057 13C4.35057 12.8 4.25474 12.5625 4.26307 12.2875C4.27141 12.0125 4.37557 11.775 4.57557 11.575C4.77557 11.375 5.01307 11.275 5.28807 11.275C5.56307 11.275 5.80057 11.375 6.00057 11.575L9.55057 15.15Z"
+              fill="white"
+            />
+          </g>
+        </svg>
+      </button>
     </footer>
   </section>
 </app-dialog>

@@ -8,7 +8,7 @@
   <div class="area_summary">
     <section>
       <div class="area_top">
-        <div class="box_top">
+        <div class="box_top" (click)="toBoard()">
           <div class="symbol">
             <svg
               width="19"
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="box_top">
+        <div class="box_top" (click)="toBoard()">
           <div class="box_top">
             <div class="symbol">
               <svg
@@ -71,7 +71,7 @@
       </div>
 
       <div class="area_mid">
-        <div class="box_urgent">
+        <div class="box_urgent" (click)="toBoard()">
           <div class="urgent_left">
             <div class="symbol">
               <svg
@@ -118,21 +118,21 @@
       </div>
 
       <div class="area_bot">
-        <div class="box_task_bord">
+        <div class="box_task_bord" (click)="toBoard()">
           <p>
             <span class="task_number">{{ (summary$ | async)?.total }}</span>
             <span class="span1">Tasks in</span>
             <span class="span2">Board</span>
           </p>
         </div>
-        <div class="box_task_progress">
+        <div class="box_task_progress" (click)="toBoard()">
           <p>
             <span class="task_number">{{ (summary$ | async)?.inProgress }}</span>
             <span class="span1">Tasks in</span>
             <span class="span2">Progress</span>
           </p>
         </div>
-        <div class="box_task_feedback">
+        <div class="box_task_feedback" (click)="toBoard()">
           <p>
             <span class="task_number">{{ (summary$ | async)?.awaitFeedback }}</span>
             <span class="span1">Tasks in</span>
@@ -143,7 +143,7 @@
     </section>
 
     <span class="area_site">
-      <p class="greeting">Good morning,</p>
+      <p class="greeting">{{ greeting }}</p>
       <p class="name">Sofia Müller</p>
     </span>
   </div>

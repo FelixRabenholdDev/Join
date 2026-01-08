@@ -166,7 +166,6 @@
   }
 
   .subtasks {
-
     .area_input {
       display: flex;
       flex: 1;
@@ -175,7 +174,7 @@
     }
 
     .subtask_input_wrapper {
-      border: #D1D1D1 1px solid;
+      border: #d1d1d1 1px solid;
       border-radius: 15px;
       background-color: colors.$white;
       display: flex;
@@ -242,7 +241,6 @@
         width: 14px;
         height: 14px;
       }
-
     }
   }
 
@@ -335,23 +333,31 @@
   }
 }
 
-
-footer {
+.edit_footer {
   display: flex;
   justify-content: flex-end;
   margin-top: 32px;
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     background: colors.$buttonGrey;
     color: white;
-    padding: 16px 32px;
+    padding: 15px 15px;
     border-radius: 10px;
     border: none;
     font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
     cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
     &:hover {
       background: colors.$pbBlue;
+      background: colors.$buttonBlue;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
   }
 }
