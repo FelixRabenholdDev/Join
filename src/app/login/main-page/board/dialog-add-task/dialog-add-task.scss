@@ -91,36 +91,16 @@
           }
           &.urgent {
             background: colors.$bgOrange;
-            span,
-            svg path {
-              color: #fff;
-              fill: #fff;
-            }
-            &:hover {
-              box-shadow: 0;
-            }
           }
           &.medium {
             background: colors.$bgYellow;
-            span,
-            svg path {
-              color: #fff;
-              fill: #fff;
-            }
-            &:hover {
-              box-shadow: 0;
-            }
           }
           &.low {
             background: colors.$bgGreen;
-            span,
-            svg path {
-              color: #fff;
-              fill: #fff;
-            }
-            &:hover {
-              box-shadow: 0;
-            }
+          }
+          &.urgent, &.medium, &.low {
+            span, svg path { color: #fff; fill: #fff; }
+            &:hover { box-shadow: 0; }
           }
           .buttons {
             display: flex;
@@ -312,9 +292,6 @@
         height: 56px;
         background-color: #2a3647;
         color: colors.$white;
-        border-radius: 10px;
-        padding: 16px;
-        gap: 4px;
         font-size: 21px;
         font-weight: 700;
         border: none;
