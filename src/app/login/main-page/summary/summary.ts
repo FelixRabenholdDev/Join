@@ -21,6 +21,7 @@ export class Summary {
 
   summary$ = this.firebase.subTasks().pipe(
     map((tasks) => {
+      if (!tasks) return this.getEmptySummary();
       const upcoming = this.getNextDueTask(tasks);
 
       return {
@@ -30,13 +31,25 @@ export class Summary {
         done: tasks.filter((t) => t.status === TaskStatus.Done).length,
         urgent: tasks.filter((t) => this.ui.isTaskUrgent(t.date)).length,
         total: tasks.length,
-        nextDueDate: upcoming?.date ?? null,
+        nextDueDate: upcoming ? upcoming.date : null,
       };
-    })
+    }),
   );
 
   toBoard() {
     this.router.navigate(['/board']);
+  }
+
+  private getEmptySummary() {
+    return {
+      todo: 0,
+      inProgress: 0,
+      awaitFeedback: 0,
+      done: 0,
+      urgent: 0,
+      total: 0,
+      nextDueDate: null,
+    };
   }
 
   private getGreeting(): string {
@@ -47,8 +60,11 @@ export class Summary {
   }
 
   private getNextDueTask(tasks: Task[]): Task | null {
-    return (
-      tasks.filter((t) => t.date).sort((a, b) => a.date.toMillis() - b.date.toMillis())[0] ?? null
-    );
+    if (!tasks || tasks.length === 0) return null;
+    const tasksWithDate = tasks.filter((t) => t.date && typeof t.date.toMillis === 'function');
+
+    if (tasksWithDate.length === 0) return null;
+
+    return tasksWithDate.sort((a, b) => a.date.toMillis() - b.date.toMillis())[0];
   }
 }

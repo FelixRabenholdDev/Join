@@ -106,11 +106,13 @@
           <div class="divider"></div>
           <div class="urgent_right">
             <p>
-              <span class="date">{{
-                (summary$ | async)?.nextDueDate
-                  ? ui.formatTaskDate((summary$ | async)!.nextDueDate!)
-                  : 'No upcoming deadline'
-              }}</span>
+              <span class="date">
+                @if ((summary$ | async)?.nextDueDate; as date) {
+                  {{ ui.formatTaskDate(date) }}
+                } @else {
+                  No upcoming deadline
+                }
+              </span>
               <span class="deadline"> Upcoming Deadline</span>
             </p>
           </div>
