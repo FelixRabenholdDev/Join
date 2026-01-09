@@ -42,7 +42,7 @@ private firebase = inject(FirebaseServices);
   dueDate = signal<Date | null>(null);
  minDate = signal<Date>(new Date());
   selectedTaskType = signal<TaskType | null>(null);
-  priority = signal<'urgent' | 'medium' | 'low' | null>(null);
+  priority = signal<'urgent' | 'medium' | 'low' | null>('medium');
   contacts = toSignal(this.firebase.subContactsList(), { initialValue: [] as Contact[] });
   assignedTo = signal<Contact[]>([]);
 
@@ -254,7 +254,7 @@ private firebase = inject(FirebaseServices);
     this.description.set('');
     this.dueDate.set(null);
     this.selectedTaskType.set(null);
-    this.priority.set(null);
+    this.priority.set('medium');
 
     this.subtasks = [];
     this.subtaskInput = '';

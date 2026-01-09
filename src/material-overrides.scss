@@ -20,9 +20,12 @@ body .mat-calendar-arrow {
 }
 
 .mat-calendar-body-disabled {
-  color: rgba(0, 0, 0, 0.38);  // Standard-Materialfarbe für deaktiviert
-  pointer-events: none;          // sicherstellen, dass sie nicht klickbar sind
-  cursor: default;               // optional, Mauszeiger normal
+  color: rgba(0, 0, 0, 0.38); 
+  pointer-events: none;          
+  cursor: default;               
+}
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper{
+  height: 48px;
 }
 
 .mdc-text-field--outlined .mat-mdc-form-field-infix,
@@ -118,7 +121,11 @@ body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-
 body .mat-mdc-form-field-infix {
   display: flex;
   align-items: center;
+  height: 48px;
 
+}
+body .mdc-text-field__input::placeholder{
+  line-height: normal;
 }
 
 .mat-mdc-option.mdc-list-item{
@@ -217,3 +224,4 @@ body .mdc-line-ripple::after {
 .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple){
   background-color: none;
 }
+

@@ -19,19 +19,16 @@
       text-decoration: none;
       color: #a8a8a8;
       font-size: 16px;
-      font-weight: 400;
       padding: 8px;
       display: flex;
       align-items: center;
 
       &:hover {
         color: #29abe2;
-        font-weight: 700;
       }
     }
   }
 }
-
 
 
 .login_page {
@@ -234,6 +231,7 @@
     }
   }
 }
+
 @media (max-width: 700px) {
   .widescreen {
     height: auto;
@@ -242,7 +240,7 @@
     .login_footer {
       position: static;
       bottom: auto;
-      margin-top: auto;
+      margin-top: 0;
       padding-bottom: 24px;
     }
   }
@@ -252,12 +250,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex: 1;
     position: relative;
 
     header {
-      /* Header-Container auflösen, damit Kinder sortiert werden können */
       display: contents;
 
       img {
@@ -274,7 +271,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        margin: 32px 0;
+        margin: 32px 0 auto 0;
         justify-content: center;
       }
     }
@@ -282,7 +279,7 @@
     .main_contend {
       order: 2;
       height: auto;
-      margin-top: 0;
+      margin-top: auto;
       width: 100%;
 
       .middle_area {
@@ -329,6 +326,10 @@
           }
         }
       }
+    }
+
+    .login_footer {
+      order: 4;
     }
   }
 }
