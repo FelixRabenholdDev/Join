@@ -211,7 +211,6 @@ export class DialogAddTask {
   }
 
   async createTask() {
-    console.log(this.currentStatus())
     const prio = this.priority();
     if (!this.title() || !this.selectedTaskType() || !prio || !this.dueDate()) {
       this.taskErrorMessage.set('Please fill all required fields!');
@@ -227,8 +226,6 @@ export class DialogAddTask {
       status: this.currentStatus(),
       priority: this.getPriorityNumber(prio),
     };
-
-    console.log('Finaler Status beim Senden an Firebase:', newTask.status);
 
     try {
       const createdTask = await this.firebase.addTask(newTask);
