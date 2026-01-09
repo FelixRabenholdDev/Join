@@ -157,11 +157,17 @@
     width: 100%;
 
     mat-option.mat-selected .mat-pseudo-checkbox {
-      border-color: colors.$white;
+      border-color: colors.$white;     
     }
 
     mat-option.mat-selected .mat-pseudo-checkbox::after {
       border-color: colors.$white;
+    }
+
+    @media (max-width: 420px) {
+      .mat-mdc-form-field mat-label {
+      font-size: 12px;
+      }
     }
 
     .assigned-logos {

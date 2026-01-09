@@ -1,9 +1,16 @@
 @use "../src/app/styles/colors.scss";
 
+@media (max-width: 420px) {
+  body .mat-mdc-text-field-wrapper
+    .mat-mdc-form-field-flex
+    .mat-mdc-floating-label {
+    font-size: 16px;
+    transform: translateY(-5px) scale(1);
+  }
+}
+
 .mat-calendar-body {
   background-color: colors.$white;
-
-
 }
 
 .mat-calendar-controls {
@@ -63,8 +70,6 @@ body .mdc-text-field {
   border-width: thin;
 }
 
-
-
 body .mat-mdc-form-field .mdc-text-field .mdc-text-field__input.has-value {
   color: colors.$black;
 }
@@ -73,7 +78,6 @@ body .mat-mdc-form-field .mdc-text-field .mdc-text-field__input::placeholder {
   color: colors.$bgMiddleGrey;
   opacity: 1;
 }
-
 
 body .mat-mdc-option:focus.mdc-list-item,
 .mat-mdc-option {
@@ -110,8 +114,6 @@ body .mdc-text-field--filled .mdc-floating-label--float-above {
 
 }
 
-
-
 body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
   height: 48px;
   display: flex;
@@ -139,17 +141,16 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
     color: #2a3647;
 }
 
-/* Blauer Standardrahmen */
+/* Blue standard frame */
 .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
   border-color: colors.$bgMiddleGrey;
-
 
   &:hover {
     border-color: colors.$buttonBlue;
   }
 }
 
-/* Roter Error-Rahmen */
+/* Red error frame */
 .error-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$errorRed;
   border-style: none;
@@ -157,10 +158,9 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
 
 }
 
-/* Blauer Rahmen, wenn Datum ausgewählt */
+/* Blue frame when date is selected */
 .selected-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$buttonBlue;
-
 }
 
 body .mat-mdc-form-field.invalid .mdc-text-field {
@@ -183,8 +183,6 @@ body .test-select .mat-mdc-option.mdc-list-item--selected {
   color: colors.$white;
 }
 
-
-
 body .task-type-select .mat-mdc-option .mat-pseudo-checkbox {
   display: none;
 }
@@ -200,7 +198,6 @@ body.task-type-select .mdc-text-field--no-label .mat-mdc-form-field-infix{
   width: 28px;
   height: 28px;
   margin-left: 10px;
-  ;
 
   &::after {
     display: none;
