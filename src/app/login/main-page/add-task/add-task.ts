@@ -36,10 +36,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class AddTask {
 
 private firebase = inject(FirebaseServices);
-
+ 
   title = signal('');
   description = signal('');
   dueDate = signal<Date | null>(null);
+ minDate = signal<Date>(new Date());
   selectedTaskType = signal<TaskType | null>(null);
   priority = signal<'urgent' | 'medium' | 'low' | null>(null);
   contacts = toSignal(this.firebase.subContactsList(), { initialValue: [] as Contact[] });
@@ -72,8 +73,14 @@ private firebase = inject(FirebaseServices);
   constructor(    
     public userUi: UserUiService,
     private router: Router,
-  ) {}
+    
+  ) {  const today = new Date();
+  today.setHours(0, 0, 0, 0); // nur Datum ohne Zeit
+  this.minDate.set(today);
+  }
 
+
+  
   addSubtask() {
     const title = this.subtaskInput.trim();
     if (!title) return;

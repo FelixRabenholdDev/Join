@@ -36,7 +36,7 @@
           floatLabel="auto"
           [ngClass]="{
             'error-border': !dueDate() && dueDateTouched,
-            'selected-border': dueDate() && !(!dueDate() && dueDateTouched)
+            'selected-border': dueDate() && !(!dueDate() && dueDateTouched),
           }"
         >
           <input
@@ -48,6 +48,7 @@
             required
             [matDatepicker]="picker"
             (click)="picker.open()"
+            [min]="minDate()"  
           />
 
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -153,6 +154,7 @@
           </mat-label>
 
           <mat-select
+            panelClass="test-select"
             multiple
             [value]="assignedTo()"
             (selectionChange)="assignedTo.set($event.value); updateAssignedToText()"
@@ -193,10 +195,11 @@
       </div>
       <div>
         <p>Category <span class="required">*</span></p>
-        <mat-form-field appearance="fill" floatLabel="always" [class.invalid]="taskTypeError">
+        <mat-form-field class="task-type-field" appearance="fill" floatLabel="always" [class.invalid]="taskTypeError">
           <mat-label *ngIf="!selectedTaskType()">Task Type</mat-label>
 
           <mat-select
+            panelClass="task-type-select"
             [value]="selectedTaskType()"
             (selectionChange)="onTaskTypeChange($event.value)"
             (blur)="onTaskTypeBlur()"
@@ -298,3 +301,4 @@
     </div>
   </footer>
 </section>
+

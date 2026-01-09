@@ -19,9 +19,18 @@ body .mat-calendar-arrow {
   background-color: colors.$white ;
 }
 
+.mat-calendar-body-disabled {
+  color: rgba(0, 0, 0, 0.38);  // Standard-Materialfarbe für deaktiviert
+  pointer-events: none;          // sicherstellen, dass sie nicht klickbar sind
+  cursor: default;               // optional, Mauszeiger normal
+}
+
 .mdc-text-field--outlined .mat-mdc-form-field-infix,
 .mdc-text-field--no-label .mat-mdc-form-field-infix {
   padding-left: 20px;
+}
+.task-type-field .mat-mdc-form-field-infix {
+  padding-left: 0;
 }
 
 .mat-mdc-form-field-subscript-wrapper,
@@ -98,10 +107,7 @@ body .mdc-text-field--filled .mdc-floating-label--float-above {
 
 }
 
-.mat-mdc-select-trigger {
-  padding-left: 30px;
 
-}
 
 body .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
   height: 48px;
@@ -115,8 +121,15 @@ body .mat-mdc-form-field-infix {
 
 }
 
+.mat-mdc-option.mdc-list-item{
+  font-size: 20px;
+  color: #2a3647;
+}
+
 body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
-  top: 30%
+  top: 30%;
+      font-size: 20px;
+    color: #2a3647;
 }
 
 /* Blauer Standardrahmen */
@@ -158,13 +171,18 @@ body .mat-mdc-option.mdc-list-item {
   }
 }
 
-body .mat-mdc-option.mdc-list-item.mdc-list-item--selected {
+body .test-select .mat-mdc-option.mdc-list-item--selected {
   background-color: colors.$bgGrey;
   color: colors.$white;
 }
 
-body .mat-mdc-checkbox .mdc-checkbox__checkmark {
+
+
+body .task-type-select .mat-mdc-option .mat-pseudo-checkbox {
   display: none;
+}
+body.task-type-select .mdc-text-field--no-label .mat-mdc-form-field-infix{
+  padding: 0 !important;
 }
 
 .mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked,
@@ -194,4 +212,8 @@ body .mdc-line-ripple::after {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple){
+  background-color: none;
 }
