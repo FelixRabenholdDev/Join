@@ -32,6 +32,8 @@
   }
 }
 
+
+
 .login_page {
   width: 100%;
   padding-right: calc((100% - 1920px));
@@ -232,7 +234,6 @@
     }
   }
 }
-
 @media (max-width: 700px) {
   .widescreen {
     height: auto;
@@ -251,19 +252,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex: 1;
+    position: relative;
 
     header {
       /* Header-Container auflösen, damit Kinder sortiert werden können */
       display: contents;
 
       img {
-        order: 1;
+        position: absolute;
+        top: 32px;
+        left: 32px;
         width: 64px;
         height: 78px;
-        margin-top: 32px;
-        margin-left: 32px;
-        align-self: flex-start;
+        margin: 0;
       }
 
       .header_right {
@@ -279,7 +282,7 @@
     .main_contend {
       order: 2;
       height: auto;
-      margin-top: 30px;
+      margin-top: 0;
       width: 100%;
 
       .middle_area {
@@ -322,6 +325,50 @@
               font-size: 16px;
               padding: 0;
               border-radius: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .login_page {
+    header {
+      img {
+        top: 16px;
+        left: 16px;
+        width: 48px;
+        height: 58px;
+      }
+
+      .header_right {
+        flex-direction: row;
+        gap: 12px;
+      }
+    }
+
+    .main_contend {
+      .middle_area {
+        padding: 32px 16px;
+
+        .headline h1 {
+          font-size: 36px;
+        }
+
+        .inputs {
+          width: 100%;
+          .input_wrapper {
+            height: 40px;
+            input {
+              font-size: 16px;
+              min-width: 0;
+            }
+            img {
+              width: 20px;
+              height: 20px;
+              flex-shrink: 0;
             }
           }
         }
