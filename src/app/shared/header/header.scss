@@ -30,26 +30,19 @@ section {
   align-items: center;
   height: 100%;
 
-  >span {
+  > span {
     margin-left: 10px;
   }
 
-  >.user {
+  > .user {
     @media (max-width: 500px) {
       justify-content: center;
     }
 
     a {
-
-
-
       svg {
-
         width: 20px;
         height: 20px;
-
-
-
 
         path {
           pointer-events: none;
@@ -63,11 +56,9 @@ section {
         transition: transform 0.2s;
         cursor: pointer;
       }
-
-
     }
 
-    >.icons {
+    > .icons {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -75,15 +66,16 @@ section {
     }
 
     svg {
-
       rect:hover {
         cursor: pointer;
         fill: #d7d3d3;
         pointer-events: all;
-
       }
 
-      path,
+      text {
+        cursor: pointer;
+      }
+
       circle {
         pointer-events: none;
 
@@ -94,8 +86,6 @@ section {
     }
   }
 }
-
-
 
 .menu,
 .menu-mobil {
@@ -134,21 +124,21 @@ section {
   section {
     padding: 0;
 
-    >.content {
-      >span {
+    > .content {
+      > span {
         margin-left: 60px;
       }
 
-      >div .user .menu-icon {
+      > div .user .menu-icon {
         display: none;
       }
 
-      >.text_6 {
+      > .text_6 {
         display: none;
       }
 
       .user {
-        >svg {
+        > svg {
           flex-shrink: 0;
         }
       }
@@ -223,17 +213,17 @@ section {
     overflow-x: hidden;
     width: 100%;
 
-    >section {
+    > section {
       box-shadow: inset 0px -1px #d1d1d1;
 
-      >.content {
+      > .content {
         overflow: auto;
         width: 1150px;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        >span {
+        > span {
           margin-left: 60px;
         }
       }
