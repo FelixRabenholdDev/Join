@@ -1,5 +1,5 @@
 <app-dialog #DialogShowEditTask class="edit_task_dialog">
-  
+
   <!-- -------------------------- Section ShowTask --------------------------- -->
 
   <section class="dialog_show" *ngIf="task() as t" [class.d_none]="isEditMode">
@@ -369,13 +369,15 @@
       <div class="subtask_list_edit">
         <div class="subtask_item_edit" *ngFor="let sub of editData.subtasks; let i = index">
           <div class="bullet_point">&bull;</div>
-          <input
+
+          <textarea
             #subtaskInput
             [(ngModel)]="sub.title"
-            type="text"
             class="subtask_input"
             aria-label="subtask-edit"
-          />
+            rows="2"
+          ></textarea>
+
 
           <div class="subtask_icons">
             <button

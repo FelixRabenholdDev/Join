@@ -311,6 +311,14 @@
     &:focus {
       border-bottom: 1px solid colors.$buttonBlue;
     }
+
+    @media (max-width: 420px) {
+      min-width: 0;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.2;
+      font-size: 12px;
+    }
   }
 
   .subtask_icons {
