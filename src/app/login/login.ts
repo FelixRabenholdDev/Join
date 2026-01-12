@@ -19,8 +19,15 @@ export class Login {
   isSignUp = false;
   loginError = false;
   passwordMatchError = false;
+  logoShrunk = false
 
   constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}
+
+    ngOnInit() {
+    setTimeout(() => {
+      this.logoShrunk = true;
+    }, 50); // Startzeit der Animation
+  }
 
   async login() {
     this.loginError = false;

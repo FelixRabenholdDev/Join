@@ -41,11 +41,39 @@
     align-items: flex-start;
     padding: 25px;
 
-    img {
-      width: 100px;
-      height: 121px;
-      margin-top: 32px;
-    }
+    .logo-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  z-index: 1000;
+
+  transition: all 1s ease-in-out;
+
+  img {
+    width: 60vw;
+    max-width: 600px;
+    transition: all 1s ease-in-out;
+  }
+}
+
+/* Zielzustand */
+.logo-wrapper.shrink {
+  position: relative;
+  inset: auto;
+  top: 25px;
+  left: 25px;
+  background: transparent;
+  z-index: 1;
+
+  img {
+    width: 120px;
+  }
+}
+
+  
 
     .header_right {
       display: flex;

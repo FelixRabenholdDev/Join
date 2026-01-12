@@ -1,13 +1,16 @@
 <div class="widescreen">
   <section class="login_page" [class.sign-up-mode]="isSignUp">
-    <header>
-      <img src="img/Capa 2.svg" alt="" />
+<header>
+  <!-- Logo Wrapper -->
+  <div class="logo-wrapper" [class.shrink]="logoShrunk">
+    <img src="img/Capa 2.svg" alt="Logo" />
+  </div>
 
-      <div class="header_right" *ngIf="!isSignUp">
-        <p>Not a Join User?</p>
-        <button class="sign_up" (click)="openSignUp()">Sign Up</button>
-      </div>
-    </header>
+  <div class="header_right" *ngIf="!isSignUp">
+    <p>Not a Join User?</p>
+    <button class="sign_up" (click)="openSignUp()">Sign Up</button>
+  </div>
+</header>
     <div class="main_contend">
       <div class="middle_area">
         <div class="headline" *ngIf="!isSignUp">
