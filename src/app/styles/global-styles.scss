@@ -46,7 +46,6 @@
   background-color: colors.$white;
 }
 
-
 /* -------------------------- Globale Buttons,Icons ------------------------- */
 
 .d_none {
@@ -54,49 +53,48 @@
 }
 
 .close {
-      top: 48px;
-      right: 48px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: transparent;
-      position: absolute;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  top: 48px;
+  right: 48px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  &:hover {
+    background-color: colors.$bgMiddleGrey;
+    transition: background-color 150ms ease-in-out;
 
-      &:hover {
-        background-color: colors.$bgMiddleGrey;
-        transition: background-color 150ms ease-in-out;
-
-        @media (max-width: 1050px) {
-          display: none;
-        }
-      }
-
-      @media (max-width: 1050px) {
-        top: 24px;
-        right: 24px;
-        color: colors.$white;
-        z-index: 11;
-
-         .active{
-          background-color: colors.$buttonBlue;
-          transition: background-color 150ms ease-in-out;
-        }
-      }
-
-      img {
-        width: 14px;
-        height: 14px;
-        top: 9px;
-        left: 9px;
-        pointer-events: none;
-      }
+    @media (max-width: 1050px) {
+      display: none;
     }
+  }
+
+  @media (max-width: 1050px) {
+    top: 24px;
+    right: 24px;
+    color: colors.$white;
+    z-index: 11;
+
+    .active {
+      background-color: colors.$buttonBlue;
+      transition: background-color 150ms ease-in-out;
+    }
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+    top: 9px;
+    left: 9px;
+    pointer-events: none;
+  }
+}
 
 .button_light {
   border: 2px solid colors.$bgGrey;
@@ -105,7 +103,9 @@
   background: transparent;
   font-size: 21px;
   font-weight: 400;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
   transform-origin: center;
 
   &:hover {
@@ -123,7 +123,9 @@
   font-weight: 700;
   background-color: colors.$bgGrey;
   color: colors.$white;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
   transform-origin: center;
 
   &:hover {
