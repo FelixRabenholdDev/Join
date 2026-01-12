@@ -1,4 +1,5 @@
 @use '../../../styles/colors.scss';
+
 .add_task {
   display: flex;
   flex-direction: column;
@@ -6,7 +7,9 @@
   gap: 24px;
   max-width: 1440px;
   header {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     span {
       font-weight: 700;
@@ -19,7 +22,8 @@
     gap: 50px;
     .area_left,
     .area_right {
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
       width: 100%;
       .carlenda {
@@ -41,7 +45,7 @@
       }
       textarea {
         resize: none;
-        display: flex; 
+        display: flex;
         align-items: center;
         width: 100%;
         height: 120px;
@@ -64,7 +68,8 @@
     }
     .area_right {
       .priority {
-        display: flex; align-items: center;
+        display: flex;
+        align-items: center;
         gap: 16px;
         max-width: 440px;
         .button_container {
@@ -137,11 +142,12 @@
     color: colors.$errorRed;
   }
   .area_input {
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
     .area_input_label {
       font-size: 20px;
-      color: #2a3647;
+      color: colors.$bgGrey;
       &:focus-within {
         border: thin solid colors.$buttonBlue;
       }
@@ -222,13 +228,15 @@
     &::before {
       content: '•';
       position: absolute;
-      left: 0;  top: 50%;
+      left: 0;
+      top: 50%;
       transform: translateY(-50%);
       font-size: 20px;
       color: black;
     }
     .icons {
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       gap: 5px;
       opacity: 0;
       pointer-events: none;
@@ -264,7 +272,7 @@
     padding-top: 20px;
 
     span {
-    font: 400 20px 'Inter';
+      font: 400 20px 'Inter';
       color: black;
       &.required,
       .footer {
@@ -277,15 +285,19 @@
       gap: 25px;
       .button_light,
       .button_dark {
-        display: flex; justify-content: center; align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0 !important;
         gap: 4px;
         border-radius: 10px;
         cursor: pointer;
-        font-size: 20px; font-weight: 400;
+        font-size: 20px;
+        font-weight: 400;
       }
       .button_light {
-        width: 126px; height: 56px;
+        width: 126px;
+        height: 56px;
         border: 1px solid #2a3647;
         background: #fff;
 
@@ -295,8 +307,10 @@
         }
       }
       .button_dark {
-        width: 183px; height: 56px;
-        font-size: 21px; font-weight: 700;
+        width: 183px;
+        height: 56px;
+        font-size: 21px;
+        font-weight: 700;
         flex-direction: row-reverse;
         border: none;
         &:hover {
@@ -310,7 +324,9 @@
     border-radius: 10px;
   }
   .error-text {
-    color: colors.$errorRed; font-size: 12px;}
+    color: colors.$errorRed;
+    font-size: 12px;
+  }
   .seperator {
     border-left: 1px solid colors.$bgMiddleGrey;
   }
