@@ -1,4 +1,4 @@
-@use "../../../../styles/colors.scss";
+@use '../../../../styles/colors.scss';
 
 :host {
   display: block;
@@ -37,6 +37,7 @@
   font-size: 14px;
   color: colors.$bgMiddleGrey;
   margin: 0;
+  word-break: break-word;
 }
 
 .area_progress {
@@ -73,10 +74,9 @@
 }
 
 .area_assigns {
- display: grid;
- grid-template-columns: repeat(9, auto);
+  display: grid;
+  grid-template-columns: repeat(9, auto);
   min-height: 28px;
-  
 }
 
 .assign_avatar {
