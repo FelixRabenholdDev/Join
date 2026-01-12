@@ -93,10 +93,6 @@ section {
   background-color: colors.$bgGrey;
   padding: 12px;
   border-radius: 15px 0 15px 15px;
-}
-
-.menu {
-  top: 90px;
 
   ul {
     list-style: none;
@@ -200,29 +196,6 @@ section {
 
         &:hover {
           background-color: colors.$navActive;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1440px) {
-  section {
-    overflow-x: hidden;
-    width: 100%;
-
-    > section {
-      box-shadow: inset 0px -1px #d1d1d1;
-
-      > .content {
-        overflow: auto;
-        width: 1150px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > span {
-          margin-left: 60px;
         }
       }
     }
