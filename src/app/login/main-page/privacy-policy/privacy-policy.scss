@@ -7,6 +7,21 @@
   align-items: flex-start;
   padding: 0px;
   gap: 35px; 
+  
+  /* Scrollbar Logic */
+  overflow-y: auto;
+  max-height: calc(100vh - 140px); /* 110px margin-top + Puffer */
+  padding-bottom: 40px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  @media (max-width: 800px) {
+    max-height: calc(100vh - 180px);
+    padding-bottom: 100px;
+  }
 
   h1 {
     margin-bottom: 16px;
@@ -34,5 +49,21 @@
     margin: 0;
     font-family: 'Inter';
     font-weight: 400;
+  }
+}
+
+@media (max-width: 800px) {
+  .privacy_policy {
+    gap: 24px;
+
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 14px;
+    }
   }
 }

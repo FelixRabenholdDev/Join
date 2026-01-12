@@ -6,7 +6,22 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 24px; /* Abstand zwischen den Elementen laut Figma */
+  gap: 24px; 
+
+  /* Scrollbar Logic */
+  overflow-y: auto;
+  max-height: calc(100vh - 40px); 
+  padding-bottom: 40px;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+  &::-webkit-scrollbar {
+    display: none; 
+  }
+
+  @media (max-width: 800px) {
+    max-height: calc(100vh - 180px);
+    padding-bottom: 100px;
+  }
 
   h1 {
     margin-bottom: 16px;
@@ -36,5 +51,21 @@
   ul {
     padding-left: 20px;
     list-style: disc;
+  }
+}
+
+@media (max-width: 800px) {
+  .legal_notice {
+    
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    
+    p, ul, li {
+      font-size: 14px;
+    }
   }
 }

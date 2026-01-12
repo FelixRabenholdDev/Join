@@ -65,6 +65,12 @@ h2 {
   margin-top: 110px;
   margin-left: 100px;
   margin-right: 70px;
+
+  @media (max-width: 800px) {
+    margin-top: 40px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 // .main_body_m_g{
 //     margin-top: 110px;
