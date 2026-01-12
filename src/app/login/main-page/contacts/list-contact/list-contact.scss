@@ -1,7 +1,5 @@
 @use './../../../../styles/colors.scss';
 
-
-
 .contact_list_section {
   width: 100%;
   max-width: 456px;
@@ -23,14 +21,13 @@
   }
 
   @media (max-width: 1050px) {
-    z-index: auto;
     width: 100%;
     max-width: none;
-    padding-left: 0;
-    padding-right: 0;
     box-shadow: inset 0px 2px 4px -2px colors.$bgMiddleGrey;
     height: calc(100vh - 80px);
     max-height: none;
+    padding-top: 10px;
+    padding-bottom: 120px;
   }
 
   .button_container {
@@ -93,7 +90,7 @@
       border: none;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      z-index: 99;
+      z-index: 3;
 
       img {
         width: 32px;
@@ -133,6 +130,14 @@
       border-radius: 10px;
       cursor: pointer;
       align-items: center;
+
+      @media (max-width: 1050px) {
+        padding-left: 0;
+      }
+
+      @media (max-width: 400px) {
+        gap: 15px;
+      }
 
       &:hover {
         background: linear-gradient(180deg, colors.$bgLightGrey 0%, colors.$bgMiddleGrey 100%);
@@ -176,6 +181,10 @@
           height: auto;
           font-size: 20px;
           font-weight: 400;
+
+          @media (max-width: 400px) {
+            font-size: 16px;
+          }
         }
 
         small {

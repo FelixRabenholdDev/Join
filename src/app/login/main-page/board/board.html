@@ -8,17 +8,10 @@
         <div class="search_task_box">
           <input type="text" [(ngModel)]="searchInput" placeholder="Find Task" autocomplete="off" />
           <div class="separator"></div>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M6.50185 13.0037C4.68467 13.0037 3.14673 12.3744 1.88804 11.1157C0.629346 9.85697 0 8.31903 0 6.50185C0 4.68467 0.629346 3.14673 1.88804 1.88804C3.14673 0.629346 4.68467 0 6.50185 0C8.31903 0 9.85697 0.629346 11.1157 1.88804C12.3744 3.14673 13.0037 4.68467 13.0037 6.50185C13.0037 7.23539 12.887 7.92725 12.6536 8.57744C12.4202 9.22762 12.1034 9.80279 11.7033 10.3029L17.3049 15.9045C17.4883 16.0879 17.58 16.3213 17.58 16.6047C17.58 16.8881 17.4883 17.1215 17.3049 17.3049C17.1215 17.4883 16.8881 17.58 16.6047 17.58C16.3213 17.58 16.0879 17.4883 15.9045 17.3049L10.3029 11.7033C9.80279 12.1034 9.22762 12.4202 8.57744 12.6536C7.92725 12.887 7.23539 13.0037 6.50185 13.0037ZM6.50185 11.0031C7.7522 11.0031 8.81501 10.5655 9.69026 9.69026C10.5655 8.81501 11.0031 7.7522 11.0031 6.50185C11.0031 5.25149 10.5655 4.18869 9.69026 3.31344C8.81501 2.43819 7.7522 2.00057 6.50185 2.00057C5.25149 2.00057 4.18869 2.43819 3.31344 3.31344C2.43819 4.18869 2.00057 5.25149 2.00057 6.50185C2.00057 7.7522 2.43819 8.81501 3.31344 9.69026C4.18869 10.5655 5.25149 11.0031 6.50185 11.0031Z"
-              fill="#D1D1D1"
-            />
+              fill="#D1D1D1" />
           </svg>
         </div>
 
@@ -29,86 +22,48 @@
 
         <!-- MOBILE BUTTON -->
         <button class="circle_add_task_mobile" (click)="openDialogAddTask()" aria-label="Add task">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11 1V21" stroke="white" stroke-width="2" stroke-linecap="round" />
-            <path
-              d="M21 11L1.00048 11.138"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
+            <path d="M21 11L1.00048 11.138" stroke="white" stroke-width="2" stroke-linecap="round" />
           </svg>
         </button>
       </div>
     </article>
 
     <div class="board_columns" cdkDropListGroup>
-      <ng-container
-        *ngFor="
+      <ng-container *ngFor="
           let column of [
             { title: 'To do', status: TaskStatus.ToDo, data: todo$ },
             { title: 'In progress', status: TaskStatus.InProgress, data: inProgress$ },
             { title: 'Await feedback', status: TaskStatus.AwaitFeedback, data: awaitFeedback$ },
             { title: 'Done', status: TaskStatus.Done, data: done$ }
           ]
-        "
-      >
+        ">
         <div class="board_column">
           <!-- FLEX-Header (Titel + Button) -->
           <div class="column_header">
             <span class="column_title">{{ column.title }}</span>
 
-            <button
-              class="add_task_btn"
-              type="button"
-              aria-label="Add Task"
-              *ngIf="column.status !== TaskStatus.Done"
-              (click)="openDialogAddTask(column.status)"
-            >
-              <svg                
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <button class="add_task_btn" type="button" aria-label="Add Task" *ngIf="column.status !== TaskStatus.Done"
+              (click)="openDialogAddTask(column.status)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
-                <path
-                  d="M16 12.0754L8 12.0754"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
               </svg>
             </button>
           </div>
 
           <!-- DROP AREA -->
-          <div
-            class="column_drop_area"
-            cdkDropList
-            (cdkDropListDropped)="drop($event, column.status)"
-          >
+          <div class="column_drop_area" cdkDropList (cdkDropListDropped)="drop($event, column.status)">
             <!-- FALLBACK-ANZEIGE -->
             <div class="no_tasks_box" *ngIf="(column.data | async)?.length === 0">
               No tasks {{ column.title }}
             </div>
 
             <!-- TASKS -->
-            <div
-              class="task_card"
-              *ngFor="let task of column.data | async | FilterTask : searchInput"
-              cdkDrag
-              [cdkDragData]="task"
-              (click)="onTaskClick(task)"
-            >
+            <div class="task_card" *ngFor="let task of column.data | async | FilterTask : searchInput" cdkDrag
+              [cdkDragData]="task" (click)="onTaskClick(task)">
               <app-task-preview [task]="task"></app-task-preview>
             </div>
           </div>

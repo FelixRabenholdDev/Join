@@ -18,10 +18,7 @@
     </header>
 
     <div class="contact_view">
-      <app-single-contact
-        *ngIf="selectedContactId()"
-        [contactId]="selectedContactId()!"
-      ></app-single-contact>
+      <app-single-contact *ngIf="selectedContactId()" [contactId]="selectedContactId()!"></app-single-contact>
     </div>
   </article>
 </section>

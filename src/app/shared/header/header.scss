@@ -31,6 +31,10 @@ section {
   align-items: center;
   height: 100%;
 
+  @media (max-width: 500px) {
+      padding-right: 60px;
+    }
+
   > .user {
     @media (max-width: 500px) {
       justify-content: center;
@@ -39,7 +43,7 @@ section {
     a {
       svg {
         width: 20px;
-        height: 20px;
+        height: 20px;        
 
         path {
           pointer-events: none;
@@ -60,6 +64,10 @@ section {
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+
+      @media (max-width: 500px) {
+      gap: 0;
+    }
     }
 
     svg {

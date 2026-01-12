@@ -1,12 +1,4 @@
-import {
-  Component,
-  signal,
-  ViewChildren,
-  QueryList,
-  ElementRef,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import {  Component, signal, ViewChildren, QueryList, ElementRef, ViewChild, inject,} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -47,13 +39,13 @@ export class DialogAddTask {
   public userUi = inject(UserUiService);
   private router = inject(Router);
 
-  @ViewChild(Dialog) dialog!: Dialog;  
+  @ViewChild(Dialog) dialog!: Dialog;
 
   title = signal('');
   description = signal('');
   dueDate = signal<Date | null>(null);
   selectedTaskType = signal<TaskType | null>(null);
-  priority = signal<'urgent' | 'medium' | 'low' | null>(null);
+  priority = signal<'urgent' | 'medium' | 'low' | null>('medium');
   contacts = signal<Contact[]>([]);
   assignedTo = signal<Contact[]>([]);
   currentStatus = signal<TaskStatus>(TaskStatus.ToDo);
@@ -264,7 +256,7 @@ export class DialogAddTask {
     this.description.set('');
     this.dueDate.set(null);
     this.selectedTaskType.set(null);
-    this.priority.set(null);
+    this.priority.set('medium');
 
     this.subtasks = [];
     this.subtaskInput = '';
