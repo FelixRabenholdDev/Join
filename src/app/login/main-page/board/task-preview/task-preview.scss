@@ -37,6 +37,11 @@
   font-size: 14px;
   color: colors.$bgMiddleGrey;
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-break: break-word;
 }
 
@@ -75,10 +80,10 @@
 
 .area_assigns {
   display: grid;
-  grid-template-columns: repeat(9, auto); 
+  grid-template-columns: repeat(9, auto);
   min-height: 28px;
 
-   @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     grid-template-columns: repeat(7, auto);
   }
 }
@@ -94,7 +99,7 @@
   align-items: center;
   justify-content: center;
   border: 2px solid colors.$white;
-  margin-left: -8px; 
+  margin-left: -8px;
 }
 
 .area_prio {

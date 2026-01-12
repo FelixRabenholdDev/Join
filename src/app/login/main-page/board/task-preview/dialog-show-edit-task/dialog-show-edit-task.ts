@@ -12,11 +12,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserUiService } from '../../../../../services/user-ui.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-dialog-show-edit-task',
   standalone: true,
-  imports: [CommonModule, Dialog, FormsModule, MatSelectModule, MatFormFieldModule],
+  imports: [CommonModule, Dialog, FormsModule, MatSelectModule, MatFormFieldModule, RouterModule],
   templateUrl: './dialog-show-edit-task.html',
   styleUrls: ['./dialog-show-task.scss', './dialog-edit-task.scss']
 })
