@@ -15,21 +15,30 @@ export class Login {
   name = '';
   email = '';
   password = '';
+  confirmPassword = '';
   isSignUp = false;
+  loginError = false;
+  passwordMatchError = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
   async login() {
+    this.loginError = false;
     try {
       await this.auth.login(this.email, this.password);
       this.router.navigate(['/summary']);
     } catch (error: any) {
       console.error(error);
-      alert(error.code);
+      this.loginError = true;
     }
   }
 
   async signup() {
+    this.passwordMatchError = false;
+    if (this.password !== this.confirmPassword) {
+      this.passwordMatchError = true;
+      return;
+    }
     try {
       const user = await this.auth.signup(this.name, this.email, this.password);
       this.router.navigate(['/summary']);
@@ -51,5 +60,7 @@ export class Login {
   
   openSignUp() {
     this.isSignUp = !this.isSignUp;
+    this.loginError = false;
+    this.passwordMatchError = false;
   }
 }

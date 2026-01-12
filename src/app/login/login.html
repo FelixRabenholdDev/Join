@@ -1,5 +1,5 @@
 <div class="widescreen">
-  <section class="login_page">
+  <section class="login_page" [class.sign-up-mode]="isSignUp">
     <header>
       <img src="img/Capa 2.svg" alt="" />
 
@@ -14,14 +14,20 @@
           <h1>Log in</h1>
           <span class="underline"></span>
           <div class="inputs">
-            <div class="input_wrapper">
-              <input placeholder="Email" [(ngModel)]="email" />
+            <div class="input_wrapper" [class.error-border]="loginError">
+              <input placeholder="Email" [(ngModel)]="email" type="email" />
               <img src="img/mail.svg" alt="" />
             </div>
-            <div class="input_wrapper">
+
+            <div class="input_wrapper" [class.error-border]="loginError">
               <input placeholder="Password" type="password" [(ngModel)]="password" />
               <img src="img/lock.svg" alt="" />
             </div>
+            
+            <div class="error-text" *ngIf="loginError">
+              Check your email and password. Please try again.
+            </div>
+
             <div class="middle_bottom_area">
               <button class="dark_button" (click)="login()">Log In</button>
               <button class="light_button" type="button" (click)="guestLogin()">
@@ -47,14 +53,19 @@
               <input placeholder="Email" type="email" [(ngModel)]="email" />
               <img src="img/mail.svg" alt="" />
             </div>
+
             <div class="input_wrapper">
               <input placeholder="Password" type="password" [(ngModel)]="password" />
               <img src="img/lock.svg" alt="" />
             </div>
 
-            <div class="input_wrapper">
-              <input placeholder="Confirm Password" type="password" />
+            <div class="input_wrapper" [class.error-border]="passwordMatchError">
+              <input placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassword" />
               <img src="img/lock.svg" alt="" />
+            </div>
+            
+            <div class="error-text" *ngIf="passwordMatchError">
+              Your passwords don't match. Please try again.
             </div>
 
             <div class="sign_up_bottom">
