@@ -1,7 +1,12 @@
-<div class="widescreen">
+
+<div class="overlay-container">
+  <div class="widescreen"></div>
+  <img class="join_logo" src="img/Capa 2.svg" alt="" />
+</div>
   <section class="login_page" [class.sign-up-mode]="isSignUp">
+     
     <header>
-      <img src="img/Capa 2.svg" alt="" />
+     
 
       <div class="header_right" *ngIf="!isSignUp">
         <p>Not a Join User?</p>
@@ -87,4 +92,4 @@
       <a routerLink="/Legal notice">Legal notice</a>
     </footer>
   </section>
-</div>
+

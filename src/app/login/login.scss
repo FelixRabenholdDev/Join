@@ -1,62 +1,63 @@
 @use '../styles/colors.scss';
 
-.widescreen {
-  background-color: colors.$bgLightGrey;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  .login_footer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: -120px;
-    gap: 16px;
-
-    a {
-      cursor: pointer;
-      text-decoration: none;
-      color: #a8a8a8;
-      font-size: 16px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-
-      &:hover {
-        color: #29abe2;
-      }
-    }
+.overlay-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;           
+  pointer-events: none;
+}
+.join_logo {
+  position: fixed;           
+  top: 50%;left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: 10000;
+  animation: logoIntro 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+.login_page > *:not(.join_logo) {
+  opacity: 0; animation: showMain 1s forwards; animation-delay: 0,5s;   
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0; pointer-events: none;
   }
 }
-
-
+@keyframes logoIntro {
+  to {
+    top: 25px; left: 25px;
+    width: 100px;
+    transform: scale(1);
+  }
+}
+@keyframes showMain {
+  to { opacity: 1; }        
+}
+.widescreen {
+   position: absolute;
+  inset: 0;
+  background-color: colors.$white; 
+  opacity: 1;
+  animation: fadeOut 1.5s ease forwards;
+  animation-delay: 1s;        
+}
 .login_page {
   width: 100%;
   padding-right: calc((100% - 1920px));
-
-  
-
+  background-color: colors.$bgLightGrey;
+  height: 100vh;
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     padding: 25px;
-    
-
     img {
-      width: 100px;
-      height: 121px;
-      margin-top: 32px;
+      width: 100px; height: 121px; margin-top: 32px;
     }
-
     .header_right {
       display: flex;
       align-items: center;
+      justify-content: end;
       gap: 10px;
       margin-top: 20px;
     }
-
     .sign_up {
       background-color: colors.$bgGrey;
       color: colors.$white;
@@ -68,7 +69,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       &:hover {
         background-color: colors.$buttonBlue;
         border-color: colors.$buttonBlue;
@@ -76,42 +76,31 @@
       }
     }
   }
-
   .main_contend {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 406px);
-
+    height: calc(100vh - 121px);
     .middle_area {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       height: 550px;
       width: 652px;
       background-color: colors.$white;
       border-radius: 20px;
-
       .headline {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+        display: flex; align-items: center; flex-direction: column;
         gap: 16px;
-
         .sign_up_arrow_container {
           display: flex;
-
           img {
             right: 120px;
             position: relative;
             cursor: pointer;
           }
         }
-
         h1 {
           font-size: 61px;
         }
-
         .underline {
           width: 150px;
           height: 1px;
@@ -120,14 +109,12 @@
           margin-bottom: 16px;
         }
       }
-
       .inputs {
         display: flex;
         flex-direction: column;
         gap: 32px;
         padding: 0 10px;
         width: 422px;
-
         .input_wrapper {
           border: 1px solid colors.$bgMiddleGrey;
           border-radius: 10px;
@@ -139,37 +126,30 @@
           height: 48px;
           box-sizing: border-box;
           cursor: text;
-
           &:focus-within {
             border-color: colors.$buttonBlue;
           }
         }
-
         .error-border {
           border-color: colors.$errorRed !important;
         }
-
         .error-text {
           color: colors.$errorRed;
           font-size: 16px;
           margin-top: -24px; /* Pull closer to input (32px gap - 24px = 8px visual gap) */
           text-align: left;
         }
-
         .middle_bottom_area {
           display: flex;
           justify-content: center;
           gap: 30px;
-
           .policy_text {
             display: flex;
             gap: 10px;
-
             .policy {
               color: colors.$buttonBlue;
             }
           }
-
           .dark_button {
             background-color: colors.$bgGrey;
             color: colors.$white;
@@ -181,14 +161,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             &:hover {
               background-color: colors.$buttonBlue;
               border-color: colors.$buttonBlue;
               cursor: pointer;
             }
           }
-
           .light_button {
             background-color: colors.$white;
             border-style: solid;
@@ -201,7 +179,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             &:hover {
               color: colors.$buttonBlue;
               border-color: colors.$buttonBlue;
@@ -209,7 +186,6 @@
             }
           }
         }
-
         input {
           outline: none;
           border-style: none;
@@ -219,18 +195,15 @@
       }
     }
   }
-
   .sign_up_bottom {
     display: flex;
     justify-content: center;
     gap: 30px;
     flex-direction: column;
     align-items: center;
-
     .policy {
       color: colors.$buttonBlue;
     }
-
     .sign_up_button {
       background-color: colors.$bgGrey;
       color: colors.$white;
@@ -242,7 +215,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       &:hover {
         background-color: colors.$buttonBlue;
         border-color: colors.$buttonBlue;
@@ -251,12 +223,32 @@
     }
   }
 }
+  .login_footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    bottom: 50px;
 
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: #a8a8a8;
+      font-size: 16px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      &:hover {
+        color: #29abe2;
+      }
+    }
+  }
 @media (max-width: 700px) {
   .widescreen {
     height: auto;
     min-height: 100vh;
-
+    
     .login_footer {
       position: static;
       bottom: auto;
@@ -264,7 +256,6 @@
       padding-bottom: 24px;
     }
   }
-
   .login_page {
     padding-right: 0;
     display: flex;
@@ -273,14 +264,11 @@
     justify-content: flex-start;
     flex: 1;
     position: relative;
-
     &.sign-up-mode .main_contend {
       margin-bottom: auto;
     }
-
     header {
       display: contents;
-
       img {
         position: absolute;
         top: 32px;
@@ -289,7 +277,6 @@
         height: 78px;
         margin: 0;
       }
-
       .header_right {
         order: 3; /* Positioniert das Element nach dem Login-Fenster */
         display: flex;
@@ -299,13 +286,11 @@
         justify-content: center;
       }
     }
-
     .main_contend {
       order: 2;
       height: auto;
       margin-top: auto;
       width: 100%;
-
       .middle_area {
         width: 396px;
         max-width: 90%;
@@ -316,13 +301,10 @@
         gap: 32px;
         flex-direction: column;
         position: relative;
-
         .headline {
           gap: 16px;
-
           .sign_up_arrow_container {
             justify-content: center;
-
             img {
               position: absolute;
               left: 32px;
@@ -330,27 +312,22 @@
               right: auto;
             }
           }
-
           h1 {
             font-size: 47px;
           }
-
           .underline {
             width: 88px;
           }
         }
-
         .inputs {
           width: 364px;
           max-width: 100%;
           padding: 0;
           gap: 24px;
-
           /* Adjust gap for error messages on mobile */
           .error-text {
             margin-top: -16px;
           }
-
           .middle_bottom_area {
             flex-direction: column;
             align-items: center;
@@ -371,18 +348,10 @@
             .sign_up_button {
               width: 180px;
               height: 51px;
-            }
-          }
-        }
-      }
-    }
-
+            }} }} }
     .login_footer {
       order: 4;
-    }
-  }
-}
-
+    }}}
 @media (max-width: 450px) {
   .login_page {
     header {
@@ -398,20 +367,17 @@
         gap: 12px;
       }
     }
-
     .main_contend {
       .middle_area {
         padding: 32px 16px;
-
         .headline h1 {
           font-size: 36px;
         }
-
         .inputs {
           width: 100%;
           .input_wrapper {
             height: 40px;
-            input { 
+            input {
               font-size: 16px;
               min-width: 0;
             }
