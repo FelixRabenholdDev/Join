@@ -7,7 +7,7 @@ main {
   align-items: center;
   height: 100vh;
   width: 234px;
-  background-color: #2A3647;
+  background-color: colors.$navBgNotActiveGrey;
   padding: 48px 0;
   box-sizing: border-box;
 
@@ -34,7 +34,7 @@ main {
     > a {
       display: flex;
       align-items: center;
-      color: #a8a8a8;
+      color: colors.$bgMiddleGrey;
       text-decoration: none;
       padding: 12px 0 12px 25%;
       width: 100%;
@@ -48,14 +48,13 @@ main {
         justify-content: center;
         
       }
-      
-      /* Speziell für den Login Button, falls nötig */
+   
       &[routerLink="/Login"]:hover {
         color: colors.$buttonBlue;
       }
 
       &.active-link {
-        background-color: #091931;
+        background-color: colors.$navBgActiveGrey;
         pointer-events: none;
         color: colors.$white;
       }
@@ -76,7 +75,7 @@ main {
     gap: 8px;
 
     > a {
-      color: #a8a8a8;
+      color: colors.$bgMiddleGrey;
       text-decoration: none;
       font-size: 16px;
       transition: color 0.2s;
@@ -93,7 +92,7 @@ main {
   }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1050px) {
   main {
     display: flex;
     justify-content: center;
@@ -156,7 +155,6 @@ main {
       display: none;
     }
 
-    /* Spezielles Layout für Mobile wenn ausgeloggt (Guest) */
     &.guest-nav {
       flex-direction: row;
       justify-content: space-between;
@@ -184,7 +182,7 @@ main {
           border-radius: 8px;
           
           &.active-link {
-            background-color: #091931;
+            background-color: colors.$navBgActiveGrey;
           }
         }
       }
