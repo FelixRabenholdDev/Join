@@ -43,7 +43,6 @@
       height: 59px;
       border-left: 3px solid colors.$buttonBlue;
       border-radius: 2px;
-      @media (max-width: 600px) { display: none; }
     }
 
     .slogan {
@@ -100,7 +99,6 @@
 .area_top {
   display: flex;
   gap: 32px;
-  @media (max-width: 650px) { flex-direction: column; }
 
   .box_top {
     @include flex-center;
@@ -147,13 +145,6 @@
     width: 100%;
     box-sizing: border-box;
 
-    @media (max-width: 650px) {
-      flex-direction: column;
-      height: auto;
-      padding: 24px;
-      gap: 24px;
-    }
-
     // Spezifischer Hover-Override für Urgent
     &:hover {
       .symbol {
@@ -198,13 +189,6 @@
     .divider {
       height: 102px;
       border-left: 2px solid colors.$bgMiddleGrey;
-
-      @media (max-width: 650px) {
-        width: 100%;
-        height: 0;
-        border-left: none;
-        border-top: 2px solid colors.$bgMiddleGrey;
-      }
     }
 
     .urgent_right {
@@ -233,7 +217,6 @@
 .area_bot {
   display: flex;
   gap: 28px;
-  @media (max-width: 650px) { flex-direction: column; }
 
   .box_task_bord,
   .box_task_progress,
@@ -289,5 +272,124 @@
     align-items: center;
     .greeting { font-size: 32px; }
     .name { font-size: 42px; }
+  }
+}
+
+/* ===================================================== */
+/* MOBILE LAYOUT (Figma Adaptation)                      */
+/* ===================================================== */
+
+@media (max-width: 800px) {
+  .summary {
+    padding: 32px 16px;
+    
+    &-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 32px;
+
+      .headline {
+        font-size: 47px;
+        margin: 0;
+        order: 1;
+      }
+
+      .slogan {
+        font-size: 20px;
+        margin: 0;
+        order: 2;
+      }
+
+      /* Divider wird zur horizontalen Linie */
+      .divider {
+        display: block;
+        width: 90px;
+        height: 3px;
+        background-color: colors.$buttonBlue;
+        border: none;
+        border-radius: 0;
+        margin-top: 8px;
+        order: 3;
+      }
+    }
+  }
+
+  .area_summary {
+    width: 100%;
+    gap: 24px;
+    
+    > section {
+      width: 100%;
+      gap: 24px;
+    }
+  }
+
+  /* Row Layout beibehalten, aber kleiner */
+  .area_top {
+    flex-direction: row;
+    gap: 16px;
+
+    .box_top {
+      height: 110px;
+      width: 100%; 
+      
+      .symbol {
+        width: 40px;
+        height: 40px;
+        svg { width: 20px; height: 20px; }
+      }
+
+      p {
+        .task_number { font-size: 40px; }
+        .task_area { font-size: 14px; }
+      }
+    }
+  }
+
+  .area_mid {
+    .box_urgent {
+      height: 110px;
+      padding: 16px;
+      flex-direction: row;
+      gap: 16px;
+
+      .urgent_left {
+        gap: 16px;
+        .symbol {
+          width: 40px;
+          height: 40px;
+           svg { width: 20px; height: 20px; }
+        }
+        p {
+          .task_number { font-size: 40px; }
+          .task_area { font-size: 14px; }
+        }
+      }
+      
+      .divider {
+        height: 60px;
+      }
+    }
+  }
+
+  .area_bot {
+    flex-direction: row;
+    gap: 16px;
+
+    .box_task_bord, .box_task_progress, .box_task_feedback {
+      height: 116px;
+      width: 100%;
+      
+      p {
+        .task_number { font-size: 40px; }
+        .span1, .span2 { font-size: 14px; text-align: center; }
+      }
+    }
+  }
+
+  /* Begrüßung auf Mobile ausblenden (laut Figma nur Metrics) */
+  .area_site {
+    display: none;
   }
 }
