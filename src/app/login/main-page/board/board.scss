@@ -249,8 +249,7 @@
 .board_columns {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
-  max-width: 1250px;
+  max-width: 1200px;
 
   @media (max-width: 1050px) {
     flex-direction: column;
@@ -258,7 +257,6 @@
 }
 
 .board_column {
-  width: 320px;
   border-radius: 16px;
   padding: 12px;
   display: flex;
@@ -268,22 +266,6 @@
   @media (max-width: 1050px) {
     width: 100%;
   }
-
-  // @media (max-width: 850px) {
-  //   width: 650px;
-  // }
-
-  // @media (max-width: 690px) {
-  //   width: 500px;
-  // }
-
-  // @media (max-width: 550px) {
-  //   width: 400px;
-  // }
-
-  // @media (max-width: 445px) {
-  //   width: 270px;
-  // }
 }
 
 .column_title {
