@@ -27,9 +27,7 @@ export class Login {
   agreed = false
  emailTakenError = false;
 
-  constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}
-
-  
+  constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}  
 
   async login() {
     this.loginError = false;
@@ -37,7 +35,6 @@ export class Login {
       await this.auth.login(this.email, this.password);
       this.router.navigate(['/summary']);
     } catch (error: any) {
-      console.error(error);
       this.loginError = true;
       this.cd.detectChanges();
     }
@@ -52,7 +49,6 @@ async signup() {
   this.passwordTooShortError = false;
   this.passwordMatchError = false;
   this.emailTakenError = false;
-
  
   if (!this.emailError) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
@@ -60,12 +56,10 @@ async signup() {
       this.invalidEmailError = true;
     }
   }
-
   
   if (!this.passwordError && this.password.length < 6) {
     this.passwordTooShortError = true;
   }
-
   
   if (!this.passwordError && !this.passwordTooShortError && this.password !== this.confirmPassword) {
     this.passwordMatchError = true;
@@ -79,31 +73,25 @@ async signup() {
     this.passwordTooShortError ||
     this.passwordMatchError
   ) return;
-
   
   try {
     const user = await this.auth.signup(this.name, this.email, this.password);
     this.router.navigate(['/summary']);
   } catch (error: any) {
-    // E-Mail bereits vergeben
     if (error.code === 'auth/email-already-in-use' || error.message?.includes('already in use')) {
       this.emailTakenError = true;
-      this.cd.detectChanges(); // Angular informieren, dass sich das Flag geändert hat
+      this.cd.detectChanges();
     } else {
       console.error(error);
     }
   }
 }
 
-
-
   async guestLogin() {
     try {
       await this.auth.loginGuest();
       this.router.navigate(['/summary']);
-    } catch (error: any) {
-      console.error(error);
-    }
+    } catch (error: any) {}
   }
   
   openSignUp() {
