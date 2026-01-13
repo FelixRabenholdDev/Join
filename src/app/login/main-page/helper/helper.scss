@@ -2,6 +2,7 @@
 @use './../../../styles/colors.scss';
 
 .main-area {
+  height: calc(100vh - 300px);
   display: flex;
   flex-direction: column;
   margin-left: 96px;
@@ -9,12 +10,50 @@
   margin-top: 110px;
 }
 
+.help_content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .highlight {
   color: colors.$buttonBlue;
 }
 
+h1 {
+  margin-bottom: 24px;
+}
+
+// .join_guide_list {
+//   list-style: none;
+//   counter-reset: step;
+//   padding-left: 0;
+// }
+
+// .join_guide_list li {
+//   counter-increment: step;
+//   display: flex;
+//   align-items: flex-start;
+//   gap: 12px;
+// }
+
+// .join_guide_list li::before {
+//   content: counter(step) '.';
+//   font-size: 27px;
+//   font-weight: 700;
+//   line-height: 1;
+//   margin-top: 2px; /* exakt steuerbar */
+// }
+
 .join_guide_list {
-  list-style-position: inside;
+  list-style-position: outside;
+  padding-left: 32px;
+  li::marker {
+    line-height: 1;
+  }
+  li {
+    line-height: 1.4;
+  }
 }
 
 .join_guide_list li::marker {
