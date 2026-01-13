@@ -19,7 +19,7 @@
     display: none; /* Chrome, Safari, Opera */
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1050px) {
     max-height: calc(100vh - 80px);
     max-height: calc(100dvh - 80px);
     padding-bottom: 100px;
@@ -27,6 +27,7 @@
 
   h1 {
     margin-bottom: 16px;
+    font-size: 40px;
     background: none;
   }
 
@@ -54,7 +55,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1050px) {
   .privacy_policy {
     gap: 24px;
 
