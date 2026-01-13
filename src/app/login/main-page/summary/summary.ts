@@ -30,7 +30,7 @@ export class Summary {
         inProgress: tasks.filter((t) => t.status === TaskStatus.InProgress).length,
         awaitFeedback: tasks.filter((t) => t.status === TaskStatus.AwaitFeedback).length,
         done: tasks.filter((t) => t.status === TaskStatus.Done).length,
-        urgent: tasks.filter((t) => this.ui.isTaskUrgent(t.date)).length,
+        urgent: tasks.filter((t) => this.ui.isTaskUrgent(t)).length,
         total: tasks.length,
         nextDueDate: upcoming ? upcoming.date : null,
       };

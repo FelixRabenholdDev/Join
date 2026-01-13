@@ -1,6 +1,7 @@
 import { Injectable, inject, Injector } from '@angular/core';
 import { FirebaseServices } from './../firebase-services/firebase-services';
 import { Timestamp } from '@angular/fire/firestore';
+import { Task } from '../interfaces/task.interface';
 
 export type TaskUrgency = 'normal' | 'urgent';
 
@@ -45,26 +46,12 @@ export class UserUiService {
     return style.getPropertyValue(cssVar).trim() || '#000000';
   }
 
-  isTaskUrgent(dueDate?: Timestamp): boolean {
-    if (!dueDate) return false;
-
-    const now = Date.now();
-    const dueTime = dueDate.toDate().getTime();
-    const diff = dueTime - now;
-
-    return diff > 0 && diff <= this.twoDaysInMS;
+  isTaskUrgent(task?: Task): boolean {
+    return task?.priority === 1;
   }
 
-  getTaskUrgency(dueDate?: Timestamp): TaskUrgency {
-    if (!dueDate) return 'normal';
-
-    const now = Date.now();
-    const dueTime = dueDate.toDate().getTime();
-    const diff = dueTime - now;
-
-    if (diff <= this.twoDaysInMS) return 'urgent';
-
-    return 'normal';
+  getTaskUrgency(task?: Task): TaskUrgency {
+    return task?.priority === 1 ? 'urgent' : 'normal';
   }
 
   getRemainingDays(dueDate?: Timestamp): number | null {
