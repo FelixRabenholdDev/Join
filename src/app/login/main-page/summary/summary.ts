@@ -18,19 +18,19 @@ export class Summary {
   private router = inject(Router);
   ui = inject(UserUiService);
   greeting = this.getGreeting();
-  userData$ = this.firebase.currentUserData$;
+  userData$ = this.firebase.currentUserData$;  
 
   summary$ = this.firebase.subTasks().pipe(
     map((tasks) => {
       if (!tasks) return this.getEmptySummary();
-      const upcoming = this.getNextDueTask(tasks);
+      const upcoming = this.getNextDueTask(tasks);      
 
       return {
         todo: tasks.filter((t) => t.status === TaskStatus.ToDo).length,
         inProgress: tasks.filter((t) => t.status === TaskStatus.InProgress).length,
         awaitFeedback: tasks.filter((t) => t.status === TaskStatus.AwaitFeedback).length,
         done: tasks.filter((t) => t.status === TaskStatus.Done).length,
-        urgent: tasks.filter((t) => this.ui.isTaskUrgent(t)).length,
+        urgent: tasks.filter((t) => this.ui.isUrgentAndActive(t)).length,
         total: tasks.length,
         nextDueDate: upcoming ? upcoming.date : null,
       };

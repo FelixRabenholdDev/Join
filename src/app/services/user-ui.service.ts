@@ -2,6 +2,7 @@ import { Injectable, inject, Injector } from '@angular/core';
 import { FirebaseServices } from './../firebase-services/firebase-services';
 import { Timestamp } from '@angular/fire/firestore';
 import { Task } from '../interfaces/task.interface';
+import { TaskStatus } from '../types/task-status';
 
 export type TaskUrgency = 'normal' | 'urgent';
 
@@ -46,9 +47,16 @@ export class UserUiService {
     return style.getPropertyValue(cssVar).trim() || '#000000';
   }
 
-  isTaskUrgent(task?: Task): boolean {
-    return task?.priority === 1;
-  }
+  isUrgentAndActive(task?: Task): boolean {
+  return (
+    task?.priority === 1 &&
+    [
+      TaskStatus.ToDo,
+      TaskStatus.InProgress,
+      TaskStatus.AwaitFeedback,
+    ].includes(task.status)
+  );
+}
 
   getTaskUrgency(task?: Task): TaskUrgency {
     return task?.priority === 1 ? 'urgent' : 'normal';
