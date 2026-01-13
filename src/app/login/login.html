@@ -48,15 +48,15 @@
             <img src="img/person.svg" alt="" />
           </div>
           <div class="error-text" *ngIf="nameError">Name is required</div>
-          
 
-          <div class="input_wrapper" [class.error-border]="emailError">
+          <div class="input_wrapper" [class.error-border]="emailError || invalidEmailError">
             <input placeholder="Email" type="email" [(ngModel)]="email" />
             <img src="img/mail.svg" alt="" />
           </div>
           <span class="error-text" *ngIf="emailError">Email is required</span>
+          <span class="error-text" *ngIf="invalidEmailError">Enter a valid email</span>
 
-          <div class="input_wrapper"[class.error-border]="passwordError">
+          <div class="input_wrapper" [class.error-border]="passwordError">
             <input placeholder="Password" type="password" [(ngModel)]="password" />
             <img src="img/lock.svg" alt="" />
           </div>
@@ -73,13 +73,13 @@
 
           <div class="sign_up_bottom">
             <div class="policy_text">
-              <input type="checkbox" [(ngModel)]="agreed"/>
+              <input type="checkbox" [(ngModel)]="agreed" />
               <span>
                 I accept the
                 <a routerLink="/Privacy Policy" class="policy">Privacy Policy</a>
               </span>
             </div>
-           <button class="sign_up_button" [disabled]="!agreed"  (click)="signup()"> Sign up</button>
+            <button class="sign_up_button" [disabled]="!agreed" (click)="signup()">Sign up</button>
           </div>
         </div>
       </div>

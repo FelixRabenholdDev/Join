@@ -22,6 +22,7 @@ export class Login {
   emailError = false;
   passwordMatchError = false;
   passwordError = false
+  invalidEmailError = false;
   agreed = false
 
   constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}
@@ -41,15 +42,22 @@ export class Login {
   }
 
 async signup() {
-
   this.nameError = !this.name?.trim();
   this.emailError = !this.email?.trim();
   this.passwordError = !this.password;
   this.passwordMatchError = false;
-  this.nameError = !this.name?.trim(); 
 
-if (this.nameError || this.emailError || this.passwordError) return;
 
+  this.invalidEmailError = false;
+  if (!this.emailError) {
+     const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(this.email)) {
+      this.invalidEmailError = true;
+    }
+  }
+
+ 
+  if (this.nameError || this.emailError || this.invalidEmailError || this.passwordError) return;
   if (this.password !== this.confirmPassword) {
     this.passwordMatchError = true;
     return;
@@ -61,6 +69,7 @@ if (this.nameError || this.emailError || this.passwordError) return;
     console.error(error);
   }
 }
+
 
   async guestLogin() {
     try {
