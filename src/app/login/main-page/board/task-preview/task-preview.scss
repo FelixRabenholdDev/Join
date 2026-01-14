@@ -27,6 +27,10 @@
   @media (max-width: 1170px) {
     width: 170px;
   }
+
+  @media (max-width: 1050px) {
+    width: 270px;
+  }
 }
 
 .task_type_badge {
@@ -40,13 +44,13 @@
 }
 
 .task_title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
 }
 
 .task_content {
-  font-size: 14px;
+  font-size: 16px;
   color: colors.$bgMiddleGrey;
   margin: 0;
   display: -webkit-box;
@@ -79,7 +83,7 @@
 }
 
 .progress_text {
-  font-size: 12px;
+  font-size: 16px;
   color: colors.$navActive;
   white-space: nowrap;
 }
@@ -109,7 +113,7 @@
   height: 28px;
   border-radius: 50%;
   color: colors.$white;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   display: flex;
   align-items: center;
