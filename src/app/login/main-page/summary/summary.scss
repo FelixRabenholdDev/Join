@@ -326,20 +326,21 @@
       font-size: 32px;
     }
     .name {
-      font-size: 42px;
+      font-size: 10px;
     }
   }
 }
 
   .greeting {
     font-weight: 500;
-    font-size: 47px;
+    font-size: 30px;
     color: colors.$bgGrey;
   }
   .name {
     font-weight: 700;
-    font-size: 64px;
+    font-size: 32px;
     color: colors.$buttonBlue;
+    
   }
 
 @media (max-width: 1050px) {
