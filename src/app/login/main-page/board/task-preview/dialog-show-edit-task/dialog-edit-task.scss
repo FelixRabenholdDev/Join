@@ -14,10 +14,20 @@
   }
 
   @media (max-width: 420px) {
-    width: 300px;
+    width: 380px;
     max-height: 95vh;
     padding: 30px;
     padding-right: 10px;
+  }
+
+  @media (max-width: 375px) {
+    width: 345px;
+  }
+
+  @media (max-width: 350px) {
+    width: 300px;
+    padding: 5px;
+    padding-right: 5px;
   }
 
   header {
@@ -65,7 +75,7 @@
     flex-direction: column;
     gap: 8px;
 
-    input[type="date"] {
+    input[type='date'] {
       font-family: 'Inter', sans-serif;
     }
 
@@ -163,11 +173,10 @@
   }
 
   .assigned {
-
     label {
       font-size: 20px;
     }
-    
+
     .area_assigned {
       width: 100%;
 
@@ -208,7 +217,6 @@
   }
 
   .subtasks {
-
     label {
       font-size: 20px;
     }
