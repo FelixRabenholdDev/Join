@@ -12,10 +12,10 @@
   max-height: calc(100vh - 96px); 
   max-height: calc(100dvh - 96px);
   padding-bottom: 40px;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
 
   @media (max-width: 1050px) {
@@ -26,7 +26,6 @@
 
   h1 {
     margin-bottom: 16px;
-    font-size: 40px;
     background: none;
   }
 
