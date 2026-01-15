@@ -27,6 +27,40 @@ import { Auth, deleteUser, authState } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { UserUiService } from '../services/user-ui.service'
 
+/**
+ * Firebase Firestore Database Service
+ * 
+ * Provides complete CRUD operations and real-time subscriptions for all application data
+ * including contacts, tasks, task assignments, and subtasks. Manages all interactions with
+ * the Firestore database backend.
+ * 
+ * Database Structure:
+ * - contacts/ - User contact collection
+ * - tasks/ - Task collection
+ *   - tasks/{taskId}/assigns/ - Task assignments subcollection
+ *   - tasks/{taskId}/subtasks/ - Task subtasks subcollection
+ * - appSettings/contacts - Application settings document
+ * 
+ * Key Features:
+ * - Real-time subscriptions via Observables
+ * - Batch operations for data consistency
+ * - Transaction support for complex operations
+ * - User contact management
+ * - Task lifecycle management (CRUD)
+ * - Subtask management
+ * - Task assignment tracking
+ * - User account deletion with data cleanup
+ * 
+ * @injectable
+ * @providedIn 'root'
+ * 
+ * @example
+ * constructor(private firebase: FirebaseServices) {}
+ * 
+ * this.firebase.subTasks().subscribe(tasks => {
+ *   console.log('Current tasks:', tasks);
+ * });
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -37,8 +71,6 @@ export class FirebaseServices {
   private readonly ui = inject(UserUiService);
 
   private settingsDoc = doc(this.firestore, 'appSettings/contacts');
-
-  /* ================================CONTACTS================================= */
 
   subContactsList(): Observable<Contact[]> {
     const ref = collection(this.firestore, 'contacts');
@@ -117,8 +149,6 @@ export class FirebaseServices {
   }
 
 
-  /* ================================TASKS================================= */
-
   subTasks(): Observable<Task[]> {
     const ref = collection(this.firestore, 'tasks');
     return collectionData(ref, { idField: 'id' }) as Observable<Task[]>;
@@ -179,8 +209,6 @@ export class FirebaseServices {
     await updateDoc(ref, { status });
   }
 
-  /* ========================== TASK SUBCOLLECTIONS ========================== */
-
   subTaskAssigns(taskId: string): Observable<TaskAssignDb[]> {
     const ref = collection(this.firestore, `tasks/${taskId}/assigns`);
     return collectionData(ref, { idField: 'id' }) as Observable<TaskAssignDb[]>;
@@ -220,8 +248,6 @@ export class FirebaseServices {
     await deleteDoc(ref);
   }
 
-  /* ================================ SETTINGS =============================== */
-
   async getLastUserColor(): Promise<number> {
     const snap = await getDoc(this.settingsDoc);
     return snap.exists() ? snap.data()['lastUserColor'] ?? 0 : 0;
@@ -230,8 +256,6 @@ export class FirebaseServices {
   async setLastUserColor(index: number): Promise<void> {
     await updateDoc(this.settingsDoc, { lastUserColor: index });
   }
-
-  /* ================================ USERCONTACT =============================== */
 
   async createUserContact(uid: string, contact: Omit<Contact, 'id'>): Promise<void> {
     const ref = doc(this.firestore, `contacts/${uid}`);

@@ -91,8 +91,6 @@ export class DialogShowEditTask {
     }
   }
 
-  /* ----------------------------- Edit Logik ---------------------------- */
-
   setPrio(prio: number) {
     this.editData.priority = prio;
   }

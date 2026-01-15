@@ -3,6 +3,35 @@ import { CommonModule } from '@angular/common';
 import { BoardTask } from '../../../../interfaces/task-board.interface';
 import { TaskType } from '../../../../types/task-type';
 
+/**
+ * Task Preview Card Component
+ * 
+ * Displays a single task card in the kanban board. Shows task title, status,
+ * priority, progress indicator, assignees, and task type icon.
+ * Designed for drag-and-drop interaction within task columns.
+ * 
+ * Display Features:
+ * - Task title and ID
+ * - Priority indicator (color-coded)
+ * - Task type icon (UserStory or TechnicalTask)
+ * - Progress bar with completion percentage
+ * - Assigned contact avatars (up to 3 visible, +X for others)
+ * - Subtask count and completion status
+ * - Due date if available
+ * 
+ * Layout:
+ * - Compact card format for board view
+ * - Color-coded priority levels
+ * - Progress bar showing subtask completion
+ * - Contact avatars at bottom
+ * 
+ * @component
+ * @selector app-task-preview
+ * @standalone true
+ * 
+ * @example
+ * <app-task-preview [task]="boardTask"></app-task-preview>
+ */
 @Component({
   selector: 'app-task-preview',
   standalone: true,

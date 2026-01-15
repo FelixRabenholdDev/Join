@@ -74,7 +74,6 @@
     }
   }
 
-  // Erst die größere Breite
   @media (max-width: 1250px) {
     gap: 20px;
 
@@ -83,7 +82,6 @@
     }
   }
 
-  // Dann die kleinere Breite (überschreibt ggf. Werte)
   @media (max-width: 1050px) {
     h2 {
       font-size: 36px;
@@ -155,7 +153,6 @@
   }
 }
 
-/* -------------------------- Media for max 1050px -------------------------- */
 .circle_menu {
   display: none;
 

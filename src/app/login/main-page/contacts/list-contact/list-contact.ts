@@ -8,6 +8,31 @@ import { Dialog } from '../../../../shared/dialog/dialog';
 import { DialogAddNewContact } from './dialog-add-new-contact/dialog-add-new-contact';
 import { UserUiService } from '../../../../services/user-ui.service';
 
+/**
+ * Contact List Component
+ * 
+ * Left panel displaying all application contacts grouped alphabetically by name.
+ * Allows selection of contacts for detailed viewing, adding new contacts,
+ * and managing contact list.
+ * 
+ * Features:
+ * - Alphabetically grouped contact list
+ * - Search/filter contacts
+ * - Select contact to view details
+ * - Add new contact dialog
+ * - Contact color indicator
+ * - Responsive layout (collapses on mobile)
+ * - Real-time updates from Firestore
+ * 
+ * Display:
+ * - Contacts grouped by first letter (A-Z)
+ * - Contact name with initials and color
+ * - Add new contact button
+ * 
+ * @component
+ * @selector app-list-contact
+ * @standalone true
+ */
 @Component({
   selector: 'app-list-contact',
   imports: [CommonModule, FormsModule, DialogAddNewContact],

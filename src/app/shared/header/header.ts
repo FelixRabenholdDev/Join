@@ -4,6 +4,25 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../firebase-services/auth-services';
 import { FirebaseServices } from '../../firebase-services/firebase-services';
 
+/**
+ * Application Header Component
+ * 
+ * Displays top navigation bar with breadcrumbs, current route information,
+ * and user menu. Provides logout and navigation controls.
+ * 
+ * Features:
+ * - Responsive header with current page context
+ * - User menu dropdown for logout and settings
+ * - Mobile-friendly menu toggle
+ * - Breadcrumb navigation
+ * - Quick access to main sections
+ * - Current user information display
+ * 
+ * @component
+ * @selector app-header
+ * @standalone true
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-header',
   standalone: true,

@@ -18,6 +18,34 @@ import { Dialog } from '../../../../shared/dialog/dialog';
 import { Timestamp } from '@angular/fire/firestore';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+/**
+ * Dialog Add Task Component (Board Version)
+ * 
+ * Modal dialog for creating new tasks from the kanban board view.
+ * Similar functionality to AddTask page but in dialog form for quick
+ * task creation without navigating away from the board.
+ * 
+ * Features:
+ * - Modal dialog interface
+ * - Task title and description input
+ * - Priority selection (urgent, medium, low)
+ * - Task type selection
+ * - Status selection
+ * - Due date picker
+ * - Multi-select contact assignment
+ * - Subtask management
+ * - Form validation
+ * - Cancel/Save operations
+ * 
+ * Dialog State:
+ * - Opens as overlay
+ * - Closes on cancel or successful save
+ * - Emits closed event on completion
+ * 
+ * @component
+ * @selector app-dialog-add-task
+ * @standalone true
+ */
 @Component({
   selector: 'app-dialog-add-task',
   imports: [

@@ -7,7 +7,6 @@
   align-items: flex-start;
   gap: 35px; 
   
-  /* Scrollbar Logic */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   max-height: calc(100vh - 96px); 

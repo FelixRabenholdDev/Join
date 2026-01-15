@@ -1,9 +1,7 @@
 <app-dialog #DialogAddNewContact class="add-contact-dialog">
   <div>
     <article class="sc_dialog">
-      <!-- ------------------------- Dialog: CLOSE-Button -------------------------- -->
       <button class="close" type="button" (click)="DialogAddNewContact.close()" aria-label="Close Button">
-        <!-- close.svg -->
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
@@ -11,9 +9,7 @@
         </svg>
       </button>
 
-      <!-- ------------------------- Dialog: Left Side -------------------------- -->
       <div class="left_side">
-        <!-- Capa_1.svg -->
         <svg width="56" height="67" viewBox="0 0 56 67" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M39.8358 0H27.5203V13.8957H39.8358V0Z" fill="white" />
           <path
@@ -34,10 +30,8 @@
         <div class="seperator"></div>
       </div>
 
-      <!-- ---------------------------- Dialog: the middle ----------------------------- -->
       <div class="mid_side">
         <div class="logo_container">
-          <!-- person.svg -->
           <svg class="sc_logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM18 20H6C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" />
@@ -45,13 +39,11 @@
         </div>
       </div>
 
-      <!-- ------------------------- Dialog: Right Side ------------------------- -->
       <div class="right_side">
         <form class="contact_form" (ngSubmit)="saveNewContact(addContactForm)" #addContactForm="ngForm">
           <label class="field">
             <input #nameField="ngModel" [(ngModel)]="formModel().name" name="name" type="text" placeholder="Jane Doe"
               required pattern="^[A-Za-zÄÖÜäöüß\-]{3,}\s[A-Za-zÄÖÜäöüß\-]{3,}$" />
-            <!-- person.svg -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_407816_6786" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                 height="24">
@@ -70,7 +62,6 @@
           <label class="field">
             <input #emailField="ngModel" [(ngModel)]="formModel().email" name="email" type="email" required
               pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@provider.com" />
-            <!-- mail.svg -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_407816_6794" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                 height="24">
@@ -88,7 +79,6 @@
           <label class="field">
             <input #phoneField="ngModel" [(ngModel)]="formModel().phone" name="tel" type="tel"
               placeholder="+0 0000 000 00 0" required minlength="7" />
-            <!-- call.svg -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_407816_6801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                 height="24">
@@ -114,7 +104,6 @@
             </button>
             <button class="button_dark" type="submit" [disabled]="!addContactForm.valid">
               Create contact
-              <!-- check.svg -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_408622_6825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                   height="24">

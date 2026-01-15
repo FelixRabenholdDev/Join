@@ -7,23 +7,18 @@
           fill="currentColor" />
       </svg>
     </button>
-    <!-- ------------------------- Dialog:Linke Seite -------------------------- -->
     <div class="left_side">
       <img src="img/Capa_1.png" alt="Join-Logo" />
       <span>Edit contact</span>
       <div class="seperator"></div>
     </div>
 
-    <!-- ---------------------------- Dialog:Mitte ----------------------------- -->
     <div class="mid_side">
       <span class="sc_logo" [style.background]="editModel.color">{{
         userUi.getInitials(editModel.name || '')
         }}</span>
     </div>
-    <!-- ------------------------- Dialog:Rechte Seite ------------------------- -->
     <div class="right_side">
-      <!-- ----------------------------- InputFields ----------------------------- -->
-
       <form class="contact_form" (ngSubmit)="saveEdit(contactForm)" #contactForm="ngForm">
         <label class="field">
           <input #nameField="ngModel" [(ngModel)]="editModel.name" name="name" type="text" placeholder="Jane Doe"

@@ -3,6 +3,29 @@ import { Component, ChangeDetectionStrategy, signal, ViewChild } from '@angular/
 import { SingleContact } from './single-contact/single-contact';
 import { ListContact } from './list-contact/list-contact';
 
+/**
+ * Contacts Management Component
+ * 
+ * Provides a two-panel interface for managing application contacts.
+ * Left panel displays list of all contacts, right panel shows detailed
+ * view and editing capabilities for selected contact.
+ * 
+ * Features:
+ * - Contact list with selection
+ * - Detailed contact view/edit panel
+ * - Responsive layout (responsive design adapts for mobile)
+ * - Add/edit/delete contact operations via SingleContact component
+ * - Contact navigation with back button
+ * 
+ * State Management:
+ * - Uses Angular signals for reactive state (selectedContactId)
+ * - Communicates with child components via methods
+ * 
+ * @component
+ * @selector app-contacts
+ * @standalone true
+ * @changeDetection OnPush (optimized change detection)
+ */
 @Component({
   selector: 'app-contacts',
   standalone: true,
@@ -12,7 +35,6 @@ import { ListContact } from './list-contact/list-contact';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
-  // Zugriff auf die Kind-Komponente, um die Liste wieder einzublenden
   @ViewChild(ListContact) listContact!: ListContact;
 
   selectedContactId = signal<string | null>(null);
@@ -23,7 +45,6 @@ export class Contacts {
 
   returnArrow(): void {
     this.selectedContactId.set(null);
-    // Liste wieder anzeigen (wichtig für Mobile)
     if (this.listContact) {
       this.listContact.returnArrow();
     }

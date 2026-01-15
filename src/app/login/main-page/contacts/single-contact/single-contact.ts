@@ -14,6 +14,30 @@ import { FirebaseServices } from '../../../../firebase-services/firebase-service
 import { UserUiService } from '../../../../services/user-ui.service';
 import { Router } from '@angular/router';
 
+/**
+ * Single Contact Component (Detail View)
+ * 
+ * Right panel displaying detailed information for a selected contact.
+ * Allows editing contact information, viewing assigned tasks,
+ * and deleting contacts. Uses signal-based reactivity for optimal performance.
+ * 
+ * Features:
+ * - Contact name, email, phone display
+ * - Edit contact dialog
+ * - Delete contact with confirmation
+ * - Show tasks assigned to contact
+ * - Contact color indicator
+ * - User action menu (edit, delete)
+ * - Real-time contact data from Firestore
+ * 
+ * Input:
+ * - contactId: Required signal input for contact to display
+ * 
+ * @component
+ * @selector app-single-contact
+ * @standalone true
+ * @changeDetection OnPush (optimized)
+ */
 @Component({
   selector: 'app-single-contact',
   standalone: true,

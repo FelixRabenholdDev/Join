@@ -9,8 +9,35 @@ import { Router } from '@angular/router';
 import { timer } from 'rxjs';
 import { AuthService } from '../../../firebase-services/auth-services';
 
-
-
+/**
+ * Summary/Dashboard Component
+ * 
+ * Displays an overview of tasks, assignments, and urgent items. Provides
+ * a high-level view of project status with task statistics and next upcoming deadline.
+ * 
+ * Features:
+ * - Task statistics (To Do, In Progress, Awaiting Feedback, Done counts)
+ * - Urgent task count
+ * - Total tasks count
+ * - Next due task date display
+ * - User greeting with time-based message
+ * - Animated summary panel with overlay
+ * - Real-time updates from Firestore
+ * - Current user data display
+ * 
+ * UI Elements:
+ * - Animated background overlay (shows on load, fades out)
+ * - Summary cards showing task counts by status
+ * - Urgent tasks indicator
+ * - Next deadline display
+ * - User greeting with current username
+ * - Dynamic greeting based on time of day
+ * 
+ * @component
+ * @selector app-summary
+ * @standalone true
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-summary',
   imports: [AsyncPipe, NgIf],
@@ -56,17 +83,14 @@ ngOnInit(): void {
       this.overlayInDom.set(true); 
       this.overlay.set(true);      
 
-      // 1 Sekunde sichtbar lassen, dann fade-out starten
       timer(1000).subscribe(() => {
         this.overlay.set(false); 
       });
 
-      // Overlay komplett aus DOM nach 3 Sekunden (1s sichtbar + 2s fade)
       timer(100000).subscribe(() => {
         this.overlayInDom.set(false);
       });
 
-      // Flag zurücksetzen, damit Overlay beim nächsten Login wieder funktioniert
       timer(2000).subscribe(() => {
         this.auth['justLoggedInSubject'].next(false);
       });

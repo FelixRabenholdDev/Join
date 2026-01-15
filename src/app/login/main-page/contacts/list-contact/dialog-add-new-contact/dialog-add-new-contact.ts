@@ -13,6 +13,25 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Dialog } from '../../../../../shared/dialog/dialog';
 import { UserUiService } from '../../../../../services/user-ui.service';
 
+/**
+ * Add New Contact Dialog Component
+ * 
+ * Modal dialog for creating new contacts in the system. Automatically assigns
+ * a color from the user color palette and validates contact information.
+ * Emits contactSelected event when new contact is created.
+ * 
+ * Features:
+ * - Contact name, email, phone input
+ * - Automatic color assignment from palette
+ * - Form validation
+ * - Create and close operations
+ * - Emits contactSelected event with contact ID
+ * - Modal dialog interface
+ * 
+ * @component
+ * @selector app-dialog-add-new-contact
+ * @standalone true
+ */
 @Component({
   selector: 'app-dialog-add-new-contact',
   imports: [CommonModule, FormsModule, Dialog],

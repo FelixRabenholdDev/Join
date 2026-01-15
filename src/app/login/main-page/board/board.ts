@@ -18,6 +18,33 @@ import { Auth, authState } from '@angular/fire/auth';
 import { AuthService } from '../../../firebase-services/auth-services';
 import { Router } from '@angular/router';
 
+/**
+ * Task Board Component - Kanban-Style Task Management
+ * 
+ * Displays tasks in a kanban board format with four columns representing
+ * task statuses (Todo, InProgress, AwaitFeedback, Done). Users can drag-and-drop
+ * tasks between columns to update status, add new tasks, and edit existing ones.
+ * 
+ * Features:
+ * - Drag-and-drop task management across status columns
+ * - Real-time task list updates via Firestore subscriptions
+ * - Task filtering by title/description search
+ * - Mobile-friendly (touch-enabled drag delay)
+ * - Add new task dialog
+ * - Edit existing task dialog with full task details
+ * - Task preview cards with priority, urgency, and assignment info
+ * - Responsive layout for desktop and mobile
+ * 
+ * Task Status Columns:
+ * - Todo: New/unstarted tasks
+ * - InProgress: Currently being worked on
+ * - AwaitFeedback: Completed, awaiting review
+ * - Done: Completed tasks
+ * 
+ * @component
+ * @selector app-board
+ * @standalone true
+ */
 @Component({
   selector: 'app-board',
   standalone: true,

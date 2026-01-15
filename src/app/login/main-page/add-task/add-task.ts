@@ -17,6 +17,36 @@ import { Router } from '@angular/router';
 import { Timestamp } from '@angular/fire/firestore';
 import { toSignal } from '@angular/core/rxjs-interop';
 
+/**
+ * Add Task Component - Task Creation Form
+ * 
+ * Comprehensive form for creating new tasks with all properties. Allows setting
+ * title, description, priority, type, status, due date, assignments, and subtasks.
+ * Validates form before submission and provides real-time feedback to user.
+ * 
+ * Features:
+ * - Task title and description input
+ * - Priority selection (1-5)
+ * - Task type selection (UserStory, TechnicalTask)
+ * - Status selection (ToDo, InProgress, AwaitFeedback, Done)
+ * - Due date picker with Material Datepicker
+ * - Contact assignment with multi-select dropdown
+ * - Subtask list management (add/remove)
+ * - Form validation with error messages
+ * - Save and cancel operations
+ * 
+ * Form Validation:
+ * - Title: Required, non-empty
+ * - Description: Optional
+ * - Priority: Required
+ * - Type: Required
+ * - Status: Required
+ * - Due Date: Optional
+ * 
+ * @component
+ * @selector app-add-task
+ * @standalone true
+ */
 @Component({
   selector: 'app-add-task',
   standalone: true,

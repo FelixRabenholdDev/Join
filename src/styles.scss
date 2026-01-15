@@ -1,10 +1,9 @@
 @use './app/styles/colors.scss';
 @use './app/styles/global-styles.scss';
 @use './app/shared/dialog/dialog.scss';
-/* --------------------------------- Styling -------------------------------- */
 
-// GET FONT "Inter" ...
 @font-face {
+
   font-family: 'Inter';
   src: url('/fonts/Inter_18pt-Regular.ttf') format('truetype');
   font-weight: 400;
@@ -25,7 +24,6 @@
   font-display: swap;
 }
 
-// GLOBALE BASIC STYLES
 * {
   margin: 0;
   padding: 0;
@@ -66,8 +64,6 @@ button {
 input {
   font-family: 'Inter', sans-serif;
 }
-
-/* ---------------------- PrivacyPolicy and LegalNotice --------------------- */
 
 .privacy_legal {
   padding-top: 110px;

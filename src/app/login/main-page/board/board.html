@@ -15,12 +15,10 @@
           </svg>
         </div>
 
-        <!-- DESKTOP / TABLET BUTTON -->
         <button class="button_dark" (click)="openDialogAddTask()">
           <span>Add task +</span>
         </button>
 
-        <!-- MOBILE BUTTON -->
         <button class="circle_add_task_mobile" (click)="openDialogAddTask()" aria-label="Add task">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11 1V21" stroke="white" stroke-width="2" stroke-linecap="round" />
@@ -40,7 +38,6 @@
           ]
         ">
         <div class="board_column">
-          <!-- FLEX-Header (Titel + Button) -->
           <div class="column_header">
             <span class="column_title">{{ column.title }}</span>
 
@@ -54,14 +51,11 @@
             </button>
           </div>
 
-          <!-- DROP AREA -->
           <div class="column_drop_area" cdkDropList (cdkDropListDropped)="drop($event, column.status)">
-            <!-- FALLBACK-ANZEIGE -->
             <div class="no_tasks_box" *ngIf="(column.data | async)?.length === 0">
               No tasks {{ column.title }}
             </div>
 
-            <!-- TASKS -->
             <div class="task_card" *ngFor="let task of column.data | async | FilterTask : searchInput" cdkDrag
               [cdkDragData]="task" [cdkDragStartDelay]='dragDelay' (click)="onTaskClick(task)">
               <app-task-preview [task]="task"></app-task-preview>

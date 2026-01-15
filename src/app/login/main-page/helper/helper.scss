@@ -31,27 +31,6 @@ h1 {
   margin-bottom: 24px;
 }
 
-// .join_guide_list {
-//   list-style: none;
-//   counter-reset: step;
-//   padding-left: 0;
-// }
-
-// .join_guide_list li {
-//   counter-increment: step;
-//   display: flex;
-//   align-items: flex-start;
-//   gap: 12px;
-// }
-
-// .join_guide_list li::before {
-//   content: counter(step) '.';
-//   font-size: 27px;
-//   font-weight: 700;
-//   line-height: 1;
-//   margin-top: 2px; /* exakt steuerbar */
-// }
-
 .join_guide_list {
   list-style-position: outside;
   padding-left: 32px;

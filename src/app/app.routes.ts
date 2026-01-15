@@ -1,6 +1,37 @@
 import { Routes } from '@angular/router';
 import { Login } from './login/login';
 
+/**
+ * Application Routing Configuration
+ * 
+ * Defines all routes for the application with lazy-loaded components for optimal
+ * performance. Routes are organized into two main sections: unauthenticated (login)
+ * and authenticated (main application).
+ * 
+ * Route Structure:
+ * 
+ * Unauthenticated Routes:
+ * - /Login - User authentication page (login, signup, guest access)
+ * - / - Redirects to /Login
+ * 
+ * Authenticated Routes (children of MainPage):
+ * - /summary - Dashboard/summary view
+ * - /contacts - Contact management
+ * - /board - Task board/kanban view
+ * - /add-task - Task creation form
+ * - /Privacy Policy - Privacy policy information
+ * - /Legal notice - Legal notice information
+ * - /helper - Application help/tutorial
+ * 
+ * All authenticated routes use lazy loading for code splitting and faster initial load times.
+ * 
+ * @constant
+ * @type {Routes}
+ * 
+ * @example
+ * // Used in app.config.ts
+ * provideRouter(routes)
+ */
 export const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: 'Login', component: Login },

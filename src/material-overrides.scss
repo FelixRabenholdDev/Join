@@ -141,7 +141,6 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
     color: #2a3647;
 }
 
-/* Blue standard frame */
 .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
   border-color: colors.$bgMiddleGrey;
 
@@ -150,7 +149,6 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
   }
 }
 
-/* Red error frame */
 .error-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$errorRed;
   border-style: none;
@@ -158,7 +156,6 @@ body .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-labe
 
 }
 
-/* Blue frame when date is selected */
 .selected-border.mat-mdc-form-field .mat-mdc-text-field-wrapper {
   border-color: colors.$buttonBlue;
 }

@@ -1,7 +1,6 @@
 @use '../../styles/colors.scss';
 @use '../../styles/global-styles.scss';
 
-// Backdrop
 .backdrop {
   position: fixed;
   inset: 0;
@@ -16,7 +15,6 @@
     animation: fadeOut 420ms ease-in;
   }
 
-  // Dialog-Shell
   .dialog {
     max-height: none;
     height: auto;
@@ -42,7 +40,6 @@
   }
 }
 
-// Animations
 @keyframes dialog-in {
   from {
     transform: translateX(100%);
