@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow-y: auto;  
+  overflow-y: auto;
 
   @media (max-width: 980px) {
     scrollbar-width: none;
@@ -298,7 +298,8 @@
   width: 100%;
   height: 48px;
   background-color: #e7e7e7;
-  border-radius: 12px;
+  border-radius: 10px;
+  border: 1px dashed #a8a8a8;
 
   display: flex;
   align-items: center;
@@ -312,7 +313,7 @@
 .task_card {
   cursor: grab;
 
-   @media (max-width: 1050px) {
+  @media (max-width: 1050px) {
     flex: 0 0 auto;
     scroll-snap-align: start;
   }
