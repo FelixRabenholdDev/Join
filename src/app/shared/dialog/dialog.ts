@@ -102,6 +102,18 @@ export class Dialog {
     }, 400);
   }
 
+  /**
+   * Opens the dialog with fade-in animation
+   * 
+   * Displays the dialog by setting isOpen to true and resetting closing state.
+   * Dialog becomes visible with CSS animations. Safe to call multiple times.
+   * 
+   * @returns {void}
+   * 
+   * @example
+   * this.dialog.open();
+   * // Dialog becomes visible with animation
+   */
   open(): void {
     this.isClosing = false;
     this.isOpen = true;

@@ -169,6 +169,23 @@ export class Login {
   ) {}
 
 
+  /**
+   * Logs in an existing user with email and password
+   * 
+   * Calls the AuthService to authenticate the user with provided email and password.
+   * On success, navigates to the summary/dashboard page. On failure, sets loginError flag
+   * and triggers change detection for error message display.
+   * 
+   * @async
+   * @returns {Promise<void>} Resolves when login completes
+   * @throws {Error} Firebase auth errors are caught and handled locally
+   * 
+   * @example
+   * // User enters credentials and clicks login
+   * await this.login();
+   * // If successful: Navigates to /summary
+   * // If failed: loginError is set to true, error message displayed
+   */
   async login(): Promise<void> {
     this.loginError = false;
     try {

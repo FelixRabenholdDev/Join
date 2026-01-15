@@ -38,6 +38,20 @@ import { AuthService } from '../../firebase-services/auth-services';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  /**
+   * Injected authentication service for accessing current user state
+   * Used to display user information in the navbar
+   * 
+   * @type {AuthService}
+   */
   authService = inject(AuthService);
+
+  /**
+   * Observable stream of current authenticated user
+   * Obtained from AuthService currentUser$ for template subscription
+   * Emits User object when authenticated, null otherwise
+   * 
+   * @type {Observable<User | null>}
+   */
   user$ = this.authService.currentUser$;
 }

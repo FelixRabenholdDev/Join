@@ -49,15 +49,68 @@ import { AuthService } from '../../../firebase-services/auth-services';
 export class Summary implements OnInit {
   private firebase = inject(FirebaseServices);
   private router = inject(Router);
-  private auth = inject(AuthService); // AuthService injizieren
+  private auth = inject(AuthService);
   ui = inject(UserUiService);
 
+  /**
+   * Greeting message based on current time of day
+   * "Good morning", "Good afternoon", or "Good evening"
+   * 
+   * @type {string}
+   */
   greeting = this.getGreeting();
-  userData$ = this.firebase.currentUserData$;
-  overlay = signal(true); // Overlay sichtbar
-   showSummary = signal(false);
-   overlayInDom = signal(false)
 
+  /**
+   * Observable stream of current user data from Firestore
+   * Contains authenticated user information
+   * 
+   * @type {Observable<User | undefined>}
+   */
+  userData$ = this.firebase.currentUserData$;
+
+  /**
+   * Signal controlling visibility of overlay element
+   * True when overlay should be displayed, false when hidden
+   * Automatically hidden after 1 second on login
+   * 
+   * @type {Signal<boolean>}
+   */
+  overlay = signal(true);
+
+  /**
+   * Signal controlling summary panel visibility
+   * True when summary panel should be shown
+   * 
+   * @type {Signal<boolean>}
+   */
+   showSummary = signal(false);
+
+   /**
+    * Signal controlling if overlay DOM element is mounted
+    * True when overlay should exist in DOM, false when removed
+    * Separate from visibility for performance optimization
+    * 
+    * @type {Signal<boolean>}
+    */
+   overlayInDom = signal(false);
+
+  /**
+   * Observable stream of task summary statistics
+   * 
+   * Aggregates task counts by status, calculates urgent task count,
+   * computes total tasks, and finds the next due date.
+   * Returns empty summary object if no tasks exist.
+   * 
+   * @type {Observable<{
+   *   todo: number,
+   *   inProgress: number,
+   *   awaitFeedback: number,
+   *   done: number,
+   *   urgent: number,
+   *   total: number,
+   *   nextDueDate: Timestamp | null
+   * }>}
+   */
   summary$ = this.firebase.subTasks().pipe(
     map((tasks) => {
       if (!tasks) return this.getEmptySummary();
@@ -75,6 +128,19 @@ export class Summary implements OnInit {
     }),
   );
 
+/**
+ * Angular OnInit lifecycle hook
+ * 
+ * Initializes the overlay animation on component load. If user just logged in
+ * and viewport is mobile (max-width: 1050px), shows overlay for 1 second then
+ * fades it out. Removes overlay from DOM after 100 seconds. Resets the login
+ * flag after 2 seconds.
+ * 
+ * Subscribes to auth service's justLoggedIn$ Observable to detect new logins
+ * and trigger the overlay animation for mobile users.
+ * 
+ * @returns {void}
+ */
 ngOnInit(): void {
   this.overlay.set(false);
 
@@ -98,35 +164,101 @@ ngOnInit(): void {
   });
 }
 
-  toBoard() {
-    this.router.navigate(['/board']);
-  }
+/**
+ * Navigates to the board/kanban view
+ * 
+ * Routes the user from summary dashboard to the task management board
+ * where they can view, create, and manage tasks in a kanban layout.
+ * 
+ * @returns {void}
+ * 
+ * @example
+ * // Navigate to board when user clicks "Go to Board" button
+ * this.toBoard();
+ * // Router navigates to /board route
+ */
+toBoard() {
+  this.router.navigate(['/board']);
+}
 
-  private getEmptySummary() {
-    return {
-      todo: 0,
-      inProgress: 0,
-      awaitFeedback: 0,
-      done: 0,
-      urgent: 0,
-      total: 0,
-      nextDueDate: null,
-    };
-  }
+/**
+ * Returns an empty summary object with all zero counts
+ * 
+ * Used as fallback when no tasks are available from Firestore.
+ * Provides default structure for template binding.
+ * 
+ * @private
+ * @returns {{
+ *   todo: 0,
+ *   inProgress: 0,
+ *   awaitFeedback: 0,
+ *   done: 0,
+ *   urgent: 0,
+ *   total: 0,
+ *   nextDueDate: null
+ * }} Empty summary object with all counts set to zero
+ */
+private getEmptySummary() {
+  return {
+    todo: 0,
+    inProgress: 0,
+    awaitFeedback: 0,
+    done: 0,
+    urgent: 0,
+    total: 0,
+    nextDueDate: null,
+  };
+}
 
-  private getGreeting(): string {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning,';
-    if (hour < 18) return 'Good afternoon,';
-    return 'Good evening,';
-  }
+/**
+ * Generates a time-based greeting message
+ * 
+ * Returns different greeting based on current time of day:
+ * - Before 12:00 PM: "Good morning,"
+ * - Before 6:00 PM: "Good afternoon,"
+ * - After 6:00 PM: "Good evening,"
+ * 
+ * @private
+ * @returns {string} Greeting message based on current hour
+ * 
+ * @example
+ * // Returns different greetings throughout the day
+ * this.getGreeting(); // "Good morning," at 10 AM
+ * this.getGreeting(); // "Good afternoon," at 3 PM
+ * this.getGreeting(); // "Good evening," at 8 PM
+ */
+private getGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning,';
+  if (hour < 18) return 'Good afternoon,';
+  return 'Good evening,';
+}
 
-  private getNextDueTask(tasks: Task[]): Task | null {
-    if (!tasks || tasks.length === 0) return null;
-    const tasksWithDate = tasks.filter((t) => t.date && typeof t.date.toMillis === 'function');
+/**
+ * Finds the task with the earliest due date
+ * 
+ * Filters tasks to only include those with valid date properties,
+ * then sorts by date and returns the earliest one (next due).
+ * Handles edge cases where tasks may lack dates or have invalid timestamps.
+ * 
+ * @private
+ * @param {Task[]} tasks - Array of tasks to search
+ * 
+ * @returns {Task | null} Task with earliest due date, or null if no valid tasks found
+ * 
+ * @throws {Error} Will throw if task.date.toMillis() is not a valid function
+ * 
+ * @example
+ * // Find next due task to display deadline
+ * const nextTask = this.getNextDueTask(taskArray);
+ * // Returns task with soonest deadline, or null if no dates set
+ */
+private getNextDueTask(tasks: Task[]): Task | null {
+  if (!tasks || tasks.length === 0) return null;
+  const tasksWithDate = tasks.filter((t) => t.date && typeof t.date.toMillis === 'function');
 
-    if (tasksWithDate.length === 0) return null;
+  if (tasksWithDate.length === 0) return null;
 
-    return tasksWithDate.sort((a, b) => a.date.toMillis() - b.date.toMillis())[0];
-  }
+  return tasksWithDate.sort((a, b) => a.date.toMillis() - b.date.toMillis())[0];
+}
 }
