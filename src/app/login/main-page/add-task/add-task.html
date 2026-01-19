@@ -98,10 +98,10 @@
         <p>Assigned to</p>
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>
-            {{ assignedTo().length > 0 || selectOpened ? 'An:' : 'Select contacts to assign' }}
+            {{ assignedTo().length > 0 || selectOpened ? 'An:' : 'Select contacts to assign' }} 
           </mat-label>
 
-          <mat-select panelClass="test_select" multiple [value]="assignedTo()"
+          <mat-select panelClass="test-select" multiple [value]="assignedTo()"
             (selectionChange)="assignedTo.set($event.value); updateAssignedToText()">
             <mat-select-trigger> </mat-select-trigger>
 
